@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute</groupId>
-	<artifactId>ShopSmartly</artifactId>
+	<artifactId>shop-smartly</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ShopSmartly</name>
 	<description>Project for ShopSmartly</description>
@@ -27,7 +27,7 @@
 		<module>email-service</module>
 		<module>payment-service</module>
 		<module>order-service</module>
-		<module>product-webapp-service</module>
+<!--		<module>product-webapp-service</module>-->
 		<module>seller-service</module>
 		<module>user-service</module>
 	</modules>
