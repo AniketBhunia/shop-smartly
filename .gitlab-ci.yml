@@ -78,7 +78,7 @@ java_lint:
     - stage
 
 angular_lint:
-  image: node:12-alpine
+  image: node:18.16.0-alpine
   stage: ng_quality
   script:
     - cd product-webapp
