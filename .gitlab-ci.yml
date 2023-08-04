@@ -28,7 +28,7 @@ stages:
 #    - stage
 
 maven_build:
-  image: maven:3.8.5-openjdk-17
+  image: maven:3.8.3-openjdk-17
   stage: package
   script: mvn clean package
   only:
@@ -44,7 +44,7 @@ maven_build:
       - /target/*.jar
 
 code_coverage:
-  image: maven:3.8.5-openjdk-17
+  image: maven:3.8.3-openjdk-17
   stage: test
   only:
     - master
@@ -64,7 +64,7 @@ code_coverage:
       - target/site/jacoco/
 
 java_lint:
-  image: maven:3.8.5-openjdk-17
+  image: maven:3.8.3-openjdk-17
   stage: java_quality
   script:
     - mvn -Dmaven.repo.local=/root/.m2/repository clean install -DskipTests=true -B
@@ -84,7 +84,7 @@ angular_lint:
     - cd product-webapp
     - cd webapp
     - npm install
-    - npm run lint -- --format json
+    - npm run lint
   only:
     - master
     - v1.0.0
