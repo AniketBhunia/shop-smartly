@@ -6,28 +6,49 @@
 		<groupId>com.stackroute</groupId>
 		<artifactId>shop-smartly</artifactId>
 		<version>1.0.0</version>
-		<relativePath>../pom.xml</relativePath>
-		<!-- lookup parent from repository -->
+		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute</groupId>
-	<artifactId>user-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>user-service</name>
-	<description>User service of shop-smartly</description>
+	<artifactId>authentication-service</artifactId>
+	<version>1.0.0</version>
+	<name>authentication-service</name>
+	<description>Authentication Service for Shop Smartly</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>
