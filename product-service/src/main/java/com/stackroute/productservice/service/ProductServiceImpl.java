@@ -45,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
     }
     public List<Product> getProductsBySellerId(String seller_id) throws SellerIdNotFoundException {
         List<Product> products = productRepository.findBySeller_id(seller_id);
+//        System.out.println(products);
         if (products.isEmpty()) {
             throw new SellerIdNotFoundException();
         }
