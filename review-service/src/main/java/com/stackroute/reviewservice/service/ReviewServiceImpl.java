@@ -1,6 +1,7 @@
 package com.stackroute.reviewservice.service;
 
 import com.stackroute.reviewservice.exception.ProIdNotFoundException;
+import com.stackroute.reviewservice.exception.ReviewNotFoundException;
 import com.stackroute.reviewservice.model.Review;
 import com.stackroute.reviewservice.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +46,21 @@ public class ReviewServiceImpl implements ReviewService{
 
 
     @Override
-    public List<Review> getReviewsByProductId(String product_id) {
+    public List<Review> getReviewsByProductId(String product_id) throws ProIdNotFoundException{
         List<Review> reviews = reviewRepository.findByProduct_id(product_id);
 //        if (reviews.isEmpty()) {
 //            throw new ProIdNotFoundException();
 //        }
         return reviews;
     }
-
+    @Override
+    public void updateReview(Review review,int review_id,byte[] imageBytes) throws ReviewNotFoundException {
+        Optional<Review> newReview = reviewRepository.findById(review_id);
+        if (newReview.isEmpty()) {
+            throw new ReviewNotFoundException();
+        }
+        review.setProduct_image(imageBytes);
+        reviewRepository.save(review);
+    }
 
 }
