@@ -9,7 +9,7 @@
 		<relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute</groupId>
-	<artifactId>authentication-service</artifactId>
+	<artifactId>user-service</artifactId>
 	<version>1.0.0</version>
 	<name>authentication-service</name>
 	<description>Authentication Service for Shop Smartly</description>
