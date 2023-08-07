@@ -1,0 +1,124 @@
+<!-- cart.component.html -->
+<head>
+  <!-- ... other meta tags and stylesheets ... -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<div class="container cart-page-header">
+  <div class="header-content">
+    <div class="logo">
+      <img src="assets\Shop Smartly Logo Symbol 2400x1800.jpg" alt="Logo" />
+    </div>
+    <h1 class="h2">SmartCart</h1>
+  </div>
+</div>
+
+<div class="container cart-box-main">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="table-main table-responsive">
+        <p *ngIf="check" class="text-center">
+          <i class="text-info font-weight-bold text-center"></i>
+          You don't have any items in your cart
+        </p>
+        <table *ngIf="grandTotal" class="table">
+          <thead>
+            <tr>
+              <th>Images</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cartItem of shoppingCart.cartItems">
+              <td class="thumbnail-img">
+                <a href="#">
+                  <img class="img-fluid" [src]="cartItem.product.image" alt="" />
+                </a>
+              </td>
+              <td class="name-pr">
+                <p>{{ cartItem.product.name }}</p>
+              </td>
+              <td class="price-pr">
+                <p>{{ '$' + cartItem.unitPrice }}</p>
+              </td>
+              <td class="quantity-box">
+                <mat-form-field>
+                  <input
+                    matInput
+                    type="number"
+                    name="quantity"
+                    [(ngModel)]="cartItem.quantity"
+                    size="4"
+                    min="0"
+                    step="1"
+                    class="c-input-text qty text"
+                  />
+                </mat-form-field>
+              </td>
+              <td class="total-pr">
+                <p>{{ '$' + cartItem.unitPrice * cartItem.quantity }}</p>
+              </td>
+              <td>
+                <button
+                  mat-button
+                  (click)="deleteCartItem(cartItem)"
+                  title="Delete"
+                  class="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- cart.component.html -->
+<div class="container my-5" *ngIf="grandTotal">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-lg-8 col-md-7 col-sm-12">
+      <div class="card cart-checkout-card">
+        <div class="card-body">
+          <h2 class="h4 text-center">Checkout Summary</h2>
+          <div class="checkout-details">
+            <div class="detail d-flex justify-content-between">
+              <span>Sub Total</span>
+              <span>{{ '$' + grandTotal }}</span>
+            </div>
+            <div class="detail d-flex justify-content-between">
+              <span>Tax</span>
+              <span>$2</span>
+            </div>
+            <div class="detail d-flex justify-content-between">
+              <span>Shipping Cost</span>
+              <span>Free</span>
+            </div>
+            <hr />
+            <div class="detail d-flex justify-content-between total">
+              <span>Grand Total</span>
+              <span>{{ '$' + (grandTotal + 2) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- cart.component.html -->
+   <!-- cart.component.html -->
+<div>
+  <a mat-button color="primary" class="btn btn-primary btn-green ml-auto d-flex align-items-center justify-content-center" routerLink="/checkout">
+    <i class="bi bi-cart-fill me-1"></i> <!-- Replace this with your desired icon class -->
+    Proceed to Checkout
+  </a>
+</div>
+  </div>
+</div>
+</body>
