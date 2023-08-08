@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ProductDetailedComponent } from './Components/product-detailed/product-detailed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListsComponent,
-    CartComponent
+    CartComponent,
+    ProductDetailedComponent
   ],
   imports: [
     BrowserModule,
