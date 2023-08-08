@@ -21,6 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
     private ResponseEntity responseEntity;
     private final ProductService productService;
@@ -73,7 +74,7 @@ public class ProductController {
     }
 
     @GetMapping("/all_products")
-    public ResponseEntity<List<Product>> getAllProducts(@PageableDefault(size = 10) Pageable pageable) {
+    public ResponseEntity<List<Product>> getAllProducts(@PageableDefault(size = 12) Pageable pageable) {
         try {
             responseEntity = new ResponseEntity(productService.getAll(pageable), HttpStatus.OK);
         } catch (Exception exception) {
