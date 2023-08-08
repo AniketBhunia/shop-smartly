@@ -27,6 +27,7 @@ export class ProductListsComponent implements OnInit {
     // this.getProductById(81)
     this.fetchProducts()
     this.getPopularProducts()
+    this.searchByName("mobil")
   }
 
 
@@ -65,6 +66,12 @@ getPopularProducts(){
     console.error('Error fetching products:', error);
   }
 );
+}
+
+searchByName(name:string){
+  return this.product_service.searchByName(name).subscribe((res)=>{
+    console.log(res)
+  })
 }
 
 // convertByteArrayToBlob(byteArray: number[]):any{

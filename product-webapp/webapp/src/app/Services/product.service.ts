@@ -47,6 +47,9 @@ export class ProductService {
   popularProducts() {
     return this.http.get<any>('http://localhost:8081/api/v1/product?limit=12');
   }
+  searchByName(name : any ){
+    return this.http.get<any>(`http://localhost:8081/api/v1/product/search/${name}`)
+  }
 
 
 }
