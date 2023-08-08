@@ -1,13 +1,13 @@
-package com.stackroute.paymentservice;
+package com.shoppingProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PaymentServiceApplication {
+public class ShoppingProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentServiceApplication.class, args);
+		SpringApplication.run(ShoppingProjectApplication.class, args);
 	}
 
 }
