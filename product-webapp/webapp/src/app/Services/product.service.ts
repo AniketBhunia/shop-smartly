@@ -13,7 +13,7 @@ export class ProductService {
     return this.http.get<any>('http://localhost:8081/api/v1/product/all_products');
   }
 
-  getProductByID(product_id: number) {
+  getProductByID(product_id: string) {
     return this.http.get<any>(`http://localhost:8081/api/v1/product/${product_id}`)
   }
   

@@ -49,7 +49,7 @@ export class ProductListsComponent implements OnInit {
 
   })
 }
-getProductById(product_id: number){
+getProductById(product_id: string){
   return this.product_service.getProductByID(product_id).subscribe((res) => {
     console.log(res)
   })
