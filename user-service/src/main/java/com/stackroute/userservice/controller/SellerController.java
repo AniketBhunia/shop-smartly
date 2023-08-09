@@ -18,6 +18,7 @@ public class SellerController {
     private SellerService sellerService;
     @PostMapping("/register")
     public ResponseEntity<?> doRegister(@RequestBody User user){
+
         User u=sellerService.doRegister(user);
         if(u==null){
             return new ResponseEntity<>("User Already exists", HttpStatus.CONFLICT);

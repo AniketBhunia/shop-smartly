@@ -12,6 +12,6 @@ public interface ReviewService {
     void saveReview(Review review, byte[] imageBytes);
     List<Review> getLimitedReviews(int limit);
     Page<Review> getAll(Pageable pageable);
-    List<Review> getReviewsByProductId(String product_id);
+    List<Review> getReviewsByProductId(String product_id) throws ProIdNotFoundException;
     void updateReview(Review review,int review_id,byte[] imageBytes) throws ReviewNotFoundException;
 }

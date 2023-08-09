@@ -1,5 +1,6 @@
 package com.stackroute.reviewservice.model;
 
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,6 +10,7 @@ import java.util.Arrays;
 
 @NoArgsConstructor
 @Document("Review")
+@Builder
 public class Review {
     @Id
     private int review_id;

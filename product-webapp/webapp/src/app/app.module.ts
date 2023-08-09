@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { SingInComponent } from './sing-in/sing-in.component';
 import { ProductListsComponent } from './Components/product-lists/product-lists.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './Components/cart-page/cart-page.component';
@@ -17,6 +19,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    SingInComponent,
     ProductListsComponent,
     CartComponent,
     ProductDetailedComponent
