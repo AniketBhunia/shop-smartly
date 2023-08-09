@@ -1,6 +1,6 @@
-package com.stackroute.userservice.config;
+package com.stackroute.sellerservice.config;
 
-import com.stackroute.userservice.model.User;
+import com.stackroute.sellerservice.model.Seller;
 import lombok.AllArgsConstructor;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -15,11 +15,9 @@ public class Producer {
     private RabbitTemplate template;
     @Autowired
     private DirectExchange directExchange;
-    public void sendMessageToRabbitMqUser(User u){
-        template.convertAndSend(directExchange.getName(), MessagingConfig.ROUTING_KEY_USER, u);
-    }
 
-//    public void sendMessageToRabbitMqSeller(User u){
-//        template.convertAndSend(directExchange.getName(), MessagingConfig.ROUTING_KEY_SELLER, u);
-//    }
+
+    public void sendMessageToRabbitMqSeller(Seller u){
+        template.convertAndSend(directExchange.getName(), MessagingConfig.ROUTING_KEY_SELLER, u);
+    }
 }
