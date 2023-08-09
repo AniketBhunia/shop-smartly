@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MessagingConfig {
-    public static final String QUEUE_USER = "user_queue1";
-    public static final String EXCHANGE_USER = "user_exchange1";
-    public static final String ROUTING_KEY_USER = "user_key1";
-    public static final String QUEUE_SELLER = "seller_queue1";
+    public static final String QUEUE_USER = "user_queue3";
+    public static final String EXCHANGE_USER = "exchange5";
+    public static final String ROUTING_KEY_USER = "user_key3";
+    public static final String QUEUE_SELLER = "seller_queue2";
 
     public static final String ROUTING_KEY_SELLER = "seller_key1";
     @Bean

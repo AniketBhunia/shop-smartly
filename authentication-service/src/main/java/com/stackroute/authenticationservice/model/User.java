@@ -12,6 +12,7 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -19,22 +20,21 @@ public class User {
     @Transient
     public static final String SEQUENCE_NAME = "users_sequence";
     @Id
-    @Getter
-    @Setter
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
-    @Getter
-    @Setter
+
     private String name;
-    @Getter
-    @Setter
+
     private String email;
-    @Getter
-    @Setter
+
     private String password;
-//    @Getter
-//    @Setter
-//    private Enum role;
+    public enum roles{
+        user,
+        seller,
+
+    }
+
+    private roles role;
 
 
 
