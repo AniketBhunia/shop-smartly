@@ -10,5 +10,5 @@ import java.util.List;
 public interface ReviewRepository extends MongoRepository<Review, Integer> {
     @Query("{\"bool\": {\"must\": [{\"match\": {\"product_id\": \"?0\"}}]}}")
       List<Review> findByProduct_id(String product_id);
-      //List<Review> findByProductId(String product_id);
+
 }

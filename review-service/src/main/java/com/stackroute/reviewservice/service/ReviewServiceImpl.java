@@ -54,23 +54,7 @@ public class ReviewServiceImpl implements ReviewService{
         }
         return reviews;
     }
-//    public List<Review> getReviewsByProductId(String product_id){
-////        List<Review> reviews = reviewRepository.findByProduct_id(product_id);
-////        if (reviews.isEmpty()) {
-////            System.out.println(reviews);
-////            throw new ProIdNotFoundException();
-////
-////        }
-////
-////        return reviews;
-////        List<Review> reviewList = reviewRepository.findAll();
-////        //System.out.println(reviewList);
-////        return (List<Review>) reviewList.stream()
-////                .filter(review -> review.getProduct_id().equals(product_id))
-////                .findFirst()
-////                .orElse(null);
-//        return reviewRepository.findByProductId(product_id);
-//    }
+
 
     @Override
     public void updateReview(Review review,int review_id,byte[] imageBytes) throws ReviewNotFoundException {
