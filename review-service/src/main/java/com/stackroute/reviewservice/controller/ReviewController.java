@@ -78,15 +78,17 @@ public class ReviewController {
         return reviewService.getLimitedReviews(limit);
     }
 
-    @GetMapping("/getReview/{productId}")
-    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable String productId) throws  ProIdNotFoundException{
-
-        try {
-            List<Review> reviews = reviewService.getReviewsByProductId(productId);
-            return new ResponseEntity<>(reviews, HttpStatus.OK);
-        } catch (ProIdNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/getReview/{product_id}")
+    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable String product_id)  {
+        List<Review> reviews = reviewService.getReviewsByProductId(product_id);
+        return ResponseEntity.ok(reviews);
+//        return reviewService.getReviewsByProductId(product_id);
+////        try {
+////            List<Review> reviews = reviewService.getReviewsByProductId(productId);
+////            return new ResponseEntity<>(reviews, HttpStatus.OK);
+////        } catch (ProIdNotFoundException e) {
+////            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+////        }
 
     }
     @PutMapping("/update_review/{review_id}")

@@ -1,0 +1,98 @@
+/* cart.component.css */
+
+/* Styles for the cart page header */
+.cart-page-header {
+  background-color: #b8d6d7; /* Change to your desired header background color */
+  padding: 20px 0;
+  text-align: center;
+}
+
+.cart-page-header .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-page-header .header-content .logo img {
+  max-width: 100px;
+}
+
+/* Styles for the table */
+.cart-box-main {
+  margin-top: 30px;
+}
+
+/* Rest of your existing styles for the table... */
+
+/* Styles for the checkout summary card */
+.cart-checkout-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Rest of your existing styles for the checkout summary card... */
+
+/* Styles for the "Proceed to Checkout" button */
+.d-flex.justify-content-md-end .btn-primary {
+  width: 100%;
+  max-width: 200px; /* Adjust the max-width to your preference */
+  margin-top: 15px;
+}
+
+/* Rest of your existing styles for the button... */
+
+/* Media query for screens smaller than 992px (medium screens) */
+@media (max-width: 991.98px) {
+  .cart-checkout-card {
+    max-width: 100%;
+  }
+
+  .col-md-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .col-md-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .d-flex.justify-content-md-end .btn-primary {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 15px;
+  }
+}
+
+/* Media query for screens smaller than 768px (small screens) */
+@media (max-width: 767.98px) {
+  .cart-page-header .header-content {
+    flex-direction: column;
+  }
+
+  .cart-page-header .header-content .logo {
+    margin-bottom: 15px;
+  }
+
+  .cart-checkout-card {
+    max-width: 100%;
+  }
+
+  .col-md-5 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .col-md-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .d-flex.justify-content-md-end .btn-primary {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 15px;
+  }
+  
+}
