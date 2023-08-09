@@ -47,12 +47,15 @@ public class ReviewServiceImpl implements ReviewService{
 
 
     @Override
-    public List<Review> getReviewsByProductId(String product_id) throws ProIdNotFoundException {
-        List<Review> reviews = reviewRepository.findByProduct_id(product_id);
-        if (reviews.isEmpty()) {
-            throw new ProIdNotFoundException();
-        }
-        return reviews;
+//    public List<Review> getReviewsByProductId(int product_id) throws ProIdNotFoundException {
+//        List<Review> reviews = reviewRepository.findByProduct_id(product_id);
+//        if (reviews.isEmpty()) {
+//            throw new ProIdNotFoundException();
+//        }
+//        return reviews;
+//    }
+    public Review getReviewsByProductId(int product_id){
+        return reviewRepository.findByProduct_id(product_id);
     }
 
 
