@@ -52,6 +52,7 @@ public class ProductController {
             int product_quantity = (int) productMap.get("product_quantity");
             String product_status = (String) productMap.get("product_status");
             String product_description = (String) productMap.get("product_description");
+            String productBrand = (String) productMap.get("productBrand");
             String product_category = (String) productMap.get("product_category");
             double product_current_price = (double) productMap.get("product_current_price");
             double product_discount_price = (double) productMap.get("product_discount_price");
@@ -64,6 +65,7 @@ public class ProductController {
             product.setProduct_quantity(product_quantity);
             product.setProduct_status(product_status);
             product.setProduct_description(product_description);
+            product.setProductBrand(productBrand);
             product.setProduct_category(product_category);
             product.setProduct_current_price(product_current_price);
             product.setProduct_discount_price(product_discount_price);
@@ -139,6 +141,7 @@ public class ProductController {
             int product_quantity = (int) productMap.get("product_quantity");
             String product_status = (String) productMap.get("product_status");
             String product_description = (String) productMap.get("product_description");
+            String productBrand = (String) productMap.get("productBrand");
             String product_category = (String) productMap.get("product_category");
             double product_current_price = (double) productMap.get("product_current_price");
             double product_discount_price = (double) productMap.get("product_discount_price");
@@ -151,6 +154,7 @@ public class ProductController {
             product.setProduct_quantity(product_quantity);
             product.setProduct_status(product_status);
             product.setProduct_description(product_description);
+            product.setProductBrand(productBrand);
             product.setProduct_category(product_category);
             product.setProduct_current_price(product_current_price);
             product.setProduct_discount_price(product_discount_price);

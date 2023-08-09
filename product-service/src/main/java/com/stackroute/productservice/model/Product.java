@@ -23,11 +23,16 @@ public class Product {
     private int product_quantity;
     private String product_status;
     private String product_description;
+    private String productBrand;
     private String product_category;
     private double product_current_price;
     private double product_discount_price;
     private byte[] product_image;
-//    @Autowired
+    //    @Autowired
     private int seller_id;
 
 }
+
+
+
+//    private String productBrand;
