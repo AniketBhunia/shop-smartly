@@ -11,7 +11,7 @@ import { Product } from 'src/app/data.types';
 export class ProductListsComponent implements OnInit {
   contentArray!: Product[]
   popularProductList !: Product[]
-  products: any[] = [];
+  products!: Product[];
   products2: any[] = []
   p: number = 1;
   itemsPerPage: number = 4;
@@ -35,10 +35,12 @@ export class ProductListsComponent implements OnInit {
     this.product_service.productList().subscribe((res: any) => {
       this.contentArray = res.content;
       console.log(this.contentArray);
-      this.products2 = this.contentArray.map(product => ({
-        ...product,
-        image: this.convertByteArrayToBase64(product.product_image),
-      }));
+      this.contentArray.forEach((product: any) => {
+        this.products2.push({
+          ...product,
+          image: 'data:image/jpeg;base64,' + product.product_image
+        });
+      });
       (error: any) => {
         console.error('Error fetching products:', error);
       }
@@ -53,20 +55,36 @@ getProductById(product_id: number){
   })
 }
 
-getPopularProducts(){
-  return this.product_service.popularProducts().subscribe((res:any[]) => {
-    this.products = res.map(product => ({
-      ...product,
-      image : this.convertByteArrayToBase64(product.product_image)
-    }));
-    console.log(this.products);
-    
-  },
-  error => {
-    console.error('Error fetching products:', error);
-  }
-);
+getPopularProducts() {
+  return this.product_service.popularProducts().subscribe(
+    (res: any[]) => {
+      this.products = []; // Initialize the array
+
+      res.forEach((product: any) => {
+        this.products.push({
+          ...product,
+          image: 'data:image/jpeg;base64,' + product.product_image
+        });
+      });
+    },
+    (error: any) => {
+      console.error('Error fetching popular products:', error);
+    }
+  );
 }
+
+
+
+//   this.products = res.map(product => ({
+  //     ...product,
+  //     image : this.convertByteArrayToBase64(product.product_image)
+  //   }));
+  //   console.log(this.products);
+    
+  // },
+  // error => {
+  //   console.error('Error fetching products:', error);
+  // }
 
 searchByName(name:string){
   return this.product_service.searchByName(name).subscribe((res)=>{
