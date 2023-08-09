@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessagingConfig {
 
-    public static final String EXCHANGE= "exchange2";
+    public static final String EXCHANGE= "exchange5";
 
     public static final String QUEUE_SELLER = "seller_queue2";
   //  public static final String EXCHANGE_SELLER = "seller_exchange";

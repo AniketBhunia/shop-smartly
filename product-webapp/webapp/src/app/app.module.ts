@@ -15,6 +15,13 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductDetailedComponent } from './Components/product-detailed/product-detailed.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { HomeComponent } from './Components/home/home.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,7 +30,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SingInComponent,
     ProductListsComponent,
     CartComponent,
-    ProductDetailedComponent
+    ProductDetailedComponent,
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule,
+    NgbCarouselModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
