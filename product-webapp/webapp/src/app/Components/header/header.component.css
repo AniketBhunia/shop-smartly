@@ -23,10 +23,11 @@
     border-radius: 0.5%;
   }
   
-  .nav-links a {
+  .nav a {
     color: #fff;
+    display: inline;
     text-decoration: none;
-    margin-right: 1rem;
+    margin-right: 1px;
   }
   
   .phone-number {

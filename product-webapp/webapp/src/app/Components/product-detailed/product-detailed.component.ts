@@ -10,18 +10,33 @@ import { Product } from 'src/app/data.types';
 })
 export class ProductDetailedComponent implements OnInit {
   productData !: Product;
-  constructor(private productService:ProductService,private activate: ActivatedRoute,){}
+  similarProducts !: Product[];
+  categoryValue: string | null = null;
+  constructor(private productService: ProductService, private activate: ActivatedRoute,) { }
 
   ngOnInit(): void {
-    let productId= this.activate.snapshot.paramMap.get('productId');
+    let productId = this.activate.snapshot.paramMap.get('productId');
     console.log(productId);
 
-    productId && this.productService.getProductByID(productId).subscribe((res)=>{
+    productId && this.productService.getProductByID(productId).subscribe((res) => {
       this.productData = res
       console.log(this.productData);
-      
+      localStorage.setItem('localCart', JSON.stringify([this.productData]));
     })
-    
-  }
+    const productDataJson = localStorage.getItem('localCart');
 
+    if (productDataJson) {
+      const productData = JSON.parse(productDataJson);
+      this.categoryValue = productData[0].product_category;
+      console.log(this.categoryValue); // Output: Mobile
+    } else {
+      console.log('No product data found in local storage.');
+    }
+
+    this.productService.searchByCategory(this.categoryValue).subscribe((res) => {
+      this.similarProducts = res
+      console.log(this.similarProducts);
+    })
+
+  }
 }

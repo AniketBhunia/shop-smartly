@@ -4,15 +4,20 @@ import { ProductListsComponent } from './Components/product-lists/product-lists.
 import { CartComponent } from './Components/cart-page/cart-page.component';
 import { ProductDetailedComponent } from './Components/product-detailed/product-detailed.component';
 import { HomeComponent } from './Components/home/home.component';
+import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 
 const routes: Routes = [
   {
-    path:"home",
+    path:"",
     component:HomeComponent
   },
   {
     path:"view_products",
     component:ProductListsComponent
+  },
+  {
+    path:"view_products/:category",
+    component:ViewbycategoryComponent
   },
   {
     path:"mycart",

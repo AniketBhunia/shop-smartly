@@ -22,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     ProductDetailedComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ViewbycategoryComponent
   ],
   imports: [
     BrowserModule,

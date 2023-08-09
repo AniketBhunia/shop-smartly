@@ -50,6 +50,9 @@ export class ProductService {
   searchByName(name : any ){
     return this.http.get<any>(`http://localhost:8081/api/v1/product/search/${name}`)
   }
+  searchByCategory(category : any ){
+    return this.http.get<any>(`http://localhost:8081/api/v1/product/byCategory/${category}`)
+  }
 
 
 }
