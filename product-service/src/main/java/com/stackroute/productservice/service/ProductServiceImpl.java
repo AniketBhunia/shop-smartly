@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
         if (products.isEmpty()) {
             throw new SellerIdNotFoundException();
         }
-         return products;
+        return products;
     }
 
 

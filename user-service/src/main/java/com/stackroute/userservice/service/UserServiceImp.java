@@ -2,8 +2,10 @@ package com.stackroute.userservice.service;
 
 
 import com.stackroute.userservice.config.MessagingConfig;
+import com.stackroute.userservice.config.Producer;
 import com.stackroute.userservice.model.User;
 import com.stackroute.userservice.repository.UserRepository;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,7 @@ public class UserServiceImp implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private RabbitTemplate template;
+    private Producer producer;
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
     public User doRegister(User u){
@@ -26,7 +28,7 @@ public class UserServiceImp implements UserService {
         }else{
             u.setUserId((int) sequenceGeneratorService.generateSequence(User.SEQUENCE_NAME));
             System.out.println("user service");
-            template.convertAndSend(MessagingConfig.EXCHANGE_USER, MessagingConfig.ROUTING_KEY_USER, u);
+            producer.sendMessageToRabbitMqUser(u);
             userRepository.save(u);
         }
         return u;

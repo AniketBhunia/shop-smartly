@@ -1,5 +1,12 @@
 package com.stackroute.userservice.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
     private int addressId;
     private String addressLine1;

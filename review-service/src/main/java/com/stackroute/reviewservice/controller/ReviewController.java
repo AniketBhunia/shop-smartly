@@ -39,7 +39,7 @@ public class ReviewController {
             // Extract values from the Map
             int review_id=(int) productMap.get("review_id");
             int user_id = (int) productMap.get("user_id");
-            int product_id=(int) productMap.get("product_id");
+            int product_id= (int) productMap.get("product_id");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");
             int product_review_rating=(int) productMap.get("product_review_rating");
@@ -79,18 +79,21 @@ public class ReviewController {
     }
 
     @GetMapping("/getReview/{product_id}")
-    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable String product_id)  {
-        List<Review> reviews = reviewService.getReviewsByProductId(product_id);
-        return ResponseEntity.ok(reviews);
-//        return reviewService.getReviewsByProductId(product_id);
-////        try {
-////            List<Review> reviews = reviewService.getReviewsByProductId(productId);
-////            return new ResponseEntity<>(reviews, HttpStatus.OK);
-////        } catch (ProIdNotFoundException e) {
-////            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-////        }
-
+//    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable int product_id) throws ProIdNotFoundException {
+//
+//        try {
+//            List<Review> reviews = reviewService.getReviewsByProductId(product_id);
+//            return new ResponseEntity<>(reviews, HttpStatus.OK);
+//        } catch (ProIdNotFoundException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
+    public ResponseEntity<?> get(@PathVariable int product_id)
+    {
+        responseEntity=new ResponseEntity<>(reviewService.getReviewsByProductId(product_id),HttpStatus.OK);
+        return responseEntity;
     }
+
     @PutMapping("/update_review/{review_id}")
     public ResponseEntity<String> updateReview(@PathVariable int review_id, @RequestParam("productReview") String productData,@RequestParam("image") MultipartFile productImage) {
 

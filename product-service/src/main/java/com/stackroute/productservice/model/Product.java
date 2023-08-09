@@ -1,6 +1,7 @@
 package com.stackroute.productservice.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @AllArgsConstructor
 @Data
 @Document(indexName = "products")
+@JsonIgnoreProperties("_class")
 @Builder
 public class Product {
     @Id
@@ -21,11 +23,16 @@ public class Product {
     private int product_quantity;
     private String product_status;
     private String product_description;
+    private String productBrand;
     private String product_category;
     private double product_current_price;
     private double product_discount_price;
     private byte[] product_image;
-//    @Autowired
+    //    @Autowired
     private int seller_id;
 
 }
+
+
+
+//    private String productBrand;

@@ -1,0 +1,20 @@
+/* product-description.component.css */
+
+mat-card {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .cart-badge {
+    margin-left: 8px;
+  }
+  
+  .mat-card-content {
+    margin-bottom: 20px;
+  }
+  
+  .mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+  }

@@ -19,7 +19,7 @@ public interface ProductService {
 
     Product findProductById(int id) throws ProductNotFoundException;
 
-//    Product findProductBySellerId(int id) throws SellerIdNotFoundException;
+    //    Product findProductBySellerId(int id) throws SellerIdNotFoundException;
     List<Product> getProductsBySellerId(String sellerId) throws SellerIdNotFoundException;
 
     Page<Product> getAll(Pageable pageable);
