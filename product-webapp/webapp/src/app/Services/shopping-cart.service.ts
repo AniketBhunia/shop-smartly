@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../productModel';
 import { ShoppingCartItem } from '../productModel';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,11 @@ export class ShoppingCartService {
       quantity: 1
     }
   ];
+  constructor(private httpClient:HttpClient){}
 
+  getUserData(){
+    return this.httpClient.get('http://localhost:8089/user/getAllUsers')
+  }
   calculateGrandTotal(): number {
     let total = 0;
     for (const item of this.cartItems) {
