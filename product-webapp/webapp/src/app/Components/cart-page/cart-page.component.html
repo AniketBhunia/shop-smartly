@@ -114,10 +114,11 @@
     <!-- cart.component.html -->
    <!-- cart.component.html -->
 <div>
-  <a mat-button color="primary" class="btn btn-primary btn-green ml-auto d-flex align-items-center justify-content-center" routerLink="/checkout">
+  <button (click)="payNow()"><a mat-button color="primary" class="btn btn-primary btn-green ml-auto d-flex align-items-center justify-content-center" routerLink="/checkout">
     <i class="bi bi-cart-fill me-1"></i> <!-- Replace this with your desired icon class -->
     Proceed to Checkout
-  </a>
+  </a></button>
+  
 </div>
   </div>
 </div>
