@@ -12,3 +12,15 @@ export interface Product {
     // imageUrl:string;
     image:string;
 }
+export interface Review {
+    review_id : number;
+    product_id :number;
+    user_id : number;
+    posted_date : string;
+    user_name: string;
+    product_review_rating : number;
+    product_image:number[];
+    product_review_description : string;
+    image:string;
+
+}

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReviewController {
     private ResponseEntity responseEntity;
     private ReviewService reviewService;
@@ -31,10 +32,10 @@ public class ReviewController {
         this.objectMapper = objectMapper;
     }
     @PostMapping("/add_review")
-    public ResponseEntity<String> saveReview(@RequestParam("productReview") String productData,
-                                             @RequestParam("image") MultipartFile productImage){
+    public ResponseEntity<String> saveReview(@RequestParam("productReview") String reviewData,
+                                             @RequestParam("image") MultipartFile reviewImage){
         try {
-            Map<String, Object> productMap = objectMapper.readValue(productData, new TypeReference<Map<String, Object>>() {});
+            Map<String, Object> productMap = objectMapper.readValue(reviewData, new TypeReference<Map<String, Object>>() {});
 
             // Extract values from the Map
             int review_id=(int) productMap.get("review_id");
@@ -55,7 +56,7 @@ public class ReviewController {
             product_rev.setProduct_review_description(product_review_description);
 
 
-            byte[] imageBytes = productImage.getBytes();
+            byte[] imageBytes = reviewImage.getBytes();
 
             reviewService.saveReview(product_rev,imageBytes);
             return ResponseEntity.ok("Review saved successfully.");
@@ -95,10 +96,10 @@ public class ReviewController {
     }
 
     @PutMapping("/update_review/{review_id}")
-    public ResponseEntity<String> updateReview(@PathVariable int review_id, @RequestParam("productReview") String productData,@RequestParam("image") MultipartFile productImage) {
+    public ResponseEntity<String> updateReview(@PathVariable int review_id, @RequestParam("productReview") String reviewData,@RequestParam("image") MultipartFile reviewImage) {
 
         try {
-            Map<String, Object> productMap = objectMapper.readValue(productData, new TypeReference<Map<String, Object>>() {
+            Map<String, Object> productMap = objectMapper.readValue(reviewData, new TypeReference<Map<String, Object>>() {
             });
             int review_id1=(int) productMap.get("review_id");
             int user_id = (int) productMap.get("user_id");
@@ -118,7 +119,7 @@ public class ReviewController {
             product_rev.setProduct_review_description(product_review_description);
 
 
-            byte[] imageBytes = productImage.getBytes();
+            byte[] imageBytes = reviewImage.getBytes();
             reviewService.updateReview(product_rev, review_id,imageBytes);
 
             return ResponseEntity.ok("Product updated successfully");

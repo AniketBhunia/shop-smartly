@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/Services/product.service';
-import { Product } from 'src/app/data.types';
+import { ReviewService } from 'src/app/Services/review.service';
+import { Product, Review } from 'src/app/data.types';
 
 @Component({
   selector: 'app-product-detailed',
@@ -12,9 +13,13 @@ export class ProductDetailedComponent implements OnInit {
   productData !: Product;
   similarProducts !: Product[];
   categoryValue: string | null = null;
-  constructor(private productService: ProductService, private activate: ActivatedRoute,) { }
+  reviewLists !: Review;
+  products2 !: Review[];
+
+  constructor(private productService: ProductService, private activate: ActivatedRoute, private reviewService:ReviewService) { }
 
   ngOnInit(): void {
+    this.getAllReviews();
     let productId = this.activate.snapshot.paramMap.get('productId');
     console.log(productId);
 
@@ -38,5 +43,20 @@ export class ProductDetailedComponent implements OnInit {
       console.log(this.similarProducts);
     })
 
+  }
+  getAllReviews(){
+    this.reviewService.reviewList().subscribe((res : any) => {
+      this.reviewLists = res.content;
+      console.log(this.reviewLists);
+      // this.reviewLists.forEach((review: any) => {
+      //   this.products2.push({
+      //     ...product,
+      //     image: 'data:image/jpeg;base64,' + product.product_image
+      //   });
+      // });
+      // (error: any) => {
+      //   console.error('Error fetching products:', error);
+      // }
+    })
   }
 }
