@@ -3,12 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SingInComponent } from './sing-in/sing-in.component';
+
 import { ProductListsComponent } from './Components/product-lists/product-lists.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './Components/cart-page/cart-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -22,18 +21,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './Components/login/login.component';
+import { SignUpSellerComponent } from './Components/sign-up-seller/sign-up-seller.component';
+import { SignUpUserComponent } from './Components/sign-up-user/sign-up-user.component';
+import { LoginService } from './Services/login.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SingInComponent,
     ProductListsComponent,
     CartComponent,
     ProductDetailedComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    SignUpSellerComponent,
+    SignUpUserComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,9 @@ import { MatButtonModule } from '@angular/material/button';
     NgbModule,
     NgbCarouselModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

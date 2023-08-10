@@ -11,15 +11,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessagingConfig {
-    public static final String QUEUE_USER = "user_queue3";
-    public static final String EXCHANGE= "exchange5";
-    public static final String ROUTING_KEY_USER = "user_key3";
+    public static final String QUEUE_USER = "user_queue7";
+    public static final String EXCHANGE= "exchange7";
+    public static final String ROUTING_KEY_USER = "user_key7";
    // public static final String QUEUE_SELLER = "seller_queue3";
   //  public static final String EXCHANGE_SELLER = "seller_exchange";
    // public static final String ROUTING_KEY_SELLER = "seller_key3";
     @Bean
     public Queue user_queue(){
-        return new Queue(QUEUE_USER,false);
+        return new Queue(QUEUE_USER,true);
     }
 
 //    @Bean
