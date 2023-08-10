@@ -181,4 +181,16 @@ public class ProductController {
         }
         return productList;
     }
+
+    @GetMapping("/byCategory/{category}")
+    List<Product> fuzzySearch1( @PathVariable String category ) throws IOException {
+        SearchResponse<Product> searchResponse = elasticSearchService.fuzzySearch1(category);
+        List<Hit<Product>> hitList = searchResponse.hits().hits();
+        System.out.println(hitList);
+        List<Product> productList = new ArrayList<>();
+        for(Hit<Product> hit :hitList){
+            productList.add(hit.source());
+        }
+        return productList;
+    }
 }

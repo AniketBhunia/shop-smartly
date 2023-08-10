@@ -18,4 +18,13 @@ public class ElasticSearch {
         return  fuzzyQuery.field("product_name").value(approximateProductName).build();
 
     }
+    public static Supplier<Query> createSupplierQuery1(String approximateProductName){
+        Supplier<Query> supplier = ()->Query.of(q->q.fuzzy(createFuzzyQuery1(approximateProductName)));
+        return  supplier;
+    }
+    public static FuzzyQuery createFuzzyQuery1(String approximateProductName){
+        val fuzzyQuery  = new FuzzyQuery.Builder();
+        return  fuzzyQuery.field("product_category").value(approximateProductName).build();
+
+    }
 }
