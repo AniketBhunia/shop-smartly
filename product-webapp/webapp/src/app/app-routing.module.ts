@@ -9,8 +9,16 @@ import { SignUpSellerComponent } from './Components/sign-up-seller/sign-up-selle
 
 const routes: Routes = [
   {
+    path:"",
+    component:HomeComponent
+  },
+  {
     path:"view_products",
     component:ProductListsComponent
+  },
+  {
+    path:"view_products/:category",
+    component:ViewbycategoryComponent
   },
   {
     path:"mycart",

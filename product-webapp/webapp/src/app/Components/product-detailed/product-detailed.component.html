@@ -1,289 +1,244 @@
-  <section class="py-5">
-    <div class="container">
-      <div class="row gx-5">
-        <aside class="col-lg-6">
-          <div class="border rounded-4 mb-3 d-flex justify-content-center">
-            <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="assets/images/pexels-pixabay-51383.jpg">
-              <img style="max-width: 100%; max-height: 50vh; margin: auto;" class="rounded-4 fit" src="assets/images/pexels-pixabay-51383.jpg">
-            </a>
-          </div>
-         
-        </aside>
-        <main class="col-lg-6">
-          <div class="ps-lg-3">
-            <h4 class="title text-dark">
-              Action Cameras from GoPro
-            </h4>
-            <div class="d-flex flex-row my-3">
-              <div class="text-warning mb-1 me-2">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-                <span class="ms-1">
-                  4.5
-                </span>
-              </div>
-              <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
-              <span class="text-success ms-2">In stock</span>
-            </div>
-  
-            <div class="mb-3">
-              <span class="h5">$75.00</span>
-              <span class="text-muted">/per box</span>
-            </div>
-  
-            <p>
-              INSTA360 ONE RS Twin Edition Waterproof Optical Zoom, 1x 4K 60fps Action Camera & 5.7K 360 Camera with Interchangeable Lenses, Stabilization, 48MP Photo, Active HDR, AI Editing, Standard, Vivid, Log
-            </p>
-  
-            <div class="row">
-              
-              <dt class="col-3">Color</dt>
-              <dd class="col-9">Black</dd>
-  
-              
-            </div>
-  
-            <hr>
-  
-           
-            <div class="d-grid gap-2">
-              <button class="btn btn-primary" type="button">Add to cart</button>
-              
-            </div> 
-          </div>
-        </main>
-      </div>
-    </div>
-  </section>
-  <!-- content -->
-  
-  <!--  similar product item -->
-  <section class="bg-light border-top py-4">
-    <div class="container">
-      <div class="col-lg-12">
-        <div class="px-0 border rounded-2 shadow-0">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Similar items</h5>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <div class="d-flex">
-                    <a href="#" class="me-3">
-                      <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/8.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail">
-                    </a>
-                    <div class="info">
-                      <a href="#" class="nav-link mb-1">
-                        Rucksack Backpack Large <br>
-                        Line Mounts
-                      </a>
-                      <strong class="text-dark"> $38.90</strong>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="col-md-6 mb-3">
-                  <div class="d-flex">
-                    <a href="#" class="me-3">
-                      <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/9.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail">
-                    </a>
-                    <div class="info">
-                      <a href="#" class="nav-link mb-1">
-                        Summer New Men's Denim <br>
-                        Jeans Shorts
-                      </a>
-                      <strong class="text-dark"> $29.50</strong>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="col-md-6 mb-3">
-                  <div class="d-flex">
-                    <a href="#" class="me-3">
-                      <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/10.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail">
-                    </a>
-                    <div class="info">
-                      <a href="#" class="nav-link mb-1"> T-shirts with multiple colors, for men and lady </a>
-                      <strong class="text-dark"> $120.00</strong>
-                    </div>
-                  </div>
-                </div>
-      
-                <div class="col-md-6 mb-3">
-                  <div class="d-flex">
-                    <a href="#" class="me-3">
-                      <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/11.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail">
-                    </a>
-                    <div class="info">
-                      <a href="#" class="nav-link mb-1"> Blazer Suit Dress Jacket for Men, Blue color </a>
-                      <strong class="text-dark"> $339.90</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<section class="py-5">
+  <div class="container">
+    <div class="row gx-5" *ngIf="productData">
+      <aside class="col-lg-6">
+        <div class="border rounded-4 mb-3 d-flex justify-content-center">
+          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+            href="assets/images/pexels-pixabay-51383.jpg">
+            <img style="max-width: 100%; max-height: 50vh; margin: auto;" class="rounded-4 fit"
+              [src]="'data:image/jpeg;base64,' + productData.product_image">
+          </a>
         </div>
-      </div>
-    </div>
-  </section>
-  <!--  similar product item -->
-  
-  <section class="bg-light py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="text-dark">Product Reviews</h2>
+
+      </aside>
+      <main class="col-lg-6">
+        <div class="ps-lg-3">
+          <h4 class="title text-dark">
+            {{productData.product_name}}
+          </h4>
+          <div class="d-flex flex-row my-3">
+            <div class="text-warning mb-1 me-2">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span class="ms-1">
+                4.5
+              </span>
+            </div>
+            <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+            <span class="text-success ms-2">{{productData.product_status}}</span>
+          </div>
+
+          <div class="mb-3">
+            <span><i
+              class="fa fa-doller"></i> <del>${{productData.product_current_price}}</del> <b>
+              ${{productData.product_discount_price}}</b>
+            </span>
+            <!-- <span class="text-muted">/per box</span> -->
+          </div>
+          <p>
+            {{productData.product_description}}
+          </p>
           <hr>
-  
-          <!-- List of Reviews -->
-          <div class="review">
-            <!-- Review 1 -->
-            <div class="card mb-3">
-              <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                  <div class="text-warning me-2">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                  </div>
-                  <div class="review-text">
-                    <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
-                    <p class="text-muted mb-0">Posted on August 9, 2023</p>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Review 2 -->
-            <div class="card mb-3">
-              <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                  <div class="text-warning me-2">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                  </div>
-                  <div class="review-text">
-                    <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
-                    <p class="text-muted mb-0">Posted on August 9, 2023</p>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Review 3 -->
-            <div class="card mb-3">
-              <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                  <div class="text-warning me-2">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                  </div>
-                  <div class="review-text">
-                    <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
-                    <p class="text-muted mb-0">Posted on August 9, 2023</p>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Review 4 -->
-            <div class="card mb-3">
-              <div class="card-body d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center">
-                  <div class="text-warning me-2">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                  </div>
-                  <div class="review-text">
-                    <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
-                    <p class="text-muted mb-0">Posted on August 9, 2023</p>
-                  </div>
-                </div>
-                <div class="d-flex">
-                  <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
-                  <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
-                </div>
-              </div>
-            </div>
-            <!-- Add more reviews as needed -->
-  
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button">Add to cart</button>
+
           </div>
-          <!-- End of List of Reviews -->
-  
-          <!-- Pagination -->
-          <nav aria-label="Review pagination">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-              </li>
-              <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-          <!-- End of Pagination -->
-  
-            <!-- Add Review Form -->
-            <div class="add-review-form mt-4">
-              <h3 class="mb-3">Add Your Review</h3>
-              <form>
-                <div class="mb-3">
-                  <label for="rating" class="form-label">Rating</label>
-                  <select class="form-select" id="rating" name="rating">
-                    <option value="5">5 Stars</option>
-                    <option value="4">4 Stars</option>
-                    <option value="3">3 Stars</option>
-                    <option value="2">2 Stars</option>
-                    <option value="1">1 Star</option>
-                  </select>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+<!-- content -->
+
+<!--  similar product item -->
+<section class="bg-light border-top py-4">
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="px-0 border rounded-2 shadow-0">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Similar items</h5>
+            <div class="row">
+              <div class="col-md-6 mb-3" *ngFor="let item of similarProducts">
+                <div class="d-flex">
+                  <a href="#" class="me-3">
+                    <img [src]="'data:image/jpeg;base64,' + item.product_image"
+                      style="min-width: 96px; height: 96px;" class="img-md img-thumbnail">
+                  </a>
+                  <div class="info">
+                    <a routerLink="'/details/{{item.product_id}}" class="nav-link mb-1">
+                      {{item.product_name}}
+                    </a>
+                    <strong class="text-dark"> <span><i
+                      class="fa fa-doller"></i> <del>${{item.product_current_price}}</del> <b>
+                      ${{item.product_discount_price}}</b>
+                    </span></strong>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <label for="comment" class="form-label">Your Review</label>
-                  <textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="author" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="author" name="author" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Review</button>
-              </form>
+              </div>
             </div>
-            <!-- End of Add Review Form -->
-  
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  
+  </div>
+</section>
+<!--  similar product item -->
+
+<section class="bg-light py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="text-dark">Product Reviews</h2>
+        <hr>
+
+        <!-- List of Reviews -->
+        <div class="review">
+          <!-- Review 1 -->
+          <div class="card mb-3">
+            <div class="card-body d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="text-warning me-2">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-text">
+                  <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
+                  <p class="text-muted mb-0">Posted on August 9, 2023</p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="card mb-3">
+            <div class="card-body d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="text-warning me-2">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-text">
+                  <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
+                  <p class="text-muted mb-0">Posted on August 9, 2023</p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="card mb-3">
+            <div class="card-body d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="text-warning me-2">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-text">
+                  <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
+                  <p class="text-muted mb-0">Posted on August 9, 2023</p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 -->
+          <div class="card mb-3">
+            <div class="card-body d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="text-warning me-2">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-text">
+                  <p class="mb-0">"Great quality hoodie. Love the fit and material!" - John Doe</p>
+                  <p class="text-muted mb-0">Posted on August 9, 2023</p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-link text-primary me-2"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-link text-danger"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+          <!-- Add more reviews as needed -->
+
+        </div>
+        <!-- End of List of Reviews -->
+
+        <!-- Pagination -->
+        <nav aria-label="Review pagination">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End of Pagination -->
+
+        <!-- Add Review Form -->
+        <div class="add-review-form mt-4">
+          <h3 class="mb-3">Add Your Review</h3>
+          <form>
+            <div class="mb-3">
+              <label for="rating" class="form-label">Rating</label>
+              <select class="form-select" id="rating" name="rating">
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="comment" class="form-label">Your Review</label>
+              <textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="author" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="author" name="author" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Review</button>
+          </form>
+        </div>
+        <!-- End of Add Review Form -->
+
+      </div>
+    </div>
+  </div>
+</section>

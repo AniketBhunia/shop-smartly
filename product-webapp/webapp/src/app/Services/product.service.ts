@@ -13,7 +13,7 @@ export class ProductService {
     return this.http.get<any>('http://localhost:8081/api/v1/product/all_products');
   }
 
-  getProductByID(product_id: number) {
+  getProductByID(product_id: string) {
     return this.http.get<any>(`http://localhost:8081/api/v1/product/${product_id}`)
   }
   
@@ -49,6 +49,9 @@ export class ProductService {
   }
   searchByName(name : any ){
     return this.http.get<any>(`http://localhost:8081/api/v1/product/search/${name}`)
+  }
+  searchByCategory(category : any ){
+    return this.http.get<any>(`http://localhost:8081/api/v1/product/byCategory/${category}`)
   }
 
 

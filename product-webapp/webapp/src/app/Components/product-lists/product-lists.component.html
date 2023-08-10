@@ -6,7 +6,7 @@
         <div class="col-md-3"
             *ngFor="let product of products2 | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
             <div class="product-wrapper mb-45 text-center">
-                <div class="product-img"> <a href="#" data-abc="true"> <img src={{product.image}}
+                <div class="product-img"> <a routerLink="/details/{{product.product_id}}" data-abc="true"> <img src={{product.image}}
                             alt="{{product.product_name}}" width="270" height="326"></a> <span class="text-center"><i
                             class="fa fa-doller"></i> <del>${{product.product_current_price}}</del> <b>
                             ${{product.product_discount_price}}</b></span>
@@ -29,15 +29,13 @@
     </div>
     <!-- </div> -->
 </div>
-<div class="container d-flex justify-content-left mt-100">
+<!-- <div class="container d-flex justify-content-left mt-100">
     <div class="row">
-        <!-- <div class="col-md-6"> -->
         <div class="col-md-3" *ngFor="let item of products | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
             <div class="product-wrapper mb-45 text-center">
-                <div class="product-img"> <a href="#" data-abc="true"> <img src={{item.image}} alt="" width="270"
+                <div class="product-img"> <a routerLink="/details/{{item.product_id}}"> <img src={{item.image}} alt="" width="270"
                             height="326">
                         </a>
-                        <!-- <span class="discount-badge">20% Off</span> -->
                         <span class="text-center"><i
                             class="fa fa-doller"></i>
                         <del>${{item.product_current_price}}</del> <b> ${{item.product_discount_price}}</b></span>
@@ -54,9 +52,8 @@
                 </div>
             </div>
         </div>
-        <!-- </div> -->
     </div>
-</div>
+</div> -->
 <div class="pagination">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
