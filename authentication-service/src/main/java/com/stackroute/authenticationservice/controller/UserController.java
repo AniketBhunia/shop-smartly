@@ -24,6 +24,7 @@ public class UserController {
     private JwtTokenGenerator jwtTokenGenerator;
     private ResponseEntity responseEntity;
     @PostMapping("/login")
+    @CrossOrigin("http://localhost:4200/")
     public ResponseEntity loginUser(@RequestBody User user) throws UserNotFound {
 
         Map<String, String> map = null;

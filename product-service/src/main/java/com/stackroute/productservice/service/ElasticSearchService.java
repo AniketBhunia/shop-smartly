@@ -25,4 +25,11 @@ public class ElasticSearchService {
 //        System.out.println("elasticsearch supplier fuzzy query " + supplier.get().toString());
         return response;
     }
+    public SearchResponse<Product> fuzzySearch1(String approximateProductName) throws IOException {
+        Supplier<Query> supplier = ElasticSearch.createSupplierQuery1(approximateProductName);
+        SearchResponse<Product> response = elasticsearchClient
+                .search(s -> s.index("products").query(supplier.get()), Product.class);
+//        System.out.println("elasticsearch supplier fuzzy query " + supplier.get().toString());
+        return response;
+    }
 }

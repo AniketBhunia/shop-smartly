@@ -1,0 +1,62 @@
+<div style="display: flex;">
+
+  <img src="../../../assets/Shop_Smartly_Logo_Symbol_2400x1800-removebg-preview.png" style="width: 20%; height: 20%">
+
+  <div style="width: 100vw; height: 100vh; ">
+
+    <div style=" position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);">
+      <form [formGroup]="singInForm" style="width: 150%;" (ngSubmit)="onSubmit()">
+        <div style="padding-bottom: 1rem; font-size: xx-large;font-weight: bold;">Sign Up User</div>
+        <div style="padding-bottom:1rem ;">
+          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+            formControlName="userName" placeholder="User Name">
+        </div>
+        <div style="padding-bottom:1rem ;">
+          <input id="first-name" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+            formControlName="userEmail" placeholder="Email">
+        </div>
+        <div style="padding-bottom:1rem ;">
+          <input id="first-name" type="password" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+            formControlName="userPassword" placeholder=" Password">
+        </div>
+        <div
+          style="display: flex;width: 70%;justify-content: space-between;padding-top: 0.3rem;padding-bottom: 0.3rem;">
+          Gender:
+          <div style="display: flex;  align-items: baseline;">
+            <input type="radio" id="male" name="userGender" value="male" formControlName="userGender">
+            <label for="">Male</label><br>
+          </div>
+          <div style="display: flex;  align-items: baseline;">
+            <input type="radio" id="female" name="gender" value="female" formControlName="userGender">
+            <label for="female">Female</label><br>
+          </div>
+
+        </div>
+        <div style="padding-bottom:1rem ;">
+          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+            formControlName="userPhoneNo" placeholder="Phone No">
+        </div>
+        <div style="padding-bottom:1rem ;">
+          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+            formControlName="userAge" placeholder="Age">
+        </div>
+        <div style="padding-bottom:1rem ;">
+          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+            formControlName="addressList" placeholder="Address List">
+        </div>
+
+
+        <button style="padding-left: 6%;
+        border-radius: 999px;
+        padding-right: 6%;
+        padding-top: 2%;
+        padding-bottom: 2%; background-color: white;border-color: #4cc8ff;">Sign Up</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>
