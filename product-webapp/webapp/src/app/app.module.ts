@@ -25,6 +25,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignUpSellerComponent } from './Components/sign-up-seller/sign-up-seller.component';
 import { SignUpUserComponent } from './Components/sign-up-user/sign-up-user.component';
 import { LoginService } from './Services/login.service';
+import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoginService } from './Services/login.service';
     FooterComponent,
     LoginComponent,
     SignUpSellerComponent,
-    SignUpUserComponent
+    SignUpUserComponent,
+    ViewbycategoryComponent
   ],
   imports: [
     BrowserModule,
