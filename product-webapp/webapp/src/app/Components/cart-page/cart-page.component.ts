@@ -1,6 +1,7 @@
 // cart.component.ts
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+// import { CartService } from 'src/app/Services/cart.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { ShoppingCartItem } from 'src/app/productModel';
 declare var Razorpay: any;
@@ -22,8 +23,11 @@ export class user{
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css'],
 })
-export class CartComponent {
+export class CartComponent implements OnInit{
+  cartList !: ShoppingCartItem
+  
   shoppingCart: ShoppingCartService; 
+  
 
   get check(): boolean {
     return this.shoppingCart.cartItems.length === 0;
@@ -36,6 +40,17 @@ export class CartComponent {
   constructor(private cartService: ShoppingCartService) {
     this.shoppingCart = cartService;
     // objects: user = new user;
+  }
+  ngOnInit(): void {
+    // throw new Error('Method not implemented.');
+    this.getCartByID(38)
+  }
+
+  getCartByID(cart_id:any){
+    this.cartService.getUserData(cart_id).subscribe((res:any)=>{
+      this.cartList = res
+      console.log(this.cartList);
+    })
   }
 
   updateCartItem(cartItem: ShoppingCartItem) {
