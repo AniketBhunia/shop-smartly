@@ -8,8 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface ReviewRepository extends MongoRepository<Review, Integer> {
-    @Query("{\"bool\": {\"must\": [{\"match\": {\"product_id\": \"?0\"}}]}}")
-      //List<Review> findByProduct_id(int product_id);
-    Review findByProduct_id(int product_id);
-
+      List<Review> findByProductId(int productId);
 }

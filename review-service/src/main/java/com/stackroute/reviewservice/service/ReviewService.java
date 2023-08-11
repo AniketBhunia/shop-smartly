@@ -1,6 +1,5 @@
 package com.stackroute.reviewservice.service;
 
-import com.stackroute.reviewservice.exception.ProIdNotFoundException;
 import com.stackroute.reviewservice.exception.ReviewNotFoundException;
 import com.stackroute.reviewservice.model.Review;
 import org.springframework.data.domain.Page;
@@ -12,7 +11,6 @@ public interface ReviewService {
     void saveReview(Review review, byte[] imageBytes);
     List<Review> getLimitedReviews(int limit);
     Page<Review> getAll(Pageable pageable);
-//    List<Review> getReviewsByProductId(int product_id) throws ProIdNotFoundException;
-Review getReviewsByProductId(int product_id);
+    List<Review> getReviewsByProductId(int productId);
     void updateReview(Review review,int review_id,byte[] imageBytes) throws ReviewNotFoundException;
 }
