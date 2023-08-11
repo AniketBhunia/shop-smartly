@@ -27,6 +27,7 @@ import { SignUpUserComponent } from './Components/sign-up-user/sign-up-user.comp
 import { LoginService } from './Services/login.service';
 import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 import { OrderHistoryComponent } from './Components/order-history/order-history.component';
+import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { OrderHistoryComponent } from './Components/order-history/order-history.
     SignUpSellerComponent,
     SignUpUserComponent,
     ViewbycategoryComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    ViewbybrandComponent
   ],
   imports: [
     BrowserModule,

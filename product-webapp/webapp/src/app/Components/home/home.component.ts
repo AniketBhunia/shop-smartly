@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/Services/product.service';
+import { Product } from 'src/app/data.types';
 
 @Component({
   selector: 'app-home',
@@ -7,52 +10,36 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 
-export class HomeComponent{
+export class HomeComponent implements OnInit{
+  popularProducts !: Product[] 
+  startIndex: number = 0; // Change this to the desired starting index
+  endIndex: number = 3;
+  
+  constructor(private productService : ProductService,private route:Router){}
+  
+  
+  ngOnInit(): void {
+    this.productService.popularProductsForHome().subscribe((res)=>{
+      this.popularProducts = res;
+    })
+  }
+  details(id:any){
+    this.route.navigate([`/details/${id}`])
+  }
+  getDetailsByBrand(brand:string){
+    // this.productService.searchByBrand(brand).subscribe
+    this.route.navigate([`view_productsbybrand/${brand}`])
+  }
+
+  get itemsToShow(): any[] {
+    return this.popularProducts.slice(this.endIndex);
+  }
+  get itemsToShow1(): any[] {
+    return this.popularProducts.slice(this.startIndex, this.endIndex + 1);
+  }
 
   // eslint-disable-next-line @typescript-eslint/ban-types
   search : String ="";
-  
-  data1 = [
-    {
-      image: '../../assets/headphones.png',
-      name: 'Boat Headphones',
-      price: '₹ 1,299'
-    },
-    {
-      image: '../../assets/speaker.jpg',
-      name: 'JBL Speaker',
-      price: '₹ 2,249'
-    },
-    {
-      image: '../../assets/iPhone.jpg',
-      name: 'Iphone 14, 256GB',
-      price: '₹ 83,999'
-    },
-    {
-      image: '../../assets/toaster.jpg',
-      name: 'Prestige Toaster',
-      price: '₹ 799'
-    }
-  ]
-
-  data2 = [
-    {
-      image: '../../assets/sunglasses.jpg',
-      name: 'Rayban Sunglasses',
-      price: '₹ 2,999'
-    },
-    {
-      image: '../../assets/wallet.jpeg',
-      name: 'Raymond Mens Wallet',
-      price: '₹ 1,999'
-    },
-    {
-      image: '../../assets/laptop.png',
-      name: 'HP Probook X100',
-      price: '₹ 49,999'
-    }
-  ]
-
   // ngOnInit(): void {
   //   // Add any initialization logic here if needed.
   // }

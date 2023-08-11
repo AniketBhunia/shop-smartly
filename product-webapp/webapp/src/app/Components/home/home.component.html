@@ -7,7 +7,6 @@
   <title>Welcome to ShopSmartly !!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-<app-header></app-header>
 <div class="home-container">
   <div class="carousel">
     <ngb-carousel>
@@ -48,56 +47,41 @@
 
   <div style="text-align: center; padding-top: 3%; padding-bottom: 2%;">
     <p style="font-size: xx-large;">Our Top Rated Products</p>
+    <button routerLink="/view_products" mat-raised-button style="float: right; background-color:#4682A9; color:aliceblue">See More</button>
   </div>
   <div class="carousel">
     <ngb-carousel [showNavigationArrows]="false">
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor = "let item of data1">
-              <img [src]="item.image" height="150px" width="150px">
-              <h3>{{item.name}}</h3>
-              <p>{{item.price}}</p>
+            <div class="product-card" *ngFor="let item of itemsToShow1; let i = index">
+              <a (click)="details(item.product_id)" style="cursor: pointer;">
+                <div class="product-image">
+                  <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
+                </div>
+                <div class="product-details">
+                  <h3 class="product-name">{{ item.product_name }}</h3>
+                  <p class="product-price">${{ item.product_discount_price }}</p>
+                </div>
+              </a>
             </div>
-            <!-- <div class="product-card">
-              <img src="../../assets/speaker.jpg" alt="shoes" height="150px" width="150px">
-              <h3>JBL Speaker</h3>
-              <p>Price: ₹2,249</p>
-            </div>
-            <div class="product-card">
-              <img src="../../assets/iPhone.jpg" alt="shoes" height="150px" width="150px">
-              <h3>iPhone 14, 256GB</h3>
-              <p>Price: ₹83,999</p>
-            </div>
-            <div class="product-card">
-              <img src="../../assets/toaster.jpg" alt="shoes" height="150px" width="150px">
-              <h3>Prestige Toaster</h3>
-              <p>Price: ₹799</p>
-            </div> -->
           </div>
         </div>
       </ng-template>
-
+    <!-- </ngb-carousel> -->
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor = "let item of data2">
-              <img [src]="item.image" height="150px" width="150px">
-              <h3>{{item.name}}</h3>
-              <p>{{item.price}}</p>
-            </div>
-            <!-- <div class="product-card">
-              <img src="../../assets/wallet.jpeg" alt="shoes" height="150px" width="150px">
-              <h3>Raymond Men's Wallet</h3>
-              <p>Price: ₹1,999</p>
-            </div>
-            <div class="product-card">
-              <img src="../../assets/laptop.png" alt="shoes" height="150px" width="150px">
-              <h3>HP Probook Laptop</h3>
-              <p>Price: ₹49,999</p>
-            </div> -->
-            <div class="product-card">
-              <button mat-raised-button color="primary" style="margin-top: 38%;">Show More Products</button>
+            <div class="product-card" *ngFor="let item of itemsToShow; let i = index">
+              <a (click)="details(item.product_id)" style="cursor: pointer;">
+                <div class="product-image">
+                  <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
+                </div>
+                <div class="product-details">
+                  <h3 class="product-name">{{ item.product_name }}</h3>
+                  <p class="product-price">${{ item.product_discount_price }}</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -112,50 +96,34 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor = "let item of data1">
-              <img [src]="item.image" height="150px" width="150px">
-              <h3>{{item.name}}</h3>
-              <p>{{item.price}}</p>
+            <div class="product-card" *ngFor="let item of itemsToShow1; let i = index">
+              <a (click)="details(item.product_id)" style="cursor: pointer;">
+                <div class="product-image">
+                  <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
+                </div>
+                <div class="product-details">
+                  <h3 class="product-name">{{ item.product_name }}</h3>
+                  <p class="product-price">${{ item.product_discount_price }}</p>
+                </div>
+              </a>
             </div>
-            <!-- <div class="product-card">
-              <img src="../../assets/speaker.jpg" alt="shoes" height="150px" width="150px">
-              <h3>JBL Speaker</h3>
-              <p>Price: ₹2,249</p>
-            </div>
-            <div class="product-card">
-              <img src="../../assets/iPhone.jpg" alt="shoes" height="150px" width="150px">
-              <h3>iPhone 14, 256GB</h3>
-              <p>Price: ₹83,999</p>
-            </div>
-            <div class="product-card">
-              <img src="../../assets/toaster.jpg" alt="shoes" height="150px" width="150px">
-              <h3>Prestige Toaster</h3>
-              <p>Price: ₹799</p>
-            </div> -->
           </div>
         </div>
       </ng-template>
-
+    <!-- </ngb-carousel> -->
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor = "let item of data2">
-              <img [src]="item.image" height="150px" width="150px">
-              <h3>{{item.name}}</h3>
-              <p>{{item.price}}</p>
-            </div>
-            <!-- <div class="product-card">
-              <img src="../../assets/wallet.jpeg" alt="shoes" height="150px" width="150px">
-              <h3>Raymond Men's Wallet</h3>
-              <p>Price: ₹1,999</p>
-            </div>
-            <div class="product-card">
-              <img src="../../assets/laptop.png" alt="shoes" height="150px" width="150px">
-              <h3>HP Probook Laptop</h3>
-              <p>Price: ₹49,999</p>
-            </div> -->
-            <div class="product-card">
-              <button mat-raised-button color="primary" style="margin-top: 38%;">Show More Products</button>
+            <div class="product-card" *ngFor="let item of itemsToShow; let i = index">
+              <a (click)="details(item.product_id)" style="cursor: pointer;">
+                <div class="product-image">
+                  <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
+                </div>
+                <div class="product-details">
+                  <h3 class="product-name">{{ item.product_name }}</h3>
+                  <p class="product-price">${{ item.product_discount_price }}</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -163,31 +131,28 @@
     </ngb-carousel>
   </div>
   <div class="brand-container">
-    <div style="text-align: center; padding-top: 3%; padding-bottom: 2%; ">
+    <div style="text-align: center; padding-top: 3%; padding-bottom: 2%;">
       <p style="font-size: xx-large;">Shop From Our Most Popular Brands</p>
     </div>
-    <div class="brand">
-      <img src="../../assets/HP-logo.png" alt="HP" style="border-radius: 50%;" height="100px" width="100px">
+    <div class="logo-row">
+      <div class="brand">
+        <a (click)="getDetailsByBrand(brandImage.alt)">
+        <img #brandImage src="../../assets/Apple-logo.jpg" alt="Apple" style="border-radius: 50%;" height="120px" width="120px">
+        </a>
+      </div>
+      <div class="brand">
+        <a (click)="getDetailsByBrand(brandImage1.alt)">
+        <img #brandImage1 src="../../assets/LG-logo.png" alt="LG" style="border-radius: 50%;" height="100px" width="100px">
+        </a>
+      </div>
+      <div class="brand" style="padding-right: 0;">
+        <a (click)="getDetailsByBrand(brandImage2.alt)">
+        <img #brandImage2 src="../../assets/Samsung-logo.jpeg" alt="Samsung" style="border-radius: 50%;" height="150px" width="150px">
+      </a>
+      </div>
+      
     </div>
-    <div class="brand">
-      <img src="../../assets/Apple-logo.jpg" alt="Apple" style="border-radius: 50%;" height="120px" width="120px">
-    </div>
-    <div class="brand">
-      <img src="../../assets/LG-logo.png" alt="LG" style="border-radius: 50%;" height="100px" width="100px">
-    </div>
-    <div class="brand">
-      <img src="../../assets/Rayban-logo.jpg" alt="Rayban" style="border-radius: 50%;" height="130px" width="130px">
-    </div>
-    <div class="brand">
-      <img src="../../assets/Reebok-logo.jpg" alt="Reebok" style="border-radius: 50%;" height="130px" width="130px">
-    </div>
-    <div class="brand">
-      <img src="../../assets/Raymond-logo.png" alt="Raymond" style="border-radius: 50%;" height="130px" width="130px">
-    </div>
-    <div class="brand" style="padding-right: 0;">
-      <img src="../../assets/Samsung-logo.jpeg" alt="Samsung" style="border-radius: 50%;" height="150px" width="150px">
-    </div>
-  </div>
+  </div>  
 </div>
 <app-footer></app-footer>
 </html>

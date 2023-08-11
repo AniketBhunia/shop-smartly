@@ -12,6 +12,7 @@ export class ViewbycategoryComponent implements OnInit{
   constructor(private productService:ProductService,private activateRoute: ActivatedRoute){}
   similarProducts !: Product[];
   categoryValue : any
+
   ngOnInit(): void {
     this.categoryValue = this.activateRoute.snapshot.paramMap.get('category')
 

@@ -11,6 +11,7 @@ export interface Product {
     seller_id:number;
     // imageUrl:string;
     image:string;
+    productBrand:string;
 }
 export interface Review {
     review_id : number;

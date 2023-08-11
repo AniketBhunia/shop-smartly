@@ -47,11 +47,18 @@ export class ProductService {
   popularProducts() {
     return this.http.get<any>('http://localhost:8081/api/v1/product?limit=12');
   }
+  popularProductsForHome(){
+    return this.http.get<any>('http://localhost:8081/api/v1/product?limit=7');
+  }
+
   searchByName(name : any ){
     return this.http.get<any>(`http://localhost:8081/api/v1/product/search/${name}`)
   }
   searchByCategory(category : any ){
     return this.http.get<any>(`http://localhost:8081/api/v1/product/byCategory/${category}`)
+  }
+  searchByBrand(productBrand:any){
+    return this.http.get<any>(`http://localhost:8081/api/v1/product/byBrand/${productBrand}`)
   }
 
 
