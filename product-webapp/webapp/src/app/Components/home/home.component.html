@@ -7,7 +7,7 @@
   <title>Welcome to ShopSmartly !!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-
+<app-header></app-header>
 <div class="home-container">
   <div class="carousel">
     <ngb-carousel>
@@ -50,16 +50,16 @@
     <p style="font-size: xx-large;">Our Top Rated Products</p>
   </div>
   <div class="carousel">
-    <ngb-carousel *ngIf="images" [showNavigationArrows]="false">
+    <ngb-carousel [showNavigationArrows]="false">
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card">
-              <img src="../../assets/headphones.png" alt="shoes" height="150px" width="150px">
-              <h3>Boat Headphones</h3>
-              <p>Price: <span></span> ₹1,299</p>
+            <div class="product-card" *ngFor = "let item of data1">
+              <img [src]="item.image" height="150px" width="150px">
+              <h3>{{item.name}}</h3>
+              <p>{{item.price}}</p>
             </div>
-            <div class="product-card">
+            <!-- <div class="product-card">
               <img src="../../assets/speaker.jpg" alt="shoes" height="150px" width="150px">
               <h3>JBL Speaker</h3>
               <p>Price: ₹2,249</p>
@@ -73,7 +73,7 @@
               <img src="../../assets/toaster.jpg" alt="shoes" height="150px" width="150px">
               <h3>Prestige Toaster</h3>
               <p>Price: ₹799</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </ng-template>
@@ -81,21 +81,21 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card">
-              <img src="../../assets/sunglasses.jpg" alt="shoes" height="150px" width="150px">
-              <h3>Rayban Sunglasses</h3>
-              <p>Price: ₹2,999</p>
+            <div class="product-card" *ngFor = "let item of data2">
+              <img [src]="item.image" height="150px" width="150px">
+              <h3>{{item.name}}</h3>
+              <p>{{item.price}}</p>
             </div>
-            <div class="product-card">
+            <!-- <div class="product-card">
               <img src="../../assets/wallet.jpeg" alt="shoes" height="150px" width="150px">
-              <h3>Rayban Men's Wallet</h3>
+              <h3>Raymond Men's Wallet</h3>
               <p>Price: ₹1,999</p>
             </div>
             <div class="product-card">
               <img src="../../assets/laptop.png" alt="shoes" height="150px" width="150px">
               <h3>HP Probook Laptop</h3>
               <p>Price: ₹49,999</p>
-            </div>
+            </div> -->
             <div class="product-card">
               <button mat-raised-button color="primary" style="margin-top: 38%;">Show More Products</button>
             </div>
@@ -108,16 +108,16 @@
     <p style="font-size: xx-large;">From Your Order History</p>
   </div>
   <div class="carousel">
-    <ngb-carousel *ngIf="images" [showNavigationArrows]="false">
+    <ngb-carousel [showNavigationArrows]="false">
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card">
-              <img src="../../assets/headphones.png" alt="shoes" height="150px" width="150px">
-              <h3>Boat Headphones</h3>
-              <p>Price: ₹1,299</p>
+            <div class="product-card" *ngFor = "let item of data1">
+              <img [src]="item.image" height="150px" width="150px">
+              <h3>{{item.name}}</h3>
+              <p>{{item.price}}</p>
             </div>
-            <div class="product-card">
+            <!-- <div class="product-card">
               <img src="../../assets/speaker.jpg" alt="shoes" height="150px" width="150px">
               <h3>JBL Speaker</h3>
               <p>Price: ₹2,249</p>
@@ -131,7 +131,7 @@
               <img src="../../assets/toaster.jpg" alt="shoes" height="150px" width="150px">
               <h3>Prestige Toaster</h3>
               <p>Price: ₹799</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </ng-template>
@@ -139,12 +139,12 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card">
-              <img src="../../assets/sunglasses.jpg" alt="shoes" height="150px" width="150px">
-              <h3>Rayban Sunglasses</h3>
-              <p>Price: ₹2,999</p>
+            <div class="product-card" *ngFor = "let item of data2">
+              <img [src]="item.image" height="150px" width="150px">
+              <h3>{{item.name}}</h3>
+              <p>{{item.price}}</p>
             </div>
-            <div class="product-card">
+            <!-- <div class="product-card">
               <img src="../../assets/wallet.jpeg" alt="shoes" height="150px" width="150px">
               <h3>Raymond Men's Wallet</h3>
               <p>Price: ₹1,999</p>
@@ -153,7 +153,7 @@
               <img src="../../assets/laptop.png" alt="shoes" height="150px" width="150px">
               <h3>HP Probook Laptop</h3>
               <p>Price: ₹49,999</p>
-            </div>
+            </div> -->
             <div class="product-card">
               <button mat-raised-button color="primary" style="margin-top: 38%;">Show More Products</button>
             </div>
@@ -189,5 +189,5 @@
     </div>
   </div>
 </div>
-
+<app-footer></app-footer>
 </html>
