@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductDetailedComponent } from './Components/product-detailed/product-detailed.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatMenuModule} from '@angular/material/menu';
 import { HomeComponent } from './Components/home/home.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
@@ -58,6 +59,7 @@ import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.compo
     NgbModule,
     NgbCarouselModule,
     MatIconModule,
+    MatMenuModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule
