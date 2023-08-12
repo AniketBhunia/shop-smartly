@@ -1,35 +1,93 @@
 .header {
-    background-color: #4682A9;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .header-icon {
-    display: inline;
-    /* color: #fff; */
-    position: relative;
-    right: 60%;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #020325;
+  color: white;
+  padding: 10px 10px;
+}
+/* #020325 */
+.logo img {
+  height: 110px;
+  /* SSwidth: 200px; */
+  width: auto;
+  /*  background-color: aliceblue; */
+}
 
-  .example-form {
-    border-radius: 30%;
-  }
-  
-  .logo img {
-    width: 100px;
-    height: 100%;
-    border-radius: 0.5%;
-  }
-  
-  .nav a {
-    color: #fff;
-    display: inline;
-    text-decoration: none;
-    margin-right: 1px;
-  }
-  
-  .phone-number {
-    font-size: 1.2rem;
-  }
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative; /* Needed for positioning the underline */
+}
+
+.nav a:hover {
+  color: #adb0fa;
+}
+
+.nav a::after {
+  content: ''; /* Create an empty pseudo-element for the underline */
+  position: absolute;
+  bottom: -2px; /* Adjust this value to control the distance from the text */
+  left: 0;
+  width: 100%;
+  border-bottom: 2px dashed #f2f2fc; /* Set the color and style of the underline */
+  opacity: 0; /* Start with no underline, reveal on hover */
+  transition: opacity 0.3s ease;
+}
+
+.nav a:hover::after {
+  opacity: 1; /* Show the underline on hover */
+}
+
+.search-box {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+/* Apply styles to the search suggestion list */
+.search-suggestion {
+  /* margin-right: 60px; */
+  position: absolute;
+  left:auto;
+  top: 93px;
+  z-index: 10;
+  display: list-item !important;
+  border: 1px solid #0d0000;
+  /* border-radius: 3px; */
+  background-color: #fff;
+  width: 300px;
+}
+
+.search-suggestion li {
+  padding: 5px;
+  border: 1px solid #ddd;
+}
+
+.search-suggestion li a {
+  cursor: pointer;
+  color: blueviolet;
+}
+
+/* Style the links within the list items */
+/* .search-suggestion li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Highlight the link on hover */
+/* .search-suggestion li a:hover {
+  background-color: #f0f0f0;
+} */ 
+
+
+.example-full-width {
+  width: 300px;
+}
+
+.login-button {
+  background-color: #4682A9;
+  color: azure !important;
+  margin-right: 20px;
+}

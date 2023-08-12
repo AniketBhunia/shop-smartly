@@ -45,7 +45,7 @@ export class ProductService {
   }
 
   popularProducts() {
-    return this.http.get<any>('http://localhost:8081/api/v1/product?limit=12');
+    return this.http.get<any>('http://localhost:8081/api/v1/product?limit=8');
   }
   popularProductsForHome(){
     return this.http.get<any>('http://localhost:8081/api/v1/product?limit=7');
