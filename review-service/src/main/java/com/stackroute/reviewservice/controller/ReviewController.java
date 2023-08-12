@@ -2,7 +2,6 @@ package com.stackroute.reviewservice.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.reviewservice.exception.ProIdNotFoundException;
 import com.stackroute.reviewservice.exception.ReviewNotFoundException;
 import com.stackroute.reviewservice.model.Review;
 import com.stackroute.reviewservice.service.ReviewService;
@@ -18,8 +17,13 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1")
+
 public class ReviewController {
     private ResponseEntity responseEntity;
     private ReviewService reviewService;
@@ -31,15 +35,15 @@ public class ReviewController {
         this.objectMapper = objectMapper;
     }
     @PostMapping("/add_review")
-    public ResponseEntity<String> saveReview(@RequestParam("productReview") String productData,
-                                             @RequestParam("image") MultipartFile productImage){
+    public ResponseEntity<String> saveReview(@RequestParam("productReview") String reviewData,
+                                             @RequestParam("image") MultipartFile reviewImage){
         try {
-            Map<String, Object> productMap = objectMapper.readValue(productData, new TypeReference<Map<String, Object>>() {});
+            Map<String, Object> productMap = objectMapper.readValue(reviewData, new TypeReference<Map<String, Object>>() {});
 
             // Extract values from the Map
             int review_id=(int) productMap.get("review_id");
             int user_id = (int) productMap.get("user_id");
-            int product_id= (int) productMap.get("product_id");
+            int productId= (int) productMap.get("productId");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");
             int product_review_rating=(int) productMap.get("product_review_rating");
@@ -48,14 +52,14 @@ public class ReviewController {
             Review product_rev = new Review();
             product_rev.setReview_id(review_id);
             product_rev.setUser_id(user_id);
-            product_rev.setProduct_id(product_id);
+            product_rev.setProductId(productId);
             product_rev.setPosted_date(posted_date);
             product_rev.setUser_name(user_name);
             product_rev.setProduct_review_rating(product_review_rating);
             product_rev.setProduct_review_description(product_review_description);
 
 
-            byte[] imageBytes = productImage.getBytes();
+            byte[] imageBytes = reviewImage.getBytes();
 
             reviewService.saveReview(product_rev,imageBytes);
             return ResponseEntity.ok("Review saved successfully.");
@@ -78,31 +82,20 @@ public class ReviewController {
         return reviewService.getLimitedReviews(limit);
     }
 
-    @GetMapping("/getReview/{product_id}")
-//    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable int product_id) throws ProIdNotFoundException {
-//
-//        try {
-//            List<Review> reviews = reviewService.getReviewsByProductId(product_id);
-//            return new ResponseEntity<>(reviews, HttpStatus.OK);
-//        } catch (ProIdNotFoundException e) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-    public ResponseEntity<?> get(@PathVariable int product_id)
-    {
-        responseEntity=new ResponseEntity<>(reviewService.getReviewsByProductId(product_id),HttpStatus.OK);
-        return responseEntity;
+    @GetMapping("/reviews/{productId}")
+    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable int productId) {
+        List<Review> reviews = reviewService.getReviewsByProductId(productId);
+        return ResponseEntity.ok(reviews);
     }
-
     @PutMapping("/update_review/{review_id}")
-    public ResponseEntity<String> updateReview(@PathVariable int review_id, @RequestParam("productReview") String productData,@RequestParam("image") MultipartFile productImage) {
+    public ResponseEntity<String> updateReview(@PathVariable int review_id, @RequestParam("productReview") String reviewData,@RequestParam("image") MultipartFile reviewImage) {
 
         try {
-            Map<String, Object> productMap = objectMapper.readValue(productData, new TypeReference<Map<String, Object>>() {
+            Map<String, Object> productMap = objectMapper.readValue(reviewData, new TypeReference<Map<String, Object>>() {
             });
             int review_id1=(int) productMap.get("review_id");
             int user_id = (int) productMap.get("user_id");
-            int product_id=(int) productMap.get("product_id");
+            int productId=(int) productMap.get("productId");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");
             int product_review_rating=(int) productMap.get("product_review_rating");
@@ -111,14 +104,14 @@ public class ReviewController {
             Review product_rev = new Review();
             product_rev.setReview_id(review_id1);
             product_rev.setUser_id(user_id);
-            product_rev.setProduct_id(product_id);
+            product_rev.setProductId(productId);
             product_rev.setPosted_date(posted_date);
             product_rev.setUser_name(user_name);
             product_rev.setProduct_review_rating(product_review_rating);
             product_rev.setProduct_review_description(product_review_description);
 
 
-            byte[] imageBytes = productImage.getBytes();
+            byte[] imageBytes = reviewImage.getBytes();
             reviewService.updateReview(product_rev, review_id,imageBytes);
 
             return ResponseEntity.ok("Product updated successfully");

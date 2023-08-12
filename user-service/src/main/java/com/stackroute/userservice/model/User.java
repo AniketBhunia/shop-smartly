@@ -30,7 +30,7 @@ public class User {
 
     private int userAge;
 
-    private Address[] addressList;
+    private String addressList;
     private enum roles{
         user,
         seller,

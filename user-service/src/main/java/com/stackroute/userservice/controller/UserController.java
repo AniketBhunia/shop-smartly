@@ -18,6 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
         @PostMapping("/register")
+        @CrossOrigin("http://localhost:4200/")
         public ResponseEntity<?> doRegister(@RequestBody User user){
             User u=userService.doRegister(user);
             if(u==null){
@@ -29,6 +30,7 @@ public class UserController {
             }
     }
     @GetMapping("/getAllUsers")
+    @CrossOrigin("http://localhost:4200/")
     public ResponseEntity<?> getUser(){
         List<User> users=userService.getAllUser();
         if(users==null)

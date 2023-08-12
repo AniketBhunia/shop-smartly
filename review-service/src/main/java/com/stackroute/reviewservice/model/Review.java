@@ -1,5 +1,6 @@
 package com.stackroute.reviewservice.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -9,12 +10,12 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @NoArgsConstructor
-@Document("Review")
+@Document(collection = "reviews")
 @Builder
 public class Review {
     @Id
     private int review_id;
-    private int product_id;
+    private int productId;
     private int user_id;
     private LocalDateTime posted_date;
     private String user_name;
@@ -22,10 +23,10 @@ public class Review {
     private byte[] product_image;
     private String product_review_description;
 
-    public Review(int review_id, int product_id, int user_id, LocalDateTime posted_date, String user_name, int product_review_rating,
+    public Review(int review_id, int productId, int user_id, LocalDateTime posted_date, String user_name, int product_review_rating,
                   byte[] product_image, String product_review_description) {
         this.review_id = review_id;
-        this.product_id = product_id;
+        this.productId = productId;
         this.user_id = user_id;
         this.posted_date = posted_date;
         this.user_name = user_name;
@@ -38,7 +39,7 @@ public class Review {
     public String toString() {
         return "Review{" +
                 "review_id=" + review_id +
-                ", product_id=" + product_id +
+                ", productId=" + productId +
                 ", user_id=" + user_id +
                 ", posted_date=" + posted_date +
                 ", user_name='" + user_name + '\'' +
@@ -56,12 +57,12 @@ public class Review {
         this.review_id = review_id;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public int getUser_id() {

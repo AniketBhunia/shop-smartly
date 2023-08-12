@@ -13,6 +13,7 @@ export class ProductListsComponent implements OnInit {
   popularProductList !: Product[]
   products!: Product[];
   products2: any[] = []
+  categoryWiseList !: Product[]
   p: number = 1;
   itemsPerPage: number = 4;
   totalProduct: any
@@ -28,6 +29,7 @@ export class ProductListsComponent implements OnInit {
     this.fetchProducts()
     this.getPopularProducts()
     this.searchByName("mobil")
+    this.getProductsByCategory("Mobile")
   }
 
 
@@ -71,6 +73,14 @@ getPopularProducts() {
       console.error('Error fetching popular products:', error);
     }
   );
+}
+
+getProductsByCategory(category:any){
+    this.product_service.searchByCategory(category).subscribe((res:any[])=>{
+        this.categoryWiseList = res
+        console.log(this.categoryWiseList);
+        
+    })
 }
 
 

@@ -1,29 +1,32 @@
 <header class="header">
-    <div class="logo">
-      <img src="../../assets/Logo.jpeg" alt="Logo">
-    </div>
-    <nav class="nav-links">
-      <a href="#">Electronics</a>
-      <a href="#">Home Appliances</a>
-      <a href="#">Furniture</a>
-      <a href="#">Shoes</a>
-      <a href="#">Accessories</a>
-    </nav>
+  <div class="logo">
+    <a routerLink="/">
+      <img src="../../assets/Shop Smartly Home Logo.png" alt="Logo">
+    </a>
+  </div>
   
-    <div>
-      <form class="example-form">
-        <mat-form-field class="example-full-width search-box">
-          <span matPrefix> </span>
-          <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="search">
-          <button matSuffix mat-button><mat-icon>search</mat-icon></button>
-        </mat-form-field>
-  
-      </form>
+  <div class="search-box">
+    <mat-form-field appearance="fill" class="example-full-width">
+      <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
+      <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()" placeholder="Search For Products" />
+      <button mat-button matSuffix (click)="submitSearch(searchInput.value)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <ul class="search-suggestion" *ngIf="searchSuggestion">
+      <li *ngFor="let item of searchSuggestion">
+          <a (mousedown)="redirectToDetails(item.product_id)">{{item.product_name}}</a>
+      </li>
+  </ul>
+  </div>
+
+  <div class="nav">
+    <a *ngFor="let item of allCategories" routerLink="/view_products/{{item}}">{{item}}</a>
+  </div>
+
+  <div class="user-actions">
+    <div class="header-icon">
+      <button routerLink="/login" mat-stroked-button color="primary" class="login-button">Log In</button>
     </div>
-  
-    <div class="user-actions">
-      <div class="header-icon">
-        <button mat-stroked-button style="color: white;">Log In</button>
-      </div>
-    </div>
-  </header>
+  </div>
+</header>

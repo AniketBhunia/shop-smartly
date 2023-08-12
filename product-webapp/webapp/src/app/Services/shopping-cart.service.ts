@@ -23,8 +23,8 @@ export class ShoppingCartService {
   ];
   constructor(private httpClient:HttpClient){}
 
-  getUserData(){
-    return this.httpClient.get('http://localhost:8089/user/getAllUsers')
+  getUserData(id:any){
+    return this.httpClient.get(`http://localhost:8081/cart/${id}`)
   }
   calculateGrandTotal(): number {
     let total = 0;

@@ -1,0 +1,24 @@
+<div class="order-history">
+    <header>
+      <h1>Order History</h1>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Image</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.product }}</td>
+          <td><img [src]="order.image" alt="{{ order.product }} Image" class="product-image"></td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.price | currency:'USD' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

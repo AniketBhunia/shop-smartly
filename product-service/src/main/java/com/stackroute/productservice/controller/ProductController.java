@@ -174,7 +174,31 @@ public class ProductController {
     List<Product> fuzzySearch( @PathVariable String approximateProductName ) throws IOException {
         SearchResponse<Product> searchResponse = elasticSearchService.fuzzySearch(approximateProductName);
         List<Hit<Product>> hitList = searchResponse.hits().hits();
-        System.out.println(hitList);
+//        System.out.println(hitList);
+        List<Product> productList = new ArrayList<>();
+        for(Hit<Product> hit :hitList){
+            productList.add(hit.source());
+        }
+        return productList;
+    }
+
+    @GetMapping("/byCategory/{category}")
+    List<Product> fuzzySearch1( @PathVariable String category ) throws IOException {
+        SearchResponse<Product> searchResponse = elasticSearchService.fuzzySearch1(category);
+        List<Hit<Product>> hitList = searchResponse.hits().hits();
+//        System.out.println(hitList);
+        List<Product> productList = new ArrayList<>();
+        for(Hit<Product> hit :hitList){
+            productList.add(hit.source());
+        }
+        return productList;
+    }
+
+    @GetMapping("/byBrand/{brand}")
+    List<Product> fuzzySearch2( @PathVariable String brand ) throws IOException {
+        SearchResponse<Product> searchResponse = elasticSearchService.fuzzySearch2(brand);
+        List<Hit<Product>> hitList = searchResponse.hits().hits();
+//        System.out.println(hitList);
         List<Product> productList = new ArrayList<>();
         for(Hit<Product> hit :hitList){
             productList.add(hit.source());

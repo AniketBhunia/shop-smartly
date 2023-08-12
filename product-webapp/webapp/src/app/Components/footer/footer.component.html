@@ -1,17 +1,54 @@
 <footer class="footer">
-    
-    <div class="company-info">
-      <p>Address: 123 Main St, City, Country</p>
-      <div class="footer-icons"><a href="#"><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a></div>
-      <div class="footer-icons"><a href="#"><i class="fa-brands fa-facebook" style="color: #ffffff;"></i></a></div>
-      <div class="footer-icons"><a href="#"><i class="fa-brands fa-twitter" style="color: #ffffff;"></i></a></div>
-      <div class="footer-icons"><a href="#"><i class="fa-brands fa-youtube" style="color: #ffffff;"></i></a></div>
+  <div class="company-info">
+    <p>Address: 123 Main St, City, Country</p>
+    <div class="footer-icons"><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"
+          style="color: #ffffff;"></i></a>
     </div>
-    <div style="text-align: center ;">Copyright © 2023 Shop Smartly</div>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">About Us</a>
-      <a href="#">Contact Us</a>
-    </div> 
-  </footer>
+    <div class="footer-icons"><a href="https://www.facebook.com"><i class="fa-brands fa-facebook"
+          style="color: #ffffff;"></i></a>
+    </div>
+    <div class="footer-icons"><a href="https://www.twitter.com"><i class="fa-brands fa-twitter"
+          style="color: #ffffff;"></i></a>
+    </div>
+    <div class="footer-icons"><a href="https://www.youtube.com"><i class="fa-brands fa-youtube"
+          style="color: #ffffff;"></i></a>
+    </div>
+  </div>
+  <div style="text-align: center;">Copyright © 2023 Shop Smartly</div>
+  <div class="footer-links">
+    <button mat-button [matMenuTriggerFor]="Privacy" style="color: #ffffff;">Privacy Policy</button>
+    <mat-menu #Privacy="matMenu">
+      <ol>
+        <li>Data Security: Safeguarding your personal information through advanced encryption measures.</li>
+        <li>Information Usage: Only for order processing, communication, and personalized shopping experience.</li>
+        <li>No Sharing: We never share or sell your data to third parties.</li>
+        <li>Opt-Out Option: You can opt out of marketing communications anytime.</li>
+        <li>Cookie Usage: Cookies enhance site functionality and user experience.</li>
+      </ol>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="Terms" style="color: #ffffff;">Terms of Service</button>
+    <mat-menu #Terms="matMenu">
+      <ol>
+        <li>User Agreement: Agree to terms before using our platform.</li>
+        <li>Product Availability: Subject to stock availability and accurate product information.</li>
+        <li>Payment: Secure transactions; payment upon order confirmation.</li>
+        <li>Returns: Follow our return policy for hassle-free product returns.</li>
+        <li>Dispute Resolution: Address issues via customer support for prompt solutions.</li>
+      </ol>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="About" style="color: #ffffff;">About Us</button>
+    <mat-menu #About="matMenu">
+      <p>At Shop Smartly, we're more than an ecommerce platform – we're your trusted companion in making informed
+        shopping decisions. Our mission is to redefine your shopping experience by offering a curated selection of
+        top-quality products, exceptional customer service, and unbeatable value. Welcome to Shop Smartly – where
+        intelligent shopping meets unparalleled convenience. Thank you for choosing us as your shopping partner.</p>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="Contact" style="color: #ffffff;">Contact Us</button>
+    <mat-menu #Contact="matMenu">
+      <ol>
+        <li>Customer Support: Call our dedicated support team at 9876543210.</li>
+        <li>Email: Reach out to us at CustomerSupport@ShopSmartly.com for prompt assistance.</li>
+      </ol>
+    </mat-menu>
+  </div>
+</footer>

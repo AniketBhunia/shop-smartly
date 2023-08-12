@@ -11,4 +11,17 @@ export interface Product {
     seller_id:number;
     // imageUrl:string;
     image:string;
+    productBrand:string;
+}
+export interface Review {
+    review_id : number;
+    product_id :number;
+    user_id : number;
+    posted_date : string;
+    user_name: string;
+    product_review_rating : number;
+    product_image:number[];
+    product_review_description : string;
+    image:string;
+
 }

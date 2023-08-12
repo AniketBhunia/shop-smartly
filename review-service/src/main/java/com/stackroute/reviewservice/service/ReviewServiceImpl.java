@@ -1,6 +1,5 @@
 package com.stackroute.reviewservice.service;
 
-import com.stackroute.reviewservice.exception.ProIdNotFoundException;
 import com.stackroute.reviewservice.exception.ReviewNotFoundException;
 import com.stackroute.reviewservice.model.Review;
 import com.stackroute.reviewservice.repository.ReviewRepository;
@@ -45,19 +44,10 @@ public class ReviewServiceImpl implements ReviewService{
         return reviewRepository.findAll(pageable);
     }
 
-
-    @Override
-//    public List<Review> getReviewsByProductId(int product_id) throws ProIdNotFoundException {
-//        List<Review> reviews = reviewRepository.findByProduct_id(product_id);
-//        if (reviews.isEmpty()) {
-//            throw new ProIdNotFoundException();
-//        }
-//        return reviews;
-//    }
-    public Review getReviewsByProductId(int product_id){
-        return reviewRepository.findByProduct_id(product_id);
-    }
-
+  @Override
+  public List<Review> getReviewsByProductId(int productId) {
+      return reviewRepository.findByProductId(productId);
+  }
 
     @Override
     public void updateReview(Review review,int review_id,byte[] imageBytes) throws ReviewNotFoundException {
