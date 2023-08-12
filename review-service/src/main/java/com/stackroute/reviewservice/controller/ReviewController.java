@@ -17,9 +17,13 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 @RestController
-@RequestMapping("/api/v1")
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v1")
+
 public class ReviewController {
     private ResponseEntity responseEntity;
     private ReviewService reviewService;
