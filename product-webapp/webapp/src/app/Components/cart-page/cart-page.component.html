@@ -6,14 +6,14 @@
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-<div class="container cart-page-header">
+<!-- <div class="container cart-page-header">
   <div class="header-content">
     <div class="logo">
       <img src="assets\Shop Smartly Logo Symbol 2400x1800.jpg" alt="Logo" />
     </div>
     <h1 class="h2">SmartCart</h1>
   </div>
-</div>
+</div> -->
 
 <div class="container cart-box-main">
   <div class="row">
@@ -113,8 +113,8 @@
     </div>
     <!-- cart.component.html -->
    <!-- cart.component.html -->
-<div>
-  <button (click)="payNow()"><a mat-button color="primary" class="btn btn-primary btn-green ml-auto d-flex align-items-center justify-content-center" routerLink="/checkout">
+<div style="text-align: center; margin: 2% 0;">
+  <button  (click)="payNow()"><a mat-button color="primary" class="btn btn-primary btn-green ml-auto d-flex align-items-center justify-content-center" routerLink="/checkout">
     <i class="bi bi-cart-fill me-1"></i> <!-- Replace this with your desired icon class -->
     Proceed to Checkout
   </a></button>

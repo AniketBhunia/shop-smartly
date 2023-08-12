@@ -28,8 +28,9 @@ export class CartComponent {
   get check(): boolean {
     return this.shoppingCart.cartItems.length === 0;
   }
-
+ amount!:number;
   get grandTotal(): number {
+   
     return this.shoppingCart.calculateGrandTotal();
   }
 
@@ -54,7 +55,7 @@ export class CartComponent {
     const RozarpayOptions = {
       description: 'Shop Smartly',
       currency: 'INR',
-      amount: 100000,
+      amount: this.amount,
       name: 'Shop Smartly',
       key: 'rzp_test_1URFAbxwfmIO4M',
       image: '',
