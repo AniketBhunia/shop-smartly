@@ -8,6 +8,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignUpSellerComponent } from './Components/sign-up-seller/sign-up-seller.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
+import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
 // import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path:"view_products/:category",
     component:ViewbycategoryComponent
+  },
+  {
+    path:"view_productsbybrand/:brand",
+    component:ViewbybrandComponent
   },
   {
     path:"mycart",
@@ -44,7 +49,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductDetailedComponent } from './Components/product-detailed/product-detailed.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatMenuModule} from '@angular/material/menu';
 import { HomeComponent } from './Components/home/home.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
@@ -26,6 +27,8 @@ import { SignUpSellerComponent } from './Components/sign-up-seller/sign-up-selle
 import { SignUpUserComponent } from './Components/sign-up-user/sign-up-user.component';
 import { LoginService } from './Services/login.service';
 import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
+import { OrderHistoryComponent } from './Components/order-history/order-history.component';
+import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycateg
     LoginComponent,
     SignUpSellerComponent,
     SignUpUserComponent,
-    ViewbycategoryComponent
+    ViewbycategoryComponent,
+    OrderHistoryComponent,
+    ViewbybrandComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +59,7 @@ import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycateg
     NgbModule,
     NgbCarouselModule,
     MatIconModule,
+    MatMenuModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule
