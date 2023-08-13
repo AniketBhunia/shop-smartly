@@ -124,6 +124,9 @@ export class ProductDetailedComponent implements OnInit {
         console.log(res);
       });
   }
+  addToCart(){
+    
+  }
 
   
 }
