@@ -21,7 +21,9 @@ public class Order {
     private LocalDateTime orderDate;
     private Double totalAmount;
     private Integer pay;
-    private List<OrderItem> orderItems;
+    private Long productId;
+    private String productName;
+    private String productImage;
 
     public LocalDateTime getOrderDate() {
         return orderDate;

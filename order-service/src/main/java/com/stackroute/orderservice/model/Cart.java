@@ -15,5 +15,8 @@ public class Cart {
     private Long cartId;
     private Long userId;
     private Double cartTotalPrice;
-    private List<CartItem> addedProductList;
+    private Long productId;
+    private String productImage;
+    private Double productPrice;
+    private Integer productQuantity;
 }
