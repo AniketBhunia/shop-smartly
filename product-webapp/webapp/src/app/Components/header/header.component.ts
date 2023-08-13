@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/Services/login.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/data.types';
 
@@ -13,9 +14,15 @@ export class HeaderComponent implements OnInit {
   allCategories: string[] = []
   contentArray!: Product[]
   searchSuggestion: undefined | Product[]
-  constructor(private productService: ProductService, private route: Router) { }
+  isSellerLoggedIn !: boolean
+  isUserLoggedIn !: boolean
+  constructor(private productService: ProductService, private route: Router , private login :LoginService) { }
 
   ngOnInit(): void {
+    this.isSellerLoggedIn = this.login.isSellerLoggedIn.value
+    this.isUserLoggedIn = this.login.isUserLoggedIn.value
+    // console.log(this.isSellerLoggedIn);
+    
     this.productService.productList().subscribe((res) => {
       this.contentArray = res.content
       console.log(this.contentArray);
@@ -47,7 +54,23 @@ export class HeaderComponent implements OnInit {
     // this.route.navigate([`details/${data}`])
   }
   redirectToDetails(id: any) {
-    this.route.navigate(['details/' + id])
+    const delayMilliseconds = 100;
+    this.route.navigate(['/details',id])
+    setTimeout(() => {
+      // Reload the window after the specified delay
+      window.location.reload()
+    }, delayMilliseconds);
+  }
+  redirectoCateories(category:any){
+    const delayMilliseconds = 1000; // Adjust the delay as needed
+
+    // Navigate to the view_products route with the selected category parameter
+    this.route.navigate(['/view_products', category]);
+
+    setTimeout(() => {
+      // Reload the window after the specified delay
+      window.location.reload()
+    }, delayMilliseconds);
   }
 
 

@@ -23,7 +23,7 @@ export class user{
   styleUrls: ['./cart-page.component.css'],
 })
 export class CartComponent implements OnInit{
-  cartList: ShoppingCartItem[] = [];
+  cartList !: ShoppingCartItem[];
   shoppingCart: ShoppingCartService; 
   amount!:number;
 
@@ -35,26 +35,32 @@ export class CartComponent implements OnInit{
    
   }
   ngOnInit(): void {
-    
+    this.getCartByID(21)
   }
 
   getCartByID(cart_id:any){
     this.cartService.getUserData(cart_id).subscribe((res:any)=>{
       this.cartList = res
       console.log(this.cartList);
+      console.log(this.cartList.length)
     })
   }
 
   updateCartItem(cartItem: ShoppingCartItem) {
     const updatedItem: ShoppingCartItem = {
       ...cartItem,
-      CartTotalPrice: cartItem.ProductPrice * cartItem.ProductQuantity,
+      cartTotalPrice: cartItem.productPrice * cartItem.productQuantity,
     };
     this.shoppingCart.updateCartItem(updatedItem);
   }
 
-  deleteCartItem(cartItem: ShoppingCartItem) {
-    this.shoppingCart.deleteCartItem(cartItem);
+  deleteCartItem(productId: any) {
+    this.shoppingCart.deleteCartItem(productId).subscribe((res)=>{
+      if (res == true ){
+        alert("Product Deleted Successfully")
+      }
+    })
+    window.location.reload()
   }
    payNow() {
     const RozarpayOptions = {

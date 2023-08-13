@@ -126,13 +126,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ShoppingCartService {
-  private baseUrl = 'http://localhost:8080'; // Your backend API URL
+  private baseUrl = 'http://localhost:8082'; // Your backend API URL
   cartData = new EventEmitter<ShoppingCartItem[] | []>();
 
   constructor(private http: HttpClient) {}
 
   addToCart(data:ShoppingCartItem): Observable<any> {
-  
     return this.http.post(`${this.baseUrl}/cart/add`,data);
   }
 
@@ -152,14 +151,14 @@ export class ShoppingCartService {
     return this.http.put(`${this.baseUrl}/cart/update`, updatedItem);
   }
 
-  deleteCartItem(cartItem: ShoppingCartItem): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/cart/${cartItem.CartId}`);
+  deleteCartItem(productId:any): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/cart/${productId}`);
   }
 
   calculateGrandTotal(cartItems: ShoppingCartItem[]): number {
     let total = 0;
     for (const item of cartItems) {
-      total += item.CartTotalPrice;
+      total += item.cartTotalPrice * item.productQuantity;
     }
     return total;
   }

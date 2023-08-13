@@ -29,6 +29,8 @@ import { LoginService } from './Services/login.service';
 import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 import { OrderHistoryComponent } from './Components/order-history/order-history.component';
 import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.compo
     SignUpUserComponent,
     ViewbycategoryComponent,
     OrderHistoryComponent,
-    ViewbybrandComponent
+    ViewbybrandComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.compo
     MatMenuModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
