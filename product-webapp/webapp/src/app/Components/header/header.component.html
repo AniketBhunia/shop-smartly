@@ -4,7 +4,7 @@
       <img src="../../assets/Shop Smartly Home Logo.png" alt="Logo">
     </a>
   </div>
-  
+
   <div class="search-box">
     <mat-form-field appearance="fill" class="example-full-width">
       <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
@@ -21,7 +21,7 @@
   </div>
 
   <div class="nav">
-    <a *ngFor="let item of allCategories" routerLink="/view_products/{{item}}">{{item}}</a>
+    <a *ngFor="let item of allCategories" (click)="redirectoCateories(item)">{{item}}</a>
   </div>
 
   <div class="user-actions">

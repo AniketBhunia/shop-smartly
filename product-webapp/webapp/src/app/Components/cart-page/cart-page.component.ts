@@ -1,9 +1,8 @@
 // cart.component.ts
 
 import { Component, OnInit } from '@angular/core';
-// import { CartService } from 'src/app/Services/cart.service';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
-import { ShoppingCartItem } from 'src/app/productModel';
+import { ShoppingCartItem } from 'src/app/cartModel';
 declare var Razorpay: any;
 
 export class user{
@@ -24,47 +23,44 @@ export class user{
   styleUrls: ['./cart-page.component.css'],
 })
 export class CartComponent implements OnInit{
-  cartList !: ShoppingCartItem
-  
+  cartList !: ShoppingCartItem[];
   shoppingCart: ShoppingCartService; 
-  
+  amount!:number;
 
-  get check(): boolean {
-    return this.shoppingCart.cartItems.length === 0;
-  }
- amount!:number;
-  get grandTotal(): number {
-   
-    return this.shoppingCart.calculateGrandTotal();
-  }
-
+ calculateGrandTotal(): number {
+  return this.shoppingCart.calculateGrandTotal(this.cartList);
+}
   constructor(private cartService: ShoppingCartService) {
     this.shoppingCart = cartService;
-    // objects: user = new user;
+   
   }
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-    this.getCartByID(38)
+    this.getCartByID(21)
   }
 
   getCartByID(cart_id:any){
     this.cartService.getUserData(cart_id).subscribe((res:any)=>{
       this.cartList = res
       console.log(this.cartList);
+      console.log(this.cartList.length)
     })
   }
 
   updateCartItem(cartItem: ShoppingCartItem) {
     const updatedItem: ShoppingCartItem = {
       ...cartItem,
-      unitPrice: cartItem.product.price * cartItem.quantity,
+      cartTotalPrice: cartItem.productPrice * cartItem.productQuantity,
     };
     this.shoppingCart.updateCartItem(updatedItem);
   }
 
-  deleteCartItem(cartItem: ShoppingCartItem) {
-    // Implement the logic to delete a cart item
-    this.shoppingCart.deleteCartItem(cartItem);
+  deleteCartItem(productId: any) {
+    this.shoppingCart.deleteCartItem(productId).subscribe((res)=>{
+      if (res == true ){
+        alert("Product Deleted Successfully")
+      }
+    })
+    window.location.reload()
   }
    payNow() {
     const RozarpayOptions = {
