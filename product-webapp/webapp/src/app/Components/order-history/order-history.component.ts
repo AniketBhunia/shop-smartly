@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-history.component.css']
 })
 export class OrderHistoryComponent implements OnInit {
+onFileSelected($event: Event) {
+throw new Error('Method not implemented.');
+}
 
 orders: any[] = [
   { id: 1, product: 'iPhone', image: '../assets/iphone_image.jpeg', quantity: 1, price: 1000 },
