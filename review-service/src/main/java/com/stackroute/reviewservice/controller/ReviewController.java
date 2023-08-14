@@ -46,9 +46,8 @@ public class ReviewController {
             int productId= (int) productMap.get("productId");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");
-            int product_review_rating=(int) productMap.get("product_review_rating");
+            String product_review_rating=(String) productMap.get("product_review_rating");
             String product_review_description=(String) productMap.get("product_review_description");
-
             Review product_rev = new Review();
             product_rev.setReview_id(review_id);
             product_rev.setUser_id(user_id);
@@ -59,8 +58,8 @@ public class ReviewController {
             product_rev.setProduct_review_description(product_review_description);
 
 
-            byte[] imageBytes = reviewImage.getBytes();
 
+            byte[] imageBytes = reviewImage.getBytes();
             reviewService.saveReview(product_rev,imageBytes);
             return ResponseEntity.ok("Review saved successfully.");
         } catch (IOException e) {
@@ -98,7 +97,7 @@ public class ReviewController {
             int productId=(int) productMap.get("productId");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");
-            int product_review_rating=(int) productMap.get("product_review_rating");
+            String product_review_rating=(String) productMap.get("product_review_rating");
             String product_review_description=(String) productMap.get("product_review_description");
 
             Review product_rev = new Review();

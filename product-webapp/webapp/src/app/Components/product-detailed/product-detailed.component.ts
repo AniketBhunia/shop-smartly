@@ -5,8 +5,6 @@ import { ReviewService } from 'src/app/Services/review.service';
 import { Product, Review } from 'src/app/data.types';
 import { Router, Params } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { ShoppingCartItem } from 'src/app/cartModel';
-import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 @Component({
   selector: 'app-product-detailed',
   templateUrl: './product-detailed.component.html',
@@ -21,15 +19,12 @@ export class ProductDetailedComponent implements OnInit {
   reviewForm!: FormGroup;
   items: any[] = [];
   allPages: any[] = [];
-  cartTotalPrice !: number;
 
   constructor(
     private productService: ProductService,
     private activate: ActivatedRoute,
-    private reviewService: ReviewService,
-    private shoppingCartService : ShoppingCartService,
-    private router : Router
-  ) { }
+    private reviewService: ReviewService
+  ) {}
 
   ngOnInit() {
     this.getAllReviewsAndLimitPages();
@@ -51,14 +46,14 @@ export class ProductDetailedComponent implements OnInit {
     } else {
       console.log('No product data found in local storage.');
     }
+
     this.productService
       .searchByCategory(this.categoryValue)
       .subscribe((res) => {
         this.similarProducts = res;
+        console.log(this.similarProducts);
       });
-        // Reload the window after the specified delay
   }
-
 
   getAllReviewsAndLimitPages() {
     this.reviewService.reviewList().subscribe((res: any) => {
@@ -129,42 +124,6 @@ export class ProductDetailedComponent implements OnInit {
         console.log(res);
       });
   }
-  addReview(data: any) {
-    console.log(data)
-    let newData = JSON.stringify(data)
-    console.log(newData);
-  }
-
-
-  // +++++++++++++++++++++++++++++++++++++++ Add to Cart
-  addToCart() {
-    const productDataJson = localStorage.getItem('localCart');
-
-    if (productDataJson) {
-      const productData = JSON.parse(productDataJson);
-      let cartData: ShoppingCartItem = {
-        cartId: 21,
-        userId: 12,
-        productId: productData[0].product_id,
-        productName: productData[0].product_name,
-        cartTotalPrice : productData[0].product_discount_price,
-        productImage : productData[0].product_image,
-        productPrice : productData[0].product_discount_price,
-        productQuantity: 1,  
-      }
-      this.shoppingCartService.addToCart(cartData).subscribe((res)=>{
-        console.log(cartData);
-        
-        alert("Product Added To Your Cart");
-        // window.location.reload();
-        this.router.navigate(['/mycart'])
-      })
-    }
-  }
-
-  // total() {
-  //   this.shoppingCartService.calculateGrandTotal()
-  // }
 
 
 }

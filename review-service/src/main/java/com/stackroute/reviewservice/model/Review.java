@@ -1,8 +1,12 @@
 package com.stackroute.reviewservice.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Builder;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.sonatype.guice.plexus.config.Strategies;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,16 +18,17 @@ import java.util.Arrays;
 @Builder
 public class Review {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int review_id;
     private int productId;
     private int user_id;
     private LocalDateTime posted_date;
     private String user_name;
-    private int product_review_rating;
+    private String product_review_rating;
     private byte[] product_image;
     private String product_review_description;
 
-    public Review(int review_id, int productId, int user_id, LocalDateTime posted_date, String user_name, int product_review_rating,
+    public Review(int review_id, int productId, int user_id, LocalDateTime posted_date, String user_name, String product_review_rating,
                   byte[] product_image, String product_review_description) {
         this.review_id = review_id;
         this.productId = productId;
@@ -89,11 +94,11 @@ public class Review {
         this.user_name = user_name;
     }
 
-    public int getProduct_review_rating() {
+    public String getProduct_review_rating() {
         return product_review_rating;
     }
 
-    public void setProduct_review_rating(int product_review_rating) {
+    public void setProduct_review_rating(String product_review_rating) {
         this.product_review_rating = product_review_rating;
     }
 
