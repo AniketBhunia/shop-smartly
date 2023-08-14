@@ -3,18 +3,10 @@
     <div class="row gx-5" *ngIf="productData">
       <aside class="col-lg-6">
         <div class="border rounded-4 mb-3 d-flex justify-content-center">
-          <a
-            data-fslightbox="mygalley"
-            class="rounded-4"
-            target="_blank"
-            data-type="image"
-            href="assets/images/pexels-pixabay-51383.jpg"
-          >
-            <img
-              style="max-width: 100%; max-height: 50vh; margin: auto"
-              class="rounded-4 fit"
-              [src]="'data:image/jpeg;base64,' + productData.product_image"
-            />
+          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image"
+            href="assets/images/pexels-pixabay-51383.jpg">
+            <img style="max-width: 100%; max-height: 50vh; margin: auto" class="rounded-4 fit"
+              [src]="'data:image/jpeg;base64,' + productData.product_image" />
           </a>
         </div>
       </aside>
@@ -32,17 +24,14 @@
               <i class="fas fa-star-half-alt"></i>
               <span class="ms-1"> 4.5 </span>
             </div>
-            <span class="text-muted"
-              ><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span
-            >
+            <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
             <span class="text-success ms-2">{{
               productData.product_status
-            }}</span>
+              }}</span>
           </div>
 
           <div class="mb-3">
-            <span
-              ><i class="fa fa-doller"></i>
+            <span><i class="fa fa-doller"></i>
               <del>${{ productData.product_current_price }}</del>
               <b> ${{ productData.product_discount_price }}</b>
             </span>
@@ -53,7 +42,7 @@
           </p>
           <hr />
           <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="button">Add to cart</button>
+            <button class="btn btn-primary" (click)="addToCart()" type="button">Add to cart</button>
           </div>
         </div>
       </main>
@@ -74,26 +63,18 @@
               <div class="col-md-6 mb-3" *ngFor="let item of similarProducts">
                 <div class="d-flex">
                   <a href="#" class="me-3">
-                    <img
-                      [src]="'data:image/jpeg;base64,' + item.product_image"
-                      style="min-width: 96px; height: 96px"
-                      class="img-md img-thumbnail"
-                    />
+                    <img [src]="'data:image/jpeg;base64,' + item.product_image" style="min-width: 96px; height: 96px"
+                      class="img-md img-thumbnail" />
                   </a>
                   <div class="info">
-                    <a
-                      routerLink="'/details/{{ item.product_id }}"
-                      class="nav-link mb-1"
-                    >
+                    <a routerLink="'/details/{{ item.product_id }}" class="nav-link mb-1">
                       {{ item.product_name }}
                     </a>
                     <strong class="text-dark">
-                      <span
-                        ><i class="fa fa-doller"></i>
+                      <span><i class="fa fa-doller"></i>
                         <del>${{ item.product_current_price }}</del>
                         <b> ${{ item.product_discount_price }}</b>
-                      </span></strong
-                    >
+                      </span></strong>
                   </div>
                 </div>
               </div>
@@ -112,41 +93,33 @@
       <div class="col-lg-12">
         <h2 class="text-dark">Product Reviews</h2>
         <hr />
-        
+
 
         <!-- List of Reviews -->
         <div class="review">
           <!-- Loop through the reviews array and display each review -->
           <div *ngFor="let item of this.limitedItems" class="card mb-3">
-            <div
-              class="card-body d-flex align-items-center justify-content-between"
-            >
-           
-                <div class="review-text">
-                  <p>
-                    <b>-{{ item.user_name }}</b>
-                  </p>
-                  <div class="text-warning me-2">
-                    <!-- You can create a function to generate stars based on rating -->
-                    <i
-                      *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index"
-                      [class]="
+            <div class="card-body d-flex align-items-center justify-content-between">
+
+              <div class="review-text">
+                <p>
+                  <b>-{{ item.user_name }}</b>
+                </p>
+                <div class="text-warning me-2">
+                  <!-- You can create a function to generate stars based on rating -->
+                  <i *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index" [class]="
                         i + 1 <= item.product_review_rating
                           ? 'fa fa-star'
                           : 'fa fa-star-o'
-                      "
-                    ></i>
-                  </div>
-                  <p class="mb-0">{{ item.product_review_description }}</p>
-                  <p class="text-muted mb-0">
-                    Posted date: {{ item.posted_date | date : "MMMM d, y" }}
-                  </p>
+                      "></i>
+                </div>
+                <p class="mb-0">{{ item.product_review_description }}</p>
+                <p class="text-muted mb-0">
+                  Posted date: {{ item.posted_date | date : "MMMM d, y" }}
+                </p>
 
-                <img
-                  src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/8.webp"
-                  style="min-width: 96px; height: 96px"
-                  class="img-md img-thumbnail"
-                />
+                <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/8.webp"
+                  style="min-width: 96px; height: 96px" class="img-md img-thumbnail" />
               </div>
 
 
@@ -158,43 +131,21 @@
         </div>
         <!-- End of List of Reviews -->
 
-        
+
 
         <!-- Pagination -->
         <!-- Pagination controls -->
         <nav aria-label="Review pagination">
           <ul class="pagination justify-content-center">
             <li class="page-item" [class.disabled]="currentPage === 1">
-              <a
-                class="page-link"
-                href="javascript:void(0);"
-                (click)="changePage(currentPage - 1)"
-                >Previous</a
-              >
+              <a class="page-link" href="javascript:void(0);" (click)="changePage(currentPage - 1)">Previous</a>
             </li>
-            <li
-              class="page-item"
-              *ngFor="let page of allPages"
-              [class.active]="page === this.currentPage"
-            >
-              <a
-                class="page-link"
-                href="javascript:void(0);"
-                (click)="changePage(page)"
-                >{{ page }}</a
-              >
+            <li class="page-item" *ngFor="let page of allPages" [class.active]="page === this.currentPage">
+              <a class="page-link" href="javascript:void(0);" (click)="changePage(page)">{{ page }}</a>
                         
             </li>
-            <li
-              class="page-item"
-              [class.disabled]="currentPage === this.allPages.length"
-            >
-              <a
-                class="page-link"
-                href="javascript:void(0);"
-                (click)="changePage(currentPage + 1)"
-                >Next</a
-              >
+            <li class="page-item" [class.disabled]="currentPage === this.allPages.length">
+              <a class="page-link" href="javascript:void(0);" (click)="changePage(currentPage + 1)">Next</a>
             </li>
           </ul>
         </nav>
@@ -204,17 +155,12 @@
 
         <div class="add-review-form mt-4">
           <h3 class="mb-3">Add Your Review</h3>
-          <form [formGroup]="reviewForm">
+          <form #addReviews="ngForm" (ngSubmit)="addReview(addReviews.value)">
             <div>
               <div>
                 <div class="mb-3">
                   <label for="rating" class="form-label">Rating</label>
-                  <select
-                    #value
-                    class="form-select"
-                    formControlName="rating"
-                    (onSelect)="selectedValue(value)"
-                  >
+                  <select #value class="form-select" ngModel name="rating" (onSelect)="selectedValue(value)">
                     <option value="5">5 Stars</option>
                     <option value="4">4 Stars</option>
                     <option value="3">3 Stars</option>
@@ -224,25 +170,15 @@
                 </div>
                 <div class="mb-3">
                   <label for="comment" class="form-label">Your Review</label>
-                  <textarea
-                    class="form-control"
-                    formControlName="comment"
-                    rows="4"
-                    required
-                  >
+                  <textarea class="form-control"  rows="4" ngModel name="review" required>
                   </textarea>
                 </div>
                 <div class="mb-3">
                   <label for="author" class="form-label">Your Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="author"
-                    required
-                  />
+                  <input type="text" class="form-control" ngModel name="name"  required />
                 </div>
               </div>
-              <button (click)="createReview()" class="btn btn-primary">
+              <button class="btn btn-primary">
                 Submit Review
               </button>
               <button class="btn btn-primary" style="float: right">
