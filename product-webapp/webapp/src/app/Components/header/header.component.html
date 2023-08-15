@@ -8,7 +8,7 @@
   <div class="search-box">
     <mat-form-field appearance="fill" class="example-full-width">
       <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
-      <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()" placeholder="Search For Products" />
+      <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()" placeholder="Search" />
       <button mat-button matSuffix (click)="submitSearch(searchInput.value)">
         <mat-icon>search</mat-icon>
       </button>

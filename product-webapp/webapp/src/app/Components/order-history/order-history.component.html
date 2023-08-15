@@ -1,24 +1,30 @@
 <div class="order-history">
-    <header>
-      <h1>Order History</h1>
-    </header>
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Image</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let order of orders">
-          <td>{{ order.product }}</td>
-          <td><img [src]="order.image" alt="{{ order.product }} Image" class="product-image"></td>
-          <td>{{ order.quantity }}</td>
-          <td>{{ order.price | currency:'USD' }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <header class="page-header">
+    <h1>Order History</h1>
+  </header>
+  <!-- ... rest of the code ... -->
+<div *ngFor="let order of orders" class="order-card">
+<div class="order-summary" (click)="order.expanded = !order.expanded">
+  <div class="order-product">{{ order.product }}</div>
+  <div class="order-price">{{ order.price | currency:'USD' }}</div>
+  <div class="order-expand-icon">{{ order.expanded ? '-' : '+' }}</div>
+</div>
+<div class="order-details" *ngIf="order.expanded">
+  <img [src]="order.image" alt="{{ order.product }} Image" class="product-image">
+  <div class="order-quantity">{{ order.quantity }} x</div>
+  <div class="order-review">
+    <h3>Write a Review</h3>
+    <div class="star-rating">
+      <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">&#9733;</span>
+    </div>
+    <textarea rows="4" placeholder="Write your review"></textarea>
+     <div>
+                  <input accept="image/jpeg, image/png" #fileInput hidden type="file" value="this.fileName"/>
+                  <button type = "select" >Upload Image</button>
+                  <img height="150px" #previewImage  />
+                </div>
+    <button>Submit Review</button>
   </div>
-  
+</div>
+</div>
+</div>

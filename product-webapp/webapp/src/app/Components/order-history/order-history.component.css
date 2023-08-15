@@ -1,36 +1,74 @@
-.order-history {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #F6F4EB ;
-    width: 100%;
-  }
+/* ... existing styles ... */
+.order-history{
+  background-color:#ffffff;
+}
+.page-header {
   
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #4682A9;
-    
-  }
-  
-  th {
-    background-color:#4682A9;
-    color: white;
-  }
-  
-  .product-image {
-    max-width: 100px;
-    height: auto;
-  }
-  
+  margin-bottom: 10px;
+  background-color: #4682A9;
+  color: white;
+  height: 70px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.order-card {
+  border: 1px solid #4682A9;
+  margin: 10px 0;
+  border-radius: 5px;
+
+}
+
+.order-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #F6F4EB;
+  height: 50px;
+}
+
+.order-product {
+  font-weight: bold;
+}
+
+.order-price {
+  font-weight: bold;
+  text-align: center;
+}
+
+.order-expand-icon {
+  font-size: 1.5em;
+}
+
+.order-details {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color:#F6F4EB ;
+}
+
+.product-image {
+  max-width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.order-quantity {
+  font-size: 1.2em;
+  margin-right: 20px;
+}
+
+.star-rating {
+  font-size: 1.5em;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+}

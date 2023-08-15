@@ -9,6 +9,7 @@ import { SignUpSellerComponent } from './Components/sign-up-seller/sign-up-selle
 import { HomeComponent } from './Components/home/home.component';
 import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
+import { OrderHistoryComponent } from './Components/order-history/order-history.component';
 // import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 
 const routes: Routes = [
@@ -45,7 +46,10 @@ const routes: Routes = [
   },{
     component:SignUpUserComponent,
     path:"signUpUser"
-  }
+  },{
+    component:OrderHistoryComponent,
+    path:"orderhistory"
+  }
 ];
 
 @NgModule({
