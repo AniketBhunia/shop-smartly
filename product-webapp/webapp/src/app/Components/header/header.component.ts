@@ -62,9 +62,13 @@ export class HeaderComponent implements OnInit {
     }, delayMilliseconds);
   }
   redirectoCateories(category: string): void {
+    const delayMilliseconds = 100;
     // event.preventDefault(); // Prevent the default link behavior
-
     this.route.navigate(['/view_products', category]);
+    setTimeout(() => {
+      // Reload the window after the specified delay
+      window.location.reload()
+    }, delayMilliseconds);
   }
 
 

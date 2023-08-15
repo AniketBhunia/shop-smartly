@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { ShoppingCartItem } from 'src/app/cartModel';
 declare var Razorpay: any;
-
 export class user{
   userName:string = '';
   userEmail:string= '';

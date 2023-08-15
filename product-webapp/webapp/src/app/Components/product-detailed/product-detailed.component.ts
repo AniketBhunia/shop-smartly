@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { ShoppingCartItem } from 'src/app/cartModel';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-detailed',
   templateUrl: './product-detailed.component.html',
@@ -154,7 +155,14 @@ export class ProductDetailedComponent implements OnInit {
       this.shoppingCartService.addToCart(cartData).subscribe((res)=>{
         console.log(cartData);
         
-        alert("Product Added To Your Cart");
+        {
+          Swal.fire({
+            title: 'Added In Your Cart',
+            text: 'Product Added in Your Cart',
+            icon: 'success',
+            confirmButtonText: 'Okay'
+          });
+        }
         // localStorage.setItem('cartList', JSON.stringify(cartData));
         // window.location.reload();
         this.router.navigate(['/mycart'])
@@ -168,3 +176,7 @@ export class ProductDetailedComponent implements OnInit {
 
 
 }
+function showAlert() {
+  throw new Error('Function not implemented.');
+}
+

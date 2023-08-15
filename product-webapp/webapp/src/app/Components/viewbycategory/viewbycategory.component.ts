@@ -12,7 +12,7 @@ export class ViewbycategoryComponent implements OnInit{
   constructor(private productService:ProductService,private activateRoute: ActivatedRoute){}
   similarProducts !: Product[];
   categoryValue : any
-  wishList !: Product[]
+  wishList : Product[] = []
 
   ngOnInit(): void {
     this.categoryValue = this.activateRoute.snapshot.paramMap.get('category')
@@ -32,10 +32,6 @@ export class ViewbycategoryComponent implements OnInit{
       console.log(this.similarProducts);
     })
   }
-  isItemInWishList(item: any): boolean {
-    return this.productService.isInWishList(item);
-  }
-
   // addItemToWishList(product: Product) {
   //   this.productService.addToWishlist(product);
   // }
@@ -49,10 +45,28 @@ export class ViewbycategoryComponent implements OnInit{
     
   // }
 
-  addItemToWishList(product :Product){
-    this.productService.addToWishlist(product) 
-    // localStorage.setItem('wishList',this.wishList)
+  addToWishlist(product: Product) {
+    const storedWishlist = localStorage.getItem('wishList');
+    if (storedWishlist) {
+      this.wishList = JSON.parse(storedWishlist);
+  
+      if (!this.isInWishList(product)) {
+        this.wishList.push(product);
+        localStorage.setItem('wishList', JSON.stringify(this.wishList));
+      }
+    } else {
+      const newWishlist: Product[] = [product];
+      localStorage.setItem('wishList', JSON.stringify(newWishlist));
+    }
   }
   
 
+  isInWishList(item: Product): boolean {
+    const storedWishlist = localStorage.getItem('wishList');
+    if (storedWishlist) {
+      this.wishList = JSON.parse(storedWishlist);
+      return this.wishList.some(wishListItem => wishListItem.product_id === item.product_id);
+    }
+    return false
+  }
 }

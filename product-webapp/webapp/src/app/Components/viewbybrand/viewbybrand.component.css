@@ -146,7 +146,7 @@ h2::after {
 	color: #abb0b8;
 }
 .carousel .wish-icon .fa-heart {
-	color: #ff6161;
+	background-color: red;
 }
 .star-rating li {
 	padding: 0;
@@ -197,6 +197,7 @@ h2::after {
   
 	.carousel .wish-icon {
 	  font-size: 14px;
+	  
 	}
   }
 	  

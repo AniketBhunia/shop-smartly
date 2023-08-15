@@ -32,6 +32,7 @@ import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.compo
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AlertService } from './Services/alert-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WishlistComponent } from './Components/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ViewbycategoryComponent,
     OrderHistoryComponent,
     ViewbybrandComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

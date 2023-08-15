@@ -54,6 +54,7 @@
 /* Apply styles to the search suggestion list */
 .search-suggestion {
   position: absolute;
+  
   top: 100%;
   left: 0;
   z-index: 10;
