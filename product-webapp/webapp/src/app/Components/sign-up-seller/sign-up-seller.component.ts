@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SellerService } from 'src/app/Services/seller.service';
+
 
 @Component({
   selector: 'app-sign-up-seller',
@@ -9,15 +11,15 @@ import { SellerService } from 'src/app/Services/seller.service';
 })
 export class SignUpSellerComponent {
   singInForm = new FormGroup({
-    sellerName:new FormControl(''),
-    sellerEmail: new FormControl(''),
-    sellerPassword: new FormControl(''),
-    sellerGender:new FormControl(''),
-    sellerPhoneNo:new FormControl(''),
-    sellerAge:new FormControl(''),
+    sellerName:new FormControl('',[Validators.required]),
+    sellerEmail: new FormControl('',[Validators.required]),
+    sellerPassword: new FormControl('',[Validators.required]),
+    sellerGender:new FormControl('',[Validators.required]),
+    sellerPhoneNo:new FormControl('',[Validators.required]),
+    sellerAge:new FormControl('',[Validators.required]),
 
   });
-  constructor(private sellerService:SellerService){}
+  constructor(private sellerService:SellerService,private router: Router){}
 
   onSubmit(){
     console.warn(this.singInForm.value);
@@ -30,9 +32,21 @@ export class SignUpSellerComponent {
     sellerPhoneNo:val.sellerPassword,
     sellerAge:val.sellerAge
     }
-    this.sellerService.userRegister(seller).subscribe((res)=>{
-      console.log(res)
-    });
+    if(this.singInForm.valid){
+      this.router.navigate(['/login'])
+    }else{
+      // swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Something went wrong!',
+      //   footer: '<a href="">Why do I have this issue?</a>'
+      // })
+    }
+
+    this.sellerService.userRegister(seller);
   }
 
+  get registerFormControl() {
+    return this.singInForm.controls;
+  }
 }
