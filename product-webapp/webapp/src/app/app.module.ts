@@ -30,6 +30,8 @@ import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycateg
 import { OrderHistoryComponent } from './Components/order-history/order-history.component';
 import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { AlertService } from './Services/alert-service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -65,9 +67,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
