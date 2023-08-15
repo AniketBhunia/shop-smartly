@@ -53,9 +53,9 @@ public class CartController {
 
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<String> deleteCartById(@PathVariable Long productId) throws CartItemNotFoundException {
-        cartService.deleteCartById(productId);
-        return ResponseEntity.status(HttpStatus.OK).body("Cart data deleted successfully.");
+    public ResponseEntity<List<Cart>> deleteCartById(@PathVariable Long productId) throws CartItemNotFoundException {
+        List<Cart> updatedCartList = cartService.deleteCartById(productId);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedCartList);
     }
     @GetMapping("/getall")
     public ResponseEntity<?> getAllCarts() {

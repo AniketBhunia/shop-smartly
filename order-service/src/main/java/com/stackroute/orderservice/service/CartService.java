@@ -9,7 +9,7 @@ import java.util.List;
 public interface CartService {
     List<Cart> addToCart(Cart cart) throws CartAlreadyExistingException;
     List<Cart>  getCartById(Long cartId) throws CartItemNotFoundException;
-    void deleteCartById(Long productId) throws CartItemNotFoundException;
+    List<Cart> deleteCartById(Long productId) throws CartItemNotFoundException;
 
 
     boolean isCartAlreadyExisting(Long userId);

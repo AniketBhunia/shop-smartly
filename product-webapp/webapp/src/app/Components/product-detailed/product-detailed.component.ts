@@ -5,7 +5,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { ShoppingCartItem } from 'src/app/cartModel';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-product-detailed',
   templateUrl: './product-detailed.component.html',
@@ -20,16 +20,15 @@ export class ProductDetailedComponent implements OnInit {
   reviewForm!: FormGroup;
   items: any[] = [];
   allPages: any[] = [];
-  cartTotalPrice!: number;
-
+  cartTotalPrice !: number;
 
   constructor(
     private productService: ProductService,
     private activate: ActivatedRoute,
     private reviewService: ReviewService,
-    private shoppingCartService: ShoppingCartService,
-    private router: Router
-  ) {}
+    private shoppingCartService : ShoppingCartService,
+    private router : Router
+  ) { }
 
   ngOnInit() {
     this.getAllReviewsAndLimitPages();
@@ -56,8 +55,9 @@ export class ProductDetailedComponent implements OnInit {
       .subscribe((res) => {
         this.similarProducts = res;
       });
-    // Reload the window after the specified delay
+        // Reload the window after the specified delay
   }
+
 
   getAllReviewsAndLimitPages() {
     this.reviewService.reviewList().subscribe((res: any) => {
@@ -68,6 +68,7 @@ export class ProductDetailedComponent implements OnInit {
         pageNumbers.push(i);
       }
       this.allPages = pageNumbers;
+
     });
   }
   // get review for productId
@@ -78,6 +79,7 @@ export class ProductDetailedComponent implements OnInit {
     console.log('value', value);
     this.value = value;
   }
+
 
   reviewsPerPage: number = 4; // Number of reviews per page
   currentPage: number = 1;
@@ -93,6 +95,7 @@ export class ProductDetailedComponent implements OnInit {
     const endIndex = startIndex + this.reviewsPerPage;
     return this.reviewData.slice(startIndex, endIndex);
   }
+
 
   limitedItems: any[] = [];
   // Change the current page and update the displayed reviews
@@ -112,6 +115,25 @@ export class ProductDetailedComponent implements OnInit {
       console.log(this.limitedItems, ' limiteditems');
     });
   }
+  createReview() {
+    const data = {
+      productReview: {
+
+      },
+      image: '',
+    };
+    // this.reviewService
+    //   .postReview(data.productReview, data.image)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //   });
+  }
+  addReview(data: any) {
+    console.log(data)
+    let newData = JSON.stringify(data)
+    console.log(newData);
+  }
+
 
   // +++++++++++++++++++++++++++++++++++++++ Add to Cart
   addToCart() {
@@ -124,22 +146,25 @@ export class ProductDetailedComponent implements OnInit {
         userId: 12,
         productId: productData[0].product_id,
         productName: productData[0].product_name,
-        cartTotalPrice: productData[0].product_discount_price,
-        productImage: productData[0].product_image,
-        productPrice: productData[0].product_discount_price,
-        productQuantity: 1,
-      };
-      this.shoppingCartService.addToCart(cartData).subscribe((res) => {
+        cartTotalPrice : productData[0].product_discount_price,
+        productImage : productData[0].product_image,
+        productPrice : productData[0].product_discount_price,
+        productQuantity: 1,  
+      }
+      this.shoppingCartService.addToCart(cartData).subscribe((res)=>{
         console.log(cartData);
-
-        alert('Product Added To Your Cart');
+        
+        alert("Product Added To Your Cart");
+        // localStorage.setItem('cartList', JSON.stringify(cartData));
         // window.location.reload();
-        this.router.navigate(['/mycart']);
-      });
+        this.router.navigate(['/mycart'])
+      })
     }
   }
 
   // total() {
   //   this.shoppingCartService.calculateGrandTotal()
   // }
+
+
 }

@@ -1,6 +1,7 @@
 // cart.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { ShoppingCartItem } from 'src/app/cartModel';
 declare var Razorpay: any;
@@ -25,12 +26,14 @@ export class user{
 export class CartComponent implements OnInit{
   cartList !: ShoppingCartItem[];
   shoppingCart: ShoppingCartService; 
-  amount!:number;
+  amount !:number;
 
  calculateGrandTotal(): number {
-  return this.shoppingCart.calculateGrandTotal(this.cartList);
+  this.amount =  this.shoppingCart.calculateGrandTotal(this.cartList);
+  // console.log(this.amount);
+  return this.amount
 }
-  constructor(private cartService: ShoppingCartService) {
+  constructor(private cartService: ShoppingCartService,private router:Router) {
     this.shoppingCart = cartService;
    
   }
@@ -42,33 +45,33 @@ export class CartComponent implements OnInit{
     this.cartService.getUserData(cart_id).subscribe((res:any)=>{
       this.cartList = res
       console.log(this.cartList);
-      console.log(this.cartList.length)
+      // console.log(this.cartList.length)
+      localStorage.setItem('cartList', JSON.stringify(this.cartList));
     })
   }
 
-  updateCartItem(cartItem: ShoppingCartItem) {
-    const updatedItem: ShoppingCartItem = {
-      ...cartItem,
-      cartTotalPrice: cartItem.productPrice * cartItem.productQuantity,
+  updateCartItem(cartList: ShoppingCartItem) {
+    const updatedCartList: ShoppingCartItem = {
+      ...cartList,
+      cartTotalPrice: cartList.productPrice * cartList.productQuantity,
     };
-    this.shoppingCart.updateCartItem(updatedItem);
+    this.shoppingCart.updateCartItem(updatedCartList);
+    localStorage.setItem('cartList', JSON.stringify(updatedCartList));
   }
 
   deleteCartItem(productId: any) {
     this.shoppingCart.deleteCartItem(productId).subscribe((res)=>{
-      if (res == true ){
-        alert("Product Deleted Successfully")
-      }
+      this.getCartByID(21)
     })
-    window.location.reload()
+    // window.location.reload()
   }
    payNow() {
     const RozarpayOptions = {
       description: 'Shop Smartly',
-      currency: 'INR',
-      amount: this.amount,
+      currency: 'USD',
+      amount: this.amount*100,
       name: 'Shop Smartly',
-      key: 'rzp_test_1URFAbxwfmIO4M',
+      key: 'rzp_test_hSvndswhybubtG',
       image: '',
       prefill: {
         name: 'Prabhas',
@@ -87,6 +90,7 @@ export class CartComponent implements OnInit{
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      // this.router.navigate(["/orderhistory"])
     }
 
     const failureCallback = (e: any) => {

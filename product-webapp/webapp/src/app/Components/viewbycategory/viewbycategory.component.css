@@ -144,10 +144,11 @@ h2::after {
 	cursor: pointer;
 	font-size: 16px;
 	color: #abb0b8;
-}
-.carousel .wish-icon .fa-heart {
+  }
+  
+  .carousel .wish-icon i.active {
 	color: #ff6161;
-}
+  }
 .star-rating li {
 	padding: 0;
 }

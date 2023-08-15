@@ -9,7 +9,9 @@
                             <div class="row">
                                 <div class="col-sm-3" *ngFor="let item of similarProducts">
                                     <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+                                        <button class="wish-icon" (click)="addItemToWishList(item)">
+                                            <i class="fa fa-heart-o" [ngClass]="{'active': isItemInWishList(item)}"></i>
+                                          </button>
                                         <div class="img-box">
                                             <img [src]="'data:image/jpeg;base64,' + item.product_image" class="img-fluid" alt="">
                                         </div>

@@ -36,9 +36,10 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void deleteCartById(Long productId) {
+    public List<Cart> deleteCartById(Long productId) {
         cartList.removeIf(item -> item.getProductId().equals(productId));
 //        return cartRepository.saveAll(cartList);
+        return cartList;
     }
 
     public boolean isCartAlreadyExisting(Long cartId) {
