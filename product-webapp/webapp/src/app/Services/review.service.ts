@@ -8,11 +8,11 @@ export class ReviewService {
   constructor(private http: HttpClient) {}
 
   reviewList() {
-    return this.http.get<any>('http://localhost:8081/api/v1/all_reviews');
+    return this.http.get<any>('http://localhost:8086/api/v1/all_reviews');
   }
   getReviewById(productId: any) {
     return this.http.get<any>(
-      `http://localhost:8081/api/v1/reviews/${productId}`
+      `http://localhost:8086/api/v1/reviews/${productId}`
     );
   }
 
@@ -24,7 +24,7 @@ export class ReviewService {
     formData.append('image', image);
 
     return this.http.post<any>(
-      'http://localhost:8081/api/v1/add_review',
+      'http://localhost:8086/api/v1/add_review',
       formData
     );
   }

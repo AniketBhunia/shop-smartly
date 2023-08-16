@@ -33,7 +33,7 @@
         <module>review-service</module>
         <module>order-service</module>
         <module>authentication-service</module>
-        <module>payment-service/abc</module>
+        <module>payment-service</module>
     </modules>
 
     <dependencies>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
 import { OrderHistoryService } from 'src/app/Services/order-history.service';
 import { ShoppingCartItem } from 'src/app/cartModel';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -11,6 +11,7 @@ import { ReviewService } from 'src/app/Services/review.service';
   templateUrl: './order-history.component.html',
   styleUrls: ['./order-history.component.css'],
 })
+
 export class OrderHistoryComponent implements OnInit {
   ReviewForm! : FormGroup; 
   productId: number = 0;
@@ -48,10 +49,9 @@ export class OrderHistoryComponent implements OnInit {
 
   constructor(
     private AlertService: AlertService,
-    private reviewService: ReviewService
+    private reviewService: ReviewService,
+    private OrderHistoryService: OrderHistoryService
   ) {}
-
-constructor(private OrderHistoryService: OrderHistoryService) { }
 
 ngOnInit(): void {
   // Example usage of the OrderService methods
@@ -121,9 +121,6 @@ getOrderHistoryByCart(cartData: any): void {
       console.error('Error fetching order history:', error);
     });
 }
-}
-  ngOnInit(): void {}
-
   // Set product Id 
   reviewYourOrder(val: any) {
     console.log(val ,  " val")
@@ -157,7 +154,7 @@ getOrderHistoryByCart(cartData: any): void {
  
     if (this.rating && this.productId && this.fileName && this.writeReview) {
       const demo = {
-        productId: 25,
+        productId: 18,
         user_name: 'Hello',
         product_review_rating: this.rating.toString(),
         product_review_description: this.writeReview,
