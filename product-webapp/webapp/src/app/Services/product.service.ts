@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class ProductService {
-
+  private wishList: Product[] = []; 
   constructor(private http:HttpClient) { }
   productList() {
     return this.http.get<any>('http://localhost:8081/api/v1/product/all_products');
@@ -60,6 +60,28 @@ export class ProductService {
   searchByBrand(productBrand:any){
     return this.http.get<any>(`http://localhost:8081/api/v1/product/byBrand/${productBrand}`)
   }
+  
+  // addToWishlist(product: Product) {
+  //   const storedWishlist = localStorage.getItem('wishList');
+  //   if (storedWishlist) {
+  //     const existingWishlist: Product[] = JSON.parse(storedWishlist);
+  //     existingWishlist.push(product);
+  //     localStorage.setItem('wishList', JSON.stringify(existingWishlist));
+  //   } else {
+  //     const newWishlist: Product[] = [product];
+  //     localStorage.setItem('wishList', JSON.stringify(newWishlist));
+  //   }
+  // }
+  
+  // // getWishList(): Product[] {
+  // //   return this.wishList;
+  // //   // console.log(this.wishList);
+    
+  // // }
+  // isInWishList(item: any): boolean {
+  //   return this.wishList.some(wishListItem => wishListItem.product_id === item.product_id);
+  // }
+
 
 
 }

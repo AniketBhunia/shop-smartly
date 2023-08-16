@@ -33,6 +33,10 @@ public class UserController {
             if (userObj.getEmail().equals(user.getEmail())) {
                 map = jwtTokenGenerator.generateToken(user); // token is generated
             }
+            map.put("id", String.valueOf(userObj.getUserId()));
+            map.put("name",userObj.getName());
+            map.put("email",userObj.getEmail());
+            map.put("role", String.valueOf(userObj.getRole()));
              responseEntity = new ResponseEntity(map, HttpStatus.OK);
         }
         catch(UserNotFound e){

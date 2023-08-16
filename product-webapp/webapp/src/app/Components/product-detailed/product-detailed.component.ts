@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
 import { ShoppingCartItem } from 'src/app/cartModel';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-product-detailed',
   templateUrl: './product-detailed.component.html',
@@ -21,7 +22,7 @@ export class ProductDetailedComponent implements OnInit {
   items: any[] = [];
   allPages: any[] = [];
   cartTotalPrice !: number;
-
+  INITIAL_PRODUCT_QUANTITY = 1; 
   constructor(
     private productService: ProductService,
     private activate: ActivatedRoute,
@@ -136,30 +137,73 @@ export class ProductDetailedComponent implements OnInit {
 
 
   // +++++++++++++++++++++++++++++++++++++++ Add to Cart
-  addToCart() {
-    const productDataJson = localStorage.getItem('localCart');
+// Global initial value for product quantity
 
-    if (productDataJson) {
-      const productData = JSON.parse(productDataJson);
-      let cartData: ShoppingCartItem = {
+addToCart() {
+  const productDataJson = localStorage.getItem('localCart');
+
+  if (productDataJson) {
+    const productData = JSON.parse(productDataJson);
+    const existingCartDataJson = localStorage.getItem('cartList');
+    let cartData: ShoppingCartItem[] = []; // Explicitly define the type
+
+    if (existingCartDataJson) {
+      cartData = JSON.parse(existingCartDataJson) as ShoppingCartItem[]; // Cast the parsed JSON to the expected type
+      const existingProductIndex = cartData.findIndex(item => item.productId === productData[0].product_id);
+
+      if (existingProductIndex !== -1) {
+        // Product already exists in the cart, increase the quantity
+        this.INITIAL_PRODUCT_QUANTITY += 1;
+      } else {
+        // Product doesn't exist in the cart, add it
+        const newCartItem: ShoppingCartItem = {
+          cartId: 21,
+          userId: 12,
+          productId: productData[0].product_id,
+          productName: productData[0].product_name,
+          cartTotalPrice: productData[0].product_discount_price,
+          productImage: productData[0].product_image,
+          productPrice: productData[0].product_discount_price,
+          productQuantity: this.INITIAL_PRODUCT_QUANTITY, // Use the global initial value
+        };
+        cartData.push(newCartItem);
+        this.shoppingCartService.addToCart(newCartItem).subscribe((res) => {
+          // Handle the response if needed
+        });
+      }
+    } else {
+      // Cart is empty, add the product directly
+      const newCartItem: ShoppingCartItem = {
         cartId: 21,
         userId: 12,
         productId: productData[0].product_id,
         productName: productData[0].product_name,
-        cartTotalPrice : productData[0].product_discount_price,
-        productImage : productData[0].product_image,
-        productPrice : productData[0].product_discount_price,
-        productQuantity: 1,  
-      }
-      this.shoppingCartService.addToCart(cartData).subscribe((res)=>{
-        console.log(cartData);
-        
-        alert("Product Added To Your Cart");
-        // window.location.reload();
-        this.router.navigate(['/mycart'])
-      })
+        cartTotalPrice: productData[0].product_discount_price,
+        productImage: productData[0].product_image,
+        productPrice: productData[0].product_discount_price,
+        productQuantity: this.INITIAL_PRODUCT_QUANTITY, // Use the global initial value
+      };
+      cartData.push(newCartItem);
+      this.shoppingCartService.addToCart(newCartItem).subscribe((res) => {
+        // Handle the response if needed
+      });
     }
+
+    localStorage.setItem('cartList', JSON.stringify(cartData));
+
+    Swal.fire({
+      title: 'Added In Your Cart',
+      text: 'Product Added in Your Cart',
+      icon: 'success',
+      confirmButtonText: 'Okay'
+    });
+
+    this.router.navigate(['/mycart']);
   }
+}
+
+  
+  
 
   // total() {
   //   this.shoppingCartService.calculateGrandTotal()
@@ -167,3 +211,7 @@ export class ProductDetailedComponent implements OnInit {
 
 
 }
+function showAlert() {
+  throw new Error('Function not implemented.');
+}
+

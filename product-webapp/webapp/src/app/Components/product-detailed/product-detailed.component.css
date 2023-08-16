@@ -1,20 +1,80 @@
-/* product-description.component.css */
+@media (max-width: 768px) {
+  .review-text img {
+    max-width: 50%; /* Adjust as needed */
+    height: auto;
+  }
+}
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+}
 
-mat-card {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-  }
-  
-  .cart-badge {
-    margin-left: 8px;
-  }
-  
-  .mat-card-content {
-    margin-bottom: 20px;
-  }
-  
-  .mat-card-actions {
-    display: flex;
-    justify-content: flex-end;
-  }
+/* Product details section */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.text-warning {
+  color: #ffc000;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+/* Similar product item section */
+.card {
+  border: none;
+}
+
+.info {
+  flex: 1;
+}
+
+/* Product Reviews section */
+.review {
+  margin-top: 20px;
+}
+
+.review .card {
+  border: none;
+}
+
+.review-text {
+  position: relative;
+}
+
+.review-text p {
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.review-text .text-warning {
+  margin-right: 5px;
+}
+
+.review-text .fa-star,
+.review-text .fa-star-o {
+  font-size: 14px;
+}
+
+.review-text img {
+  height: 96px;
+  width: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Add additional styles below */
+/* Add your custom styles for other sections and elements as needed */

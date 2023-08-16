@@ -1,26 +1,29 @@
+/* Base styles */
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: #020325;
   color: white;
-  padding: 10px 10px;
+  padding: 1rem;
+  flex-wrap: nowrap;
+  align-items: center;
 }
-/* #020325 */
+
 .logo img {
-  height: 110px;
-  /* SSwidth: 200px; */
-  width: auto;
-  /*  background-color: aliceblue; */
+  height: auto;
+  width: 150px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-transform: uppercase;
 }
 
 .nav a {
   color: white;
   text-decoration: none;
-  margin-right: 20px;
-  text-decoration: none;
-  text-transform: uppercase;
-  position: relative; /* Needed for positioning the underline */
 }
 
 .nav a:hover {
@@ -28,66 +31,108 @@
 }
 
 .nav a::after {
-  content: ''; /* Create an empty pseudo-element for the underline */
+  content: '';
   position: absolute;
-  bottom: -2px; /* Adjust this value to control the distance from the text */
+  bottom: -2px;
   left: 0;
   width: 100%;
-  border-bottom: 2px dashed #f2f2fc; /* Set the color and style of the underline */
-  opacity: 0; /* Start with no underline, reveal on hover */
+  border-bottom: 2px dashed #f2f2fc;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .nav a:hover::after {
-  opacity: 1; /* Show the underline on hover */
+  opacity: 1;
 }
 
 .search-box {
-  margin-right: 20px;
-  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  padding-top: 1rem; /* Adjust the top padding */
 }
+
 /* Apply styles to the search suggestion list */
 .search-suggestion {
-  /* margin-right: 60px; */
   position: absolute;
-  left:auto;
-  top: 93px;
+  
+  top: 100%;
+  left: 0;
   z-index: 10;
-  display: list-item !important;
+  display: none;
   border: 1px solid #0d0000;
-  /* border-radius: 3px; */
   background-color: #fff;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin-top: 0.5rem;
+  list-style: none;
+}
+
+.search-box:hover .search-suggestion {
+  display: block;
 }
 
 .search-suggestion li {
-  padding: 5px;
-  border: 1px solid #ddd;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.search-suggestion li:first-child {
+  border-top: none;
 }
 
 .search-suggestion li a {
   cursor: pointer;
   color: blueviolet;
-}
-
-/* Style the links within the list items */
-/* .search-suggestion li a {
   text-decoration: none;
-  color: #333;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s;
 }
 
-/* Highlight the link on hover */
-/* .search-suggestion li a:hover {
+.search-suggestion li a:hover {
   background-color: #f0f0f0;
-} */ 
-
+}
 
 .example-full-width {
-  width: 300px;
+  width: 80%;
+  max-width: 300px;
 }
 
 .login-button {
   background-color: #4682A9;
   color: azure !important;
-  margin-right: 20px;
+  margin-top: 1rem;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Reduce the gap between elements */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack items in a column for mobile */
+    text-align: center; /* Center-align the items */
+  }
+
+  .logo img {
+    width: 100%; /* Make the logo span the full width */
+    margin-bottom: 1rem; /* Add some spacing */
+  }
+
+  .nav {
+    margin-top: 1rem; /* Adjust spacing for mobile */
+  }
+
+  .right-section {
+    flex-direction: column; /* Stack login button and categories in a column */
+    align-items: center;
+    gap: 1rem;
+  }
 }

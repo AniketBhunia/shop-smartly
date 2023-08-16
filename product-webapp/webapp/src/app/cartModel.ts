@@ -1,7 +1,7 @@
 export interface ShoppingCartItem {
     cartId:number;
     userId:number;
-    productId:string;
+    productId:number;
     productName:string
     cartTotalPrice:number;
     productImage:string;

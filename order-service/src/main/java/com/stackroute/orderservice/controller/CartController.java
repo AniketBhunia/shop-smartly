@@ -53,9 +53,9 @@ public class CartController {
 
 
     @DeleteMapping("/{productId}")
-    public ResponseEntity<String> deleteCartById(@PathVariable Long productId) throws CartItemNotFoundException {
-        cartService.deleteCartById(productId);
-        return ResponseEntity.status(HttpStatus.OK).body("Cart data deleted successfully.");
+    public ResponseEntity<List<Cart>> deleteCartById(@PathVariable Long productId) throws CartItemNotFoundException {
+        List<Cart> updatedCartList = cartService.deleteCartById(productId);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedCartList);
     }
     @GetMapping("/getall")
     public ResponseEntity<?> getAllCarts() {
@@ -65,5 +65,11 @@ public class CartController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while fetching carts.");
         }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<List<Cart>> updateCartItem(@RequestParam long productId, @RequestParam int newQuantity) {
+        List<Cart> updatedCartItems = cartService.updateCartItem(productId, newQuantity);
+        return ResponseEntity.ok(updatedCartItems);
     }
 }

@@ -1,10 +1,86 @@
-<div style="display: flex;padding-top: 3%;">
-  <div>
-    <img src="../../../assets/Shop_Smartly_Main_Logo_2400x1800-removebg-preview.png" style="width: 40%">
+<!-- <div style="display: flex;padding-top: 3%;"> -->
+<!--  -->
+
+<mat-card style="display: flex; flex-direction: row; width: 70%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem;">
+
+  <mat-card-content>
+    <img src="../../../assets/login.jpg" style="width: 100%;">
+  </mat-card-content>
+  <div style="width: 150%; padding: 1rem;">
+    <mat-card-title>
+      <img src="../../../assets/Login-PNG-Free-Image.png" style="width: 30%;">
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field>
+
+            <input id="ename" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+              formControlName="ename" placeholder="User Name" matInput>
+            <span class="text-danger"
+              *ngIf="registerFormControl.ename.touched && registerFormControl.ename.errors?.['required']">
+              Name is required
+            </span>
+            <!-- <div *ngIf="profileForm.invalid" class="alert alert-danger">
+              <div *ngIf="profileForm.errors?.['required']">
+                Name is required.
+              </div>
+            </div> -->
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input id="email" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
+              formControlName="email" placeholder="Email" matInput required="email is required">
+            <span class="text-danger"
+              *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.['required']">
+              Email is required
+            </span>
+
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input id="password" type="password" formControlName="password"
+              style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;" placeholder="Password" matInput>
+            <span class="text-danger"
+              *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.['required']">
+              Password is required
+            </span>
+          </mat-form-field>
+        </p>
+        <div class="button">
+          <button type="submit" class="btn1">Log in</button>
+        </div>
+
+
+        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+          <div style="display: flex; justify-content: baseline;">
+
+            <a routerLink="/signUpUser">create User</a>
+          </div>
+
+          <div>
+            <a routerLink="/signUpSeller">Create Seller</a>
+          </div>
+
+        </div>
+      </form>
+
+    </mat-card-content>
+
   </div>
 
 
-</div>
+
+</mat-card>
+
+
+
+
+<!-- .................................. -->
+
+<!-- </div>
 <div style="display: flex;
 justify-content: center;
 align-items: center;flex-direction: column;">
@@ -34,10 +110,6 @@ align-items: center;flex-direction: column;">
 
 
   </form>
-  <div style="display: flex; justify-content: space-between;">
 
-    <a routerLink="/signUpUser" style="padding: 2rem;">Sign Up as New User</a>
-    <a routerLink="/signUpSeller" style="padding: 2rem;">Sign Up as New Seller</a>
-  </div>
 
-</div>
+</div> -->

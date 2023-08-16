@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 
 
@@ -9,18 +10,20 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./sign-up-user.component.css']
 })
 export class SignUpUserComponent {
-  constructor(private userService:UserService){}
+  constructor(private userService:UserService,private router: Router){}
   singInForm = new FormGroup({
-    userName:new FormControl(''),
-    userEmail: new FormControl(''),
-    userPassword: new FormControl(''),
-    userGender:new FormControl(''),
-    userPhoneNo:new FormControl(''),
-    userAge:new FormControl(''),
-    addressList:new FormControl(''),
+    userName:new FormControl('',[Validators.required]),
+    userEmail: new FormControl('',[Validators.required]),
+    userPassword: new FormControl('',[Validators.required]),
+    userGender:new FormControl('',[Validators.required]),
+    userPhoneNo:new FormControl('',[Validators.required]),
+    userAge:new FormControl('',[Validators.required]),
+    addressList:new FormControl('',[Validators.required]),
 
   });
-
+  get registerFormControl() {
+    return this.singInForm.controls;
+  }
   onSubmit(){
     console.warn(this.singInForm.value);
     const value=this.singInForm.value;
@@ -33,6 +36,8 @@ export class SignUpUserComponent {
       userAge:value.userAge,
       addressList:value.addressList
     }
+    console.log(user1.userGender)
+    this.router.navigate(['/login'])
     this.userService.userRegister(user1).subscribe(
       (res)=>{
         console.log(res);
