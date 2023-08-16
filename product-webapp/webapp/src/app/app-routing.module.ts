@@ -10,34 +10,36 @@ import { HomeComponent } from './Components/home/home.component';
 import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
 import { OrderHistoryComponent } from './Components/order-history/order-history.component';
+import { WishlistComponent } from './Components/wishlist/wishlist.component';
 // import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
 
 const routes: Routes = [
   {
-    path:"",
-    component:HomeComponent
+    path: "",
+    component: HomeComponent
   },
   {
-    path:"view_products",
-    component:ProductListsComponent
+    path: "view_products",
+    component: ProductListsComponent
   },
   {
-    path:"view_products/:category",
-    component:ViewbycategoryComponent
+    path: "view_products/:category",
+    component: ViewbycategoryComponent
   },
   {
-    path:"view_productsbybrand/:brand",
-    component:ViewbybrandComponent
+    path: "view_productsbybrand/:brand",
+    component: ViewbybrandComponent
   },
   {
-    path:"mycart",
-    component:CartComponent
+    path: "mycart",
+    component: CartComponent
   },
   {
-    path:"details/:productId",
-    component:ProductDetailedComponent
+    path: "details/:productId",
+    component: ProductDetailedComponent
   },
   {
+<<<<<<< HEAD
     component:LoginComponent,
     path:"login"
   },{
@@ -50,10 +52,27 @@ const routes: Routes = [
     component:OrderHistoryComponent,
     path:"orderhistory"
 }
+=======
+    component: LoginComponent,
+    path: "login"
+  }, {
+    component: SignUpSellerComponent,
+    path: "signUpSeller"
+  }, {
+    component: SignUpUserComponent,
+    path: "signUpUser"
+  }, {
+    component: OrderHistoryComponent,
+    path: "orderhistory"
+  }, {
+    component: WishlistComponent,
+    path: "mywishlist"
+  }
+>>>>>>> c1dd016f17ed3465ccbf708a284693d3c1e4e8e5
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

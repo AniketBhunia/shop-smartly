@@ -24,7 +24,7 @@ public class CartServiceImpl implements CartService {
     public List<Cart> addToCart(Cart cart) {
         cartList.add(cart);
 //        cartRepository.save(cartList);
-         return  cartRepository.saveAll(cartList);
+        return cartRepository.saveAll(cartList);
 //        return cartList;
     }
 
@@ -36,9 +36,10 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void deleteCartById(Long productId) {
+    public List<Cart> deleteCartById(Long productId) {
         cartList.removeIf(item -> item.getProductId().equals(productId));
 //        return cartRepository.saveAll(cartList);
+        return cartList;
     }
 
     public boolean isCartAlreadyExisting(Long cartId) {
@@ -49,8 +50,21 @@ public class CartServiceImpl implements CartService {
         }
         return false;  // Cart with the specified ID not found
     }
+
     @Override
     public List<Cart> getAllCarts() throws Exception {
         return cartRepository.findAll();
+    }
+
+    @Override
+    public List<Cart> updateCartItem(long productId, int newQuantity) {
+        for (Cart item : cartList) {
+            if (item.getProductId() == productId) {
+                item.setProductQuantity(newQuantity);
+                // You can also update other properties if needed
+                break;
+            }
+        }
+        return cartList;
     }
 }

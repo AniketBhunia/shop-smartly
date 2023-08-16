@@ -35,17 +35,21 @@
               </td>
               <td class="quantity-box">
                 <!-- Quantity input -->
-                <mat-form-field>
-                  <input matInput type="number" name="quantity" [(ngModel)]="cartItem.productQuantity" size="4" min="0"
-                    step="1" class="c-input-text qty text" />
-                </mat-form-field>
+                <!-- <mat-form-field> -->
+                  <!-- <input matInput type="number" name="quantity" [(ngModel)]="cartItem.productQuantity" size="4" min="0"
+                    step="1" class="c-input-text qty text" /> -->
+                    <div class="quantity-input">
+                    <input type="number" [(ngModel)]="cartItem.productQuantity" (change)="updateCartItem(cartItem.productId, cartItem.productQuantity)">
+                    </div>
+                       <!-- <button (click)="updateCartItem(cartItem.productId, cartItem.productQuantity)">Update</button> -->
+                <!-- </mat-form-field> -->
               </td>
               <td class="total-pr">
                 <p>{{ '$' + cartItem.cartTotalPrice * cartItem.productQuantity}}</p>
               </td>
               <td>
                 <!-- Delete button -->
-                <button mat-button (click)="deleteCartItem(cartItem.productId)" title="Delete" class="btn btn-danger">
+                <button mat-button (click)="deleteCartItem(cartItem.productId)" title="Delete" class="btn btn-danger custom-delete-button">
                   Delete
                 </button>
               </td>
@@ -58,11 +62,11 @@
 </div>
 <div class="d-flex justify-content-center mt-3">
   <!-- Add More Products button -->
-  <button mat-button title="Add More Products" class="btn btn-success">
-    <a routerLink="/view_products">
+  <button class="custom-button">
+    <a routerLink="/view_products" class="custom-link">
       Add More Products
     </a>
-  </button>
+  </button> 
 </div>
 <div class="mt-3"></div>
 <div class="container my-5" *ngIf="cartList.length > 0">
@@ -90,13 +94,10 @@
       </div>
       <div class="d-flex justify-content-center mt-3">
         <!-- Proceed to Checkout button -->
-        <button (click)="payNow()" class="btn btn-primary btn-green">
-          <a mat-button color="primary" class="d-flex align-items-center justify-content-center"
-            routerLink="/checkout">
-            <i class="bi bi-cart-fill me-1"></i>
+          <a (click)="payNow()" mat-button class="custom-button" routerLink="/checkout">
+            <!-- <i class="bi bi-cart-fill me-1"></i> -->
             Proceed to Checkout
           </a>
-        </button>
       </div>
     </div>
   </div>

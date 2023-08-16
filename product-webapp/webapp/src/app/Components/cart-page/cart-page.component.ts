@@ -1,10 +1,10 @@
 // cart.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { ShoppingCartItem } from 'src/app/cartModel';
 declare var Razorpay: any;
-
 export class user{
   userName:string = '';
   userEmail:string= '';
@@ -25,50 +25,74 @@ export class user{
 export class CartComponent implements OnInit{
   cartList !: ShoppingCartItem[];
   shoppingCart: ShoppingCartService; 
-  amount!:number;
-
+  amount !:number;
+  INITIAL_PRODUCT_QUANTITY = 1; 
  calculateGrandTotal(): number {
-  return this.shoppingCart.calculateGrandTotal(this.cartList);
+  this.amount =  this.shoppingCart.calculateGrandTotal(this.cartList);
+  // console.log(this.amount);
+  return this.amount
 }
-  constructor(private cartService: ShoppingCartService) {
+  constructor(private cartService: ShoppingCartService,private router:Router) {
     this.shoppingCart = cartService;
    
   }
   ngOnInit(): void {
     this.getCartByID(21)
+    // this.updateCartItem(this.cartList)
   }
 
   getCartByID(cart_id:any){
     this.cartService.getUserData(cart_id).subscribe((res:any)=>{
       this.cartList = res
       console.log(this.cartList);
-      console.log(this.cartList.length)
+      // console.log(this.cartList.length)
+      localStorage.setItem('cartList', JSON.stringify(this.cartList));
     })
   }
 
-  updateCartItem(cartItem: ShoppingCartItem) {
-    const updatedItem: ShoppingCartItem = {
-      ...cartItem,
-      cartTotalPrice: cartItem.productPrice * cartItem.productQuantity,
-    };
-    this.shoppingCart.updateCartItem(updatedItem);
+  // updateCartItem(cartList: ShoppingCartItem) {
+  //   const updatedCartList: ShoppingCartItem = {
+  //     ...cartList,
+  //     productQuantity: cartList.productQuantity,
+  //     cartTotalPrice: cartList.productPrice * cartList.productQuantity,
+  //   };
+  //   this.shoppingCart.updateCartItem(updatedCartList);
+  //   console.log(updatedCartList);
+  //   localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+  // }
+  updateCartItem(productId: number, newQuantity: number): void {
+    this.cartService.updateCartItem(productId, newQuantity)
+      .subscribe(
+        updatedCartItems => {
+          console.log('Cart item updated successfully');
+          this.cartList = updatedCartItems; // Update the cart items with the updated list
+          // Perform any additional actions after successful update\
+          console.log(this.cartList);
+          
+        },
+        error => {
+          console.error('Error updating cart item:', error);
+          // Handle error scenarios
+        }
+      );
+      console.log(this.cartList);
+      
+      localStorage.setItem('cartList', JSON.stringify(this.cartList));
   }
 
   deleteCartItem(productId: any) {
     this.shoppingCart.deleteCartItem(productId).subscribe((res)=>{
-      if (res == true ){
-        alert("Product Deleted Successfully")
-      }
+      this.getCartByID(21)
     })
-    window.location.reload()
+    // window.location.reload()
   }
    payNow() {
     const RozarpayOptions = {
       description: 'Shop Smartly',
-      currency: 'INR',
-      amount: this.amount,
+      currency: 'USD',
+      amount: this.amount*100,
       name: 'Shop Smartly',
-      key: 'rzp_test_1URFAbxwfmIO4M',
+      key: 'rzp_test_hSvndswhybubtG',
       image: '',
       prefill: {
         name: 'Prabhas',
@@ -87,6 +111,7 @@ export class CartComponent implements OnInit{
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
+      // this.router.navigate(["/orderhistory"])
     }
 
     const failureCallback = (e: any) => {

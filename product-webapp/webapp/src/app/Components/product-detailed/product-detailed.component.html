@@ -123,8 +123,7 @@
                   style="min-width: 96px; height: 96px"
                   class="img-md img-thumbnail"
                 />
-                <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/8.webp"
-                  style="min-width: 96px; height: 96px" class="img-md img-thumbnail" />
+
               </div>
 
 
@@ -134,7 +133,7 @@
 
           <!-- Add more reviews as needed -->
         </div>
-        <!-- End of List of Reviews -->
+     
 
 
 
@@ -156,84 +155,8 @@
         </nav>
         <!-- End of Pagination -->
 
-        <!-- Review Form -->
-<!--
-        <div class="add-review-form mt-4">
-          <h3 class="mb-3">Add Your Review</h3>
-          <form #addReviews="ngForm" (ngSubmit)="addReview(addReviews.value)">
-            <div>
-              <div>
-                <div class="mb-3">
-                  <label for="rating" class="form-label">Rating</label>
-                  <select #value class="form-select" ngModel name="rating" (onSelect)="selectedValue(value)">
-                    <option value="5">5 Stars</option>
-                    <option value="4">4 Stars</option>
-                    <option value="3">3 Stars</option>
-                    <option value="2">2 Stars</option>
-                    <option value="1">1 Star</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="comment" class="form-label">Your Review</label>
-                  <textarea class="form-control"  rows="4" ngModel name="review" required>
-                  </textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="author" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" ngModel name="name"  required />
-                </div>
-              </div>
-              <button (click)="createReview()" class="btn btn-primary">
-                Submit Review
-              </button>
-              <button class="btn btn-primary" style="float: right">
-                Order History
-              </button> -->
 
 
-              <!-- <div class="add-review-form mt-4">
-          <h3 class="mb-3">Add Your Review</h3>
-          <form #addReviews="ngForm" >
-            <div>
-              <div>
-                <div class="mb-3">
-                  <label for="rating" class="form-label">Rating</label>
-                  <select #value class="form-select" ngModel name="rating" (onSelect)="selectedValue(value)">
-                    <option value="5">5 Stars</option>
-                    <option value="4">4 Stars</option>
-                    <option value="3">3 Stars</option>
-                    <option value="2">2 Stars</option>
-                    <option value="1">1 Star</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="comment" class="form-label">Your Review</label>
-                  <textarea class="form-control"  rows="4" ngModel name="review" required>
-                  </textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="author" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" ngModel name="name"  required />
-                </div>
-
-                <div>
-                  <input (change)="onFileSelected($event)" accept="image/jpeg, image/png" #fileInput hidden type="file" value="this.fileName"/>
-                  <button (click) = "selectImage()"type = "select" >Upload Image</button>
-                  <img height="150px" #previewImage  />
-                </div>
-              </div>
-              <button class="btn btn-primary" type="submit" (click) = "addReview(addReviews.value)" >
-              <button class="btn btn-primary">
-                Submit Review
-              </button>
-              <button class="btn btn-primary" style="float: right">
-                Order History
-              </button>
-
-
-            </div>
-          </form>
-        </div> -->
       </div>
     </div>
   </div>

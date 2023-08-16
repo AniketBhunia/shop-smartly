@@ -2,18 +2,14 @@
     <div class="container-xl">
         <div class="row">
             <div class="col-md-12">
-                <h2><b>Products</b></h2>
+                <h2><b>Your Wishlist</b></h2>
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
                     <div class="carousel-inner">
                         <div class="item carousel-item active">
                             <div class="row">
-                                <div class="col-sm-3" *ngFor="let item of similarProducts">
+                                <div class="col-sm-3" *ngFor="let item of wishList; let index = index">
                                     <div class="thumb-wrapper">
-                                        <span class="wish-icon" *ngIf="!isInWishList(item)" (click)="addToWishlist(item)">
-                                            <i class="fa fa-heart-o"></i>
-                                        </span>
-                                          <span *ngIf="isInWishList(item)">Added in Wishlist</span>
-                                          
+                                        <span class="wish-icon"><i class='fa fa-heart' style='color: red' (click)="removeFromWishlist(index)"></i></span>
                                         <div class="img-box">
                                             <img [src]="'data:image/jpeg;base64,' + item.product_image" class="img-fluid" alt="">
                                         </div>
@@ -28,7 +24,7 @@
                                                     <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
                                                 </ul>
                                             </div>
-                                            <p class="item-price"><del> ${{item.product_current_price}}</del> <b> ${{item.product_discount_price}}</b></p>
+                                            <p class="item-price"><del>${{item.product_current_price}}</del> <b> ${{item.product_discount_price}}</b></p>
                                             <button routerLink="/details/{{item.product_id}}" class="btn btn-primary">Add to Cart</button>
                                         </div>
                                     </div>
@@ -41,3 +37,4 @@
         </div>
     </div>
 </body>
+

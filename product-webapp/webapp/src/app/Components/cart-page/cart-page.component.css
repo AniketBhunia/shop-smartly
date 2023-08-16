@@ -57,7 +57,8 @@
 }
 
 .thumbnail-img {
-  width: 10%;
+  min-width: 106px;
+  height: 96px;
 }
 
 .name-pr {
@@ -112,3 +113,57 @@
     text-align: center;
   }
 }
+/* cart.component.css */
+.quantity-input input[type="number"] {
+  width: 80px; /* Adjust the width as needed */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Rest of your existing styles */
+.custom-delete-button {
+  background-color: #f44336; /* Change to the desired color */
+  color: white; /* Text color for the button */
+}
+/* cart.component.css */
+.custom-button {
+  background-color: #4682A9; /* Change to the desired button background color */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-link {
+  color: white; /* Text color for the link */
+  text-decoration: none; /* Remove underline */
+}
+
+.custom-link:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Rest of your existing styles */
+
+/* cart.component.css */
+.custom-button {
+  background-color: #4682A9;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-button:hover {
+  background-color: #356e97; /* Change to the desired hover color */
+}
+
+/* Rest of your existing styles */
