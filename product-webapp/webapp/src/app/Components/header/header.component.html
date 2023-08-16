@@ -8,16 +8,17 @@
   <div class="search-box">
     <mat-form-field appearance="fill" class="example-full-width">
       <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
-      <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()" placeholder="Search" />
+      <input #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()" placeholder="Search"
+        style="outline: none; color: white; background: transparent ;border:  1px solid white; height: 26px; border-radius: 20px;padding: 5px;" />
       <button mat-button matSuffix (click)="submitSearch(searchInput.value)">
         <mat-icon>search</mat-icon>
       </button>
     </mat-form-field>
     <ul class="search-suggestion" *ngIf="searchSuggestion">
       <li *ngFor="let item of searchSuggestion">
-          <a (mousedown)="redirectToDetails(item.product_id)">{{item.product_name}}</a>
+        <a (mousedown)="redirectToDetails(item.product_id)">{{item.product_name}}</a>
       </li>
-  </ul>
+    </ul>
   </div>
 
   <div class="nav">

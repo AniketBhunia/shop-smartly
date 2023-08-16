@@ -9,6 +9,8 @@ export class SellerService {
 
   constructor(private http:HttpClient) { }
   userRegister(seller1:any){
+    console.log(seller1)
+
     return this.http.post<any>("http://localhost:8087/seller/register",seller1).subscribe();
    }
 }

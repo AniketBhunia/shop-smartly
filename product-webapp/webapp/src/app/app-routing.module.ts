@@ -49,7 +49,7 @@ const routes: Routes = [
   },{
     component:OrderHistoryComponent,
     path:"orderhistory"
-  }
+}
 ];
 
 @NgModule({

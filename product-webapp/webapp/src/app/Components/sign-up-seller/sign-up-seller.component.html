@@ -66,19 +66,20 @@
 
 <mat-card style="display: flex; flex-direction: row; width: 70%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem;">
 
-  <mat-card-content>
-    <img src="../../../assets/6310507.jpg" style="width: 100%;padding: 0;">
+  <mat-card-content style="width: 130%; margin-top: auto; margin-bottom: auto;">
+    <img src="../../../assets/sellerSignUp.jpg" style="width: 100%;padding: 0; height: 100%;object-fit: fill;">
   </mat-card-content>
   <div style="width: 100%; padding: 2rem;">
     <mat-card-title>
       <h1>Create new Seller</h1>
+
     </mat-card-title>
     <mat-card-content>
-      <form [formGroup]="singInForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="singInForm" (ngSubmit)="onSubmit()" style="width: 100%;">
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="userName" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerName" placeholder="Seller Name" matInput>
+              formControlName="sellerName" placeholder="Seller Name*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerName.touched && registerFormControl.sellerName.errors?.['required']">
               Seller Name is required
@@ -86,9 +87,9 @@
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="email" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerEmail" placeholder="Email" matInput>
+              formControlName="sellerEmail" placeholder="Email*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerEmail.touched && registerFormControl.sellerEmail.errors?.['required']">
               Email is required
@@ -96,9 +97,9 @@
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="password" type="password" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerPassword" placeholder="Password" matInput>
+              formControlName="sellerPassword" placeholder="Password*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerPassword.touched && registerFormControl.sellerPassword.errors?.['required']">
               Password is required
@@ -106,9 +107,9 @@
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="phoneNo" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerPhoneNo" placeholder="Phone No" matInput>
+              formControlName="sellerPhoneNo" placeholder="Phone No*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerPhoneNo.touched && registerFormControl.sellerPhoneNo.errors?.['required']">
               Phone no is required
@@ -116,9 +117,9 @@
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="age" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerAge" placeholder="Age" matInput>
+              formControlName="sellerAge" placeholder="Age*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerAge.touched && registerFormControl.sellerAge.errors?.['required']">
               Age is required
@@ -128,7 +129,7 @@
 
 
         <div
-          style="display: flex;width: 70%;justify-content: space-between;padding-top: 0.3rem;padding-bottom: 0.3rem;">
+          style="display: flex;width: 100%;justify-content: space-between;padding-top: 0.3rem;padding-bottom: 0.3rem;">
           Gender:
           <div style="display: flex;  align-items: baseline;">
             <input type="radio" id="male" name="sellerGender" value="male" formControlName="sellerGender">

@@ -1,37 +1,36 @@
-<!-- <div style="display: flex;padding-top: 3%;"> -->
-<!--  -->
+<mat-card
+  style="display: flex; flex-direction: row; width: 50%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem; overflow: hidden;margin-bottom: 0;height: 96%;">
 
-<mat-card style="display: flex; flex-direction: row; width: 70%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem;">
-
-  <mat-card-content>
-    <img src="../../../assets/login.jpg" style="width: 100%;">
+  <mat-card-content style="overflow: hidden; width: 60%;">
+    <img src="../../../assets/login.jpg" width="100%">
   </mat-card-content>
-  <div style="width: 150%; padding: 1rem;">
+  <div style="width: 50%; padding: 1rem;">
     <mat-card-title>
-      <img src="../../../assets/Login-PNG-Free-Image.png" style="width: 30%;">
+      <!-- <img src="../../../assets/Login-PNG-Free-Image.png" style="width: 100px;"> -->
+      <h1>Log In</h1>
     </mat-card-title>
     <mat-card-content>
-      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" style="width: 100%;">
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
 
-            <input id="ename" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="ename" placeholder="User Name" matInput>
+            <input id="ename" type="text" style="padding-top: 0.3rem;padding-bottom: 0.3rem;" formControlName="ename"
+              placeholder="User Name*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.ename.touched && registerFormControl.ename.errors?.['required']">
               Name is required
             </span>
             <!-- <div *ngIf="profileForm.invalid" class="alert alert-danger">
-              <div *ngIf="profileForm.errors?.['required']">
-                Name is required.
-              </div>
-            </div> -->
+            <div *ngIf="profileForm.errors?.['required']">
+              Name is required.
+            </div>
+          </div> -->
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="email" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="email" placeholder="Email" matInput required="email is required">
+              formControlName="email" placeholder="Email*" matInput required="email is required">
             <span class="text-danger"
               *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.['required']">
               Email is required
@@ -40,9 +39,9 @@
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field>
+          <mat-form-field style="width: 100%;">
             <input id="password" type="password" formControlName="password"
-              style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;" placeholder="Password" matInput>
+              style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;" placeholder="Password*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.['required']">
               Password is required
@@ -50,14 +49,14 @@
           </mat-form-field>
         </p>
         <div class="button">
-          <button type="submit" class="btn1">Log in</button>
+          <button type="submit" class="btn1">LOG IN</button>
         </div>
 
 
         <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
           <div style="display: flex; justify-content: baseline;">
 
-            <a routerLink="/signUpUser">create User</a>
+            <a routerLink="/signUpUser">Create User</a>
           </div>
 
           <div>
@@ -74,42 +73,3 @@
 
 
 </mat-card>
-
-
-
-
-<!-- .................................. -->
-
-<!-- </div>
-<div style="display: flex;
-justify-content: center;
-align-items: center;flex-direction: column;">
-
-  <form [formGroup]="profileForm" style="width: 30%;" (ngSubmit)="onSubmit()">
-    <div style="padding-bottom: 1rem; font-size: xx-large;font-weight: bold;">Login</div>
-    <div style="padding-bottom:1rem ;">
-      <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-        formControlName="name" placeholder="User Name">
-    </div>
-    <div style="padding-bottom:1rem ;">
-      <input id="first-name" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-        formControlName="email" placeholder="email">
-    </div>
-
-    <div>
-      <input id="last-name" type="text" formControlName="password"
-        style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;" placeholder="Password">
-    </div>
-
-    <button style="margin-top: 1rem;padding-left: 0.5rem;padding-right: 0.5rem;padding-left: 6%;
-    border-radius: 999px;
-    padding-right: 6%;
-    padding-top: 2%;
-    padding-bottom: 2%; background-color: white;border-color: #4cc8ff;">Log
-      In</button>
-
-
-  </form>
-
-
-</div> -->
