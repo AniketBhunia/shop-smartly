@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { FormControl, Validators ,FormGroup} from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
 
 
@@ -12,7 +13,7 @@ import { LoginService } from 'src/app/Services/login.service';
 })
 export class LoginComponent {
 
-constructor(private login:LoginService){}
+constructor(private login:LoginService,private route:Router){}
   nativeSelectFormControl = new FormControl('valid', [
     Validators.required,
     Validators.pattern('valid'),
@@ -48,8 +49,17 @@ constructor(private login:LoginService){}
     this.login.setEmail(email);
     this.login.setName(name);
     this.login.setRole(role);
+
+    if (role === 'user') {
+      this.route.navigate(['/']);
+      setTimeout(() => {
+        window.location.reload();
+      }, 100); // You can adjust the delay as needed
+    } else if (role === 'seller') {
+      // this.route.navigate(['/seller-dashboard']); // Change the route to your seller dashboard
     }
 
+    }
     );
   }
 }
