@@ -39,20 +39,6 @@ const routes: Routes = [
     component: ProductDetailedComponent
   },
   {
-<<<<<<< HEAD
-    component:LoginComponent,
-    path:"login"
-  },{
-    component:SignUpSellerComponent,
-    path:"signUpSeller"
-  },{
-    component:SignUpUserComponent,
-    path:"signUpUser"
-  },{
-    component:OrderHistoryComponent,
-    path:"orderhistory"
-}
-=======
     component: LoginComponent,
     path: "login"
   }, {
@@ -68,7 +54,6 @@ const routes: Routes = [
     component: WishlistComponent,
     path: "mywishlist"
   }
->>>>>>> c1dd016f17ed3465ccbf708a284693d3c1e4e8e5
 ];
 
 @NgModule({

@@ -38,3 +38,22 @@ padding-bottom: 2%; background-color: white;border-color: #4cc8ff;
 background-color: whitesmoke;
 box-shadow: 5px 5px 5px #ccc;
 }
+/* Apply styles to the anchor tag */
+/* Apply styles to the anchor tag */
+a.router-link {
+  font-family: 'Your Preferred Font', sans-serif; /* Replace with the font you want to use */
+  font-size: 16px; /* Adjust the font size */
+  color: #4682A9; /* Set the color */
+  text-decoration: none; /* Remove underlines by default */
+  transition: color 0.2s; /* Add a smooth color transition on hover */
+  text-align: center; /* Center-align the text */
+  display: block; /* Makes the link fill the entire width of its container */
+  margin: 0 auto; /* Centers the link horizontally */
+}
+
+a.router-link:hover {
+  color: #1e5e8c; /* Change the color on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+

@@ -1,5 +1,6 @@
 package com.stackroute.orderservice.service;
 
+import com.stackroute.orderservice.exception.CartItemNotFoundException;
 import com.stackroute.orderservice.model.Cart;
 import com.stackroute.orderservice.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,13 @@ public class CartServiceImpl implements CartService {
     @Override
     public List<Cart> deleteCartById(Long productId) {
         cartList.removeIf(item -> item.getProductId().equals(productId));
+//        return cartRepository.saveAll(cartList);
+        return cartList;
+    }
+
+    @Override
+    public List<Cart> deleteCartByCartId(Long cartId) {
+        cartList.removeIf(item -> item.getCartId().equals(cartId));
 //        return cartRepository.saveAll(cartList);
         return cartList;
     }

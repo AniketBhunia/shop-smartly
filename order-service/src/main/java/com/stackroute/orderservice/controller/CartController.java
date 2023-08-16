@@ -57,6 +57,12 @@ public class CartController {
         List<Cart> updatedCartList = cartService.deleteCartById(productId);
         return ResponseEntity.status(HttpStatus.OK).body(updatedCartList);
     }
+
+    @DeleteMapping("/item/{cartId}")
+    public ResponseEntity<List<Cart>> deleteCartByCartId(@PathVariable Long cartId) throws CartItemNotFoundException {
+        List<Cart> updatedCartList = cartService.deleteCartByCartId(cartId);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedCartList);
+    }
     @GetMapping("/getall")
     public ResponseEntity<?> getAllCarts() {
         try {

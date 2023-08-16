@@ -6,10 +6,10 @@
   </div>
 
   <div class="search-box">
-    <mat-form-field appearance="fill" class="example-full-width">
+    <mat-form-field appearance="fill">
       <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
-      <input #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()" placeholder="Search"
-        style="outline: none; color: white; background: transparent ;border:  1px solid white; height: 26px; border-radius: 20px;padding: 5px;" />
+      <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()"
+        placeholder="Search" />
       <button mat-button matSuffix (click)="submitSearch(searchInput.value)">
         <mat-icon>search</mat-icon>
       </button>
@@ -25,9 +25,25 @@
     <a *ngFor="let item of allCategories" (click)="redirectoCateories(item)">{{item}}</a>
   </div>
 
+
+
   <div class="user-actions">
-    <div class="header-icon">
-      <button routerLink="/login" mat-stroked-button color="primary" class="login-button">Log In</button>
+    <span class="wish-icon" *ngIf="isLoggedIn"><i class='fa fa-heart' style='color: red; font-size: 24px;'
+        routerLink="/mywishlist"></i></span>
+    <div class="spacer"></div> <!-- Add a spacer for gap -->
+    <div class="header-icon" *ngIf="!isLoggedIn">
+      <button routerLink="/login" mat-stroked-button class="login-button">Log In</button>
+    </div>
+    <div class="header-icon" *ngIf="isLoggedIn">
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon> <!-- Add the user profile icon -->
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <!-- Add menu items like "Profile", "Settings", etc. -->
+        <button mat-menu-item routerLink="/mycart">My Cart</button>
+        <button mat-menu-item>My Orders</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
     </div>
   </div>
 </header>

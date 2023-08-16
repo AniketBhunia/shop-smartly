@@ -4,15 +4,14 @@
   justify-content: space-between;
   background-color: #020325;
   color: white;
-  padding: 0 1rem;
+  padding: 0.1rem;
   flex-wrap: nowrap;
   align-items: center;
-  height: 60px;
 }
 
 .logo img {
-  height: 40px;
-  width: 40px;
+  height: auto;
+  width: 7rem;
 }
 
 .nav {
@@ -49,9 +48,9 @@
 .search-box {
   text-align: center;
   position: relative;
-  /* padding-top: 1rem; */
-  width:265px;
+  padding-top: 1.3rem;
 }
+
 
 /* Apply styles to the search suggestion list */
 .search-suggestion {
@@ -100,14 +99,16 @@
 }
 
 .example-full-width {
-  width: 80%;
+  width: 100%;
   max-width: 300px;
+  /* padding-left: 1rem; */
 }
 
 .login-button {
   background-color: #4682A9;
   color: azure !important;
-  margin-top: 1rem;
+  margin-bottom: .1rem;
+  margin-right: .1rem;
 }
 
 .right-section {
@@ -137,4 +138,26 @@
     align-items: center;
     gap: 1rem;
   }
+}
+.example-full-width {
+  width: 80%; /* This controls the width of the input field */
+  max-width: 400px; /* Adjust this value to your preference */
+}
+/* Add this to your component's CSS file or global styles */
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.wishlist-icon {
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.header-icon button {
+  margin: 0;
+}
+.spacer {
+  width: 20px; /* Adjust the width for the desired gap */
 }

@@ -156,6 +156,11 @@ export class ShoppingCartService {
     return this.http.delete(`${this.baseUrl}/cart/${productId}`);
   }
 
+  deleteCartItemByCartId(cartId:any): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/item/cart/${cartId}`);
+  }
+  // After providin the list to order history delete the cart usin this method.
+
   calculateGrandTotal(cartItems: ShoppingCartItem[]): number {
     let total = 0;
     for (const item of cartItems) {

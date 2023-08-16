@@ -45,3 +45,15 @@
   background-color: whitesmoke;
   box-shadow: 5px 5px 5px #ccc;
 }
+a.router-link {
+  font-family: 'Times New Roman', Times, serif; /* Replace with the font you want to use */
+  font-size: 26px; /* Adjust the font size */
+  color: #4682A9; /* Set the color */
+  text-decoration: none; /* Remove underlines by default */
+  transition: color 0.2s; /* Add a smooth color transition on hover */
+}
+
+a.router-link:hover {
+  color: #1e5e8c; /* Change the color on hover */
+  text-decoration: underline; /* Add underline on hover */
+}

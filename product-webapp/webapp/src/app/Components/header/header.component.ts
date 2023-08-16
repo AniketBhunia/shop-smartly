@@ -14,15 +14,16 @@ export class HeaderComponent implements OnInit {
   allCategories: string[] = []
   contentArray!: Product[]
   searchSuggestion: undefined | Product[]
-  isSellerLoggedIn !: boolean
-  isUserLoggedIn !: boolean
-  constructor(private productService: ProductService, private route: Router , private login :LoginService) { }
+  // isSellerLoggedIn !: boolean
+  isLoggedIn = false;
+  constructor(private productService: ProductService, private route: Router, private login: LoginService) { const authToken = localStorage.getItem('token');
+  if (authToken) {
+    this.isLoggedIn = true; // Set to true if the token is present
+  } else {
+    this.isLoggedIn = false; // Set to false if the token is not present
+  }}
 
   ngOnInit(): void {
-    this.isSellerLoggedIn = this.login.isSellerLoggedIn.value
-    this.isUserLoggedIn = this.login.isUserLoggedIn.value
-    // console.log(this.isSellerLoggedIn);
-    
     this.productService.productList().subscribe((res) => {
       this.contentArray = res.content
       console.log(this.contentArray);
@@ -32,6 +33,15 @@ export class HeaderComponent implements OnInit {
 
     })
 
+  }
+  logout() {
+    // Remove the token from localStorage upon logout
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('name');
+    localStorage.removeItem('sellerId');
+    this.isLoggedIn = false;
   }
 
   searchProduct(name: any) {
@@ -55,7 +65,7 @@ export class HeaderComponent implements OnInit {
   }
   redirectToDetails(id: any) {
     const delayMilliseconds = 100;
-    this.route.navigate(['/details',id])
+    this.route.navigate(['/details', id])
     setTimeout(() => {
       // Reload the window after the specified delay
       window.location.reload()
