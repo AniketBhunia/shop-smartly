@@ -26,7 +26,7 @@ export class CartComponent implements OnInit{
   cartList !: ShoppingCartItem[];
   shoppingCart: ShoppingCartService; 
   amount !:number;
-
+  INITIAL_PRODUCT_QUANTITY = 1; 
  calculateGrandTotal(): number {
   this.amount =  this.shoppingCart.calculateGrandTotal(this.cartList);
   // console.log(this.amount);
@@ -38,6 +38,7 @@ export class CartComponent implements OnInit{
   }
   ngOnInit(): void {
     this.getCartByID(21)
+    // this.updateCartItem(this.cartList)
   }
 
   getCartByID(cart_id:any){
@@ -49,13 +50,34 @@ export class CartComponent implements OnInit{
     })
   }
 
-  updateCartItem(cartList: ShoppingCartItem) {
-    const updatedCartList: ShoppingCartItem = {
-      ...cartList,
-      cartTotalPrice: cartList.productPrice * cartList.productQuantity,
-    };
-    this.shoppingCart.updateCartItem(updatedCartList);
-    localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+  // updateCartItem(cartList: ShoppingCartItem) {
+  //   const updatedCartList: ShoppingCartItem = {
+  //     ...cartList,
+  //     productQuantity: cartList.productQuantity,
+  //     cartTotalPrice: cartList.productPrice * cartList.productQuantity,
+  //   };
+  //   this.shoppingCart.updateCartItem(updatedCartList);
+  //   console.log(updatedCartList);
+  //   localStorage.setItem('cartList', JSON.stringify(updatedCartList));
+  // }
+  updateCartItem(productId: number, newQuantity: number): void {
+    this.cartService.updateCartItem(productId, newQuantity)
+      .subscribe(
+        updatedCartItems => {
+          console.log('Cart item updated successfully');
+          this.cartList = updatedCartItems; // Update the cart items with the updated list
+          // Perform any additional actions after successful update\
+          console.log(this.cartList);
+          
+        },
+        error => {
+          console.error('Error updating cart item:', error);
+          // Handle error scenarios
+        }
+      );
+      console.log(this.cartList);
+      
+      localStorage.setItem('cartList', JSON.stringify(this.cartList));
   }
 
   deleteCartItem(productId: any) {

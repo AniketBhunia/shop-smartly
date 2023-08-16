@@ -147,8 +147,9 @@ export class ShoppingCartService {
     return this.http.get<ShoppingCartItem>(`${this.baseUrl}/cart/${cartId}`);
   }
 
-  updateCartItem(updatedItem: ShoppingCartItem): Observable<any> {
-    return this.http.put(`${this.baseUrl}/cart/update`, updatedItem);
+  updateCartItem(productId: number, newQuantity: number): Observable<ShoppingCartItem[]> {
+    const url = `${this.baseUrl}/cart/update?productId=${productId}&newQuantity=${newQuantity}`;
+    return this.http.put<ShoppingCartItem[]>(url, {});
   }
 
   deleteCartItem(productId:any): Observable<any> {

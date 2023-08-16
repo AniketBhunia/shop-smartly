@@ -11,6 +11,7 @@ public interface CartService {
     List<Cart>  getCartById(Long cartId) throws CartItemNotFoundException;
     List<Cart> deleteCartById(Long productId) throws CartItemNotFoundException;
 
+    List<Cart> updateCartItem(long productId, int newQuantity);
 
     boolean isCartAlreadyExisting(Long userId);
 

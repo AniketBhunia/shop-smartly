@@ -66,4 +66,10 @@ public class CartController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while fetching carts.");
         }
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<List<Cart>> updateCartItem(@RequestParam long productId, @RequestParam int newQuantity) {
+        List<Cart> updatedCartItems = cartService.updateCartItem(productId, newQuantity);
+        return ResponseEntity.ok(updatedCartItems);
+    }
 }
