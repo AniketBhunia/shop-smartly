@@ -21,7 +21,11 @@ export class OrderHistoryComponent implements OnInit {
   @ViewChild('previewImage') previewImage!: ElementRef;
   MAX_FILE_SIZE: number = 1 * 1000 * 1000;
   rating!: number;
-
+x=false;
+onClick(){
+  this.x=true;
+  console.log("ghjh")
+}
   orders: any[] = [
     {
       id: 1,
@@ -84,6 +88,7 @@ ngOnInit(): void {
   // ];
   this.getOrderHistoryByCart(this.orders);
 }
+
 
 createOrder(): void {
   const order = {/* your order data here */};
