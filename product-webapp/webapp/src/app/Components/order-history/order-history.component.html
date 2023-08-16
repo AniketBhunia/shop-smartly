@@ -20,23 +20,36 @@
         alt="{{ order.product }} Image"
         class="product-image"
       />
+     <div> <h3>Order ID: {{ order.orderId }}</h3></div>
+       
       <div class="order-quantity">{{ order.quantity }} x</div>
-      <div class="order-review">
-        <h3>Write a Review</h3>
-        <div class="star-rating">
-          <!-- <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">&#9733;</span> -->
-          <i
-            *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index"
-            (click)="selectRating(i)"
-            [class]="i + 1 <= this.rating ? 'fa fa-star' : 'fa fa-star-o'"
-          ></i>
+      <button (click)="onClick()">Add Review</button>
+      <div *ngIf="x">
+        <mat-card>
+        <div class="order-review">
+          <h3>Write a Review</h3>
+          <div class="star-rating">
+            <!-- <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">&#9733;</span> -->
+            <i
+              *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index"
+              (click)="selectRating(i)"
+              [class]="i + 1 <= this.rating ? 'fa fa-star' : 'fa fa-star-o'"
+            ></i>
+          </div>
+  
+          <textarea
+            rows="4"
+            placeholder="Write your review"
+            [(ngModel)]="writeReview"
+          ></textarea>
+          <img height="150px" #previewImage />
+          </div>
+          <mat-card-actions><button (click)="onfileChange()" type="select">Upload Image</button>
+           
+            <button (click)="saveYourReview()">Submit Review</button>
+          </mat-card-actions>
+        </mat-card>
         </div>
-
-        <textarea
-          rows="4"
-          placeholder="Write your review"
-          [(ngModel)]="writeReview"
-        ></textarea>
         <div>
           <div>
             <input
@@ -47,12 +60,10 @@
               type="file"
               value="this.fileName"
             />
-            <button (click)="onfileChange()" type="select">Upload Image</button>
-            <img height="150px" #previewImage />
+           
           </div>
         </div>
-        <button (click)="saveYourReview()">Submit Review</button>
+        
       </div>
     </div>
   </div>
-</div>
