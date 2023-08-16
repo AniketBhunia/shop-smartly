@@ -1,5 +1,6 @@
-package com.shoppingProject.repo;
+package com.stackroute.paymentservice.repo;
 
+import com.stackroute.paymentservice.model.MyOrder;
 import org.hibernate.mapping.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-import com.shoppingProject.model.MyOrder;
 
 @Repository
 public interface OrderRepo extends JpaRepository<MyOrder, Integer> {

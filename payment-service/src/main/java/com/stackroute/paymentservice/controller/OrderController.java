@@ -1,16 +1,17 @@
-package com.shoppingProject.controller;
+package com.stackroute.paymentservice.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.stackroute.paymentservice.model.MyOrder;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.razorpay.*;
-import com.shoppingProject.model.MyOrder;
-import com.shoppingProject.repo.OrderRepo;
+import com.stackroute.paymentservice.repo.OrderRepo;
+
 @RestController
 @RequestMapping("/api")
 public class OrderController {

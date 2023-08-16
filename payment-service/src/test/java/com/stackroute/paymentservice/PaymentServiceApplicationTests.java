@@ -1,10 +1,10 @@
-package com.shoppingProject;
+package com.stackroute.paymentservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ShoppingProjectApplicationTests {
+class PaymentServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

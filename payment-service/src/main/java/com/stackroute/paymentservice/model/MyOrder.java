@@ -1,4 +1,4 @@
-package com.shoppingProject.model;
+package com.stackroute.paymentservice.model;
 
 import org.springframework.stereotype.Component;
 
