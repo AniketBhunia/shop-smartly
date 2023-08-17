@@ -21,14 +21,14 @@ public class Review {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int review_id;
     private int productId;
-    private int user_id;
+    private String user_id;
     private LocalDateTime posted_date;
     private String user_name;
     private String product_review_rating;
     private byte[] product_image;
     private String product_review_description;
 
-    public Review(int review_id, int productId, int user_id, LocalDateTime posted_date, String user_name, String product_review_rating,
+    public Review(int review_id, int productId, String user_id, LocalDateTime posted_date, String user_name, String product_review_rating,
                   byte[] product_image, String product_review_description) {
         this.review_id = review_id;
         this.productId = productId;
@@ -70,11 +70,11 @@ public class Review {
         this.productId = productId;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 

@@ -28,20 +28,20 @@
 
 
   <div class="user-actions">
-    <span class="wish-icon" *ngIf="isLoggedIn"><i class='fa fa-heart' style='color: red; font-size: 24px;'
+    <span class="wish-icon" *ngIf="isLoggedIn"><i class='fa fa-heart' matTooltip="Wishlist" style='color: red; font-size: 24px;'
         routerLink="/mywishlist"></i></span>
     <div class="spacer"></div> <!-- Add a spacer for gap -->
     <div class="header-icon" *ngIf="!isLoggedIn">
       <button routerLink="/login" mat-stroked-button class="login-button">Log In</button>
     </div>
     <div class="header-icon" *ngIf="isLoggedIn">
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <button mat-icon-button [matMenuTriggerFor]="userMenu" matTooltip="User Profile">
         <mat-icon>account_circle</mat-icon> <!-- Add the user profile icon -->
       </button>
       <mat-menu #userMenu="matMenu">
         <!-- Add menu items like "Profile", "Settings", etc. -->
         <button mat-menu-item routerLink="/mycart">My Cart</button>
-        <button mat-menu-item>My Orders</button>
+        <button mat-menu-item routerLink="/orderhistory">My Orders</button>
         <button mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
     </div>

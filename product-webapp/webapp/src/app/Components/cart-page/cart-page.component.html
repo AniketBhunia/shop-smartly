@@ -94,9 +94,13 @@
       </div>
       <div class="d-flex justify-content-center mt-3">
         <!-- Proceed to Checkout button -->
-          <a (click)="payNow()" mat-button class="custom-button" routerLink="/checkout">
+          <a (click)="payNow()" mat-button class="custom-button">
             <!-- <i class="bi bi-cart-fill me-1"></i> -->
             Proceed to Checkout
+          </a>
+          <a (click)="gotoOrders()" mat-button class="custom-button" routerLink="/orderhistory">
+            <!-- <i class="bi bi-cart-fill me-1"></i> -->
+            Go To
           </a>
       </div>
     </div>
@@ -104,8 +108,8 @@
 </div>
 
 <!-- Include SweetAlert library -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<!-- <script>
   function showSuccessAlert(message) {
     Swal.fire({
       title: 'Success!',
@@ -123,4 +127,4 @@
       confirmButtonText: 'OK'
     });
   }
-</script>
+</script> -->

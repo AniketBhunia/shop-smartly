@@ -5,6 +5,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from 'src/app/Services/alert-service';
 import { ReviewService } from 'src/app/Services/review.service';
+import { Order } from 'src/app/data.types';
+import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 
 @Component({
   selector: 'app-order-history',
@@ -13,7 +15,7 @@ import { ReviewService } from 'src/app/Services/review.service';
 })
 
 export class OrderHistoryComponent implements OnInit {
-  ReviewForm! : FormGroup; 
+  ReviewForm!: FormGroup;
   productId: number = 0;
   writeReview: string = ''; // two way data binding
   fileName!: File;
@@ -21,114 +23,133 @@ export class OrderHistoryComponent implements OnInit {
   @ViewChild('previewImage') previewImage!: ElementRef;
   MAX_FILE_SIZE: number = 1 * 1000 * 1000;
   rating!: number;
-x=false;
-onClick(){
-  this.x=true;
-  console.log("ghjh")
-}
-  orders: any[] = [
-    {
-      id: 1,
-      product: 'iPhone',
-      image: '../assets/iphone_image.jpeg',
-      quantity: 1,
-      price: 1000,
-    },
-    {
-      id: 2,
-      product: 'Shoes',
-      image: '../assets/shoes.jpg',
-      quantity: 1,
-      price: 30,
-    },
-    {
-      id: 3,
-      product: 'Headphone',
-      image: '../assets/images.jpeg',
-      quantity: 1,
-      price: 15,
-    },
-    // Add more orders as needed
-  ];
-
+  x = false;
+  onClick() {
+    this.x = true;
+    // console.log("ghjh")
+  }
+  cartList: ShoppingCartItem[] = [];
+  orderList: Order[] = [];
   constructor(
     private AlertService: AlertService,
     private reviewService: ReviewService,
-    private OrderHistoryService: OrderHistoryService
-  ) {}
+    // private OrderHistoryService: OrderHistoryService
+    private cartService : ShoppingCartService
+  ) { }
 
-ngOnInit(): void {
-  // Example usage of the OrderService methods
-  this.createOrder();
-  this.getOrderById(123); // Replace with an actual order ID
-  this.deleteOrderById(123); // Replace with an actual order ID
+  ngOnInit(): void {
+    // Example usage of the OrderService methods
+    // this.createOrder();
+    // this.getOrderById(123); // Replace with an actual order ID
+    // this.deleteOrderById(123); // Replace with an actual order ID
 
-  // const cartData: ShoppingCartItem[] = [
-  //   {
-  //     cartId: 1,
-  //     userId: 1,
-  //     productId: 'prod123',
-  //     productName: 'Product 1',
-  //     cartTotalPrice: 100,
-  //     productImage: '../assets/iphone_image.jpeg',
-  //     productPrice: 50,
-  //     productQuantity: 2
-  //   },
-  //   {
-  //     cartId: 2,
-  //     userId: 1,
-  //     productId: 'prod456',
-  //     productName: 'Product 2',
-  //     cartTotalPrice: 150,
-  //     productImage: 'image-url-2',
-  //     productPrice: 75,
-  //     productQuantity: 2
-  //   }
-  //   // Add more cart items as needed
-  // ];
-  this.getOrderHistoryByCart(this.orders);
-}
+    // const cartData: ShoppingCartItem[] = [
+    //   {
+    //     cartId: 1,
+    //     userId: 1,
+    //     productId: 'prod123',
+    //     productName: 'Product 1',
+    //     cartTotalPrice: 100,
+    //     productImage: '../assets/iphone_image.jpeg',
+    //     productPrice: 50,
+    //     productQuantity: 2
+    //   },
+    //   {
+    //     cartId: 2,
+    //     userId: 1,
+    //     productId: 'prod456',
+    //     productName: 'Product 2',
+    //     cartTotalPrice: 150,
+    //     productImage: 'image-url-2',
+    //     productPrice: 75,
+    //     productQuantity: 2
+    //   }
+    //   // Add more cart items as needed
+    // ];
+    // this.getOrderHistoryByCart(this.orders);
+    const savedCartItems = localStorage.getItem('cartList');
+    if (savedCartItems) {
+      this.cartList = JSON.parse(savedCartItems);
+    }
+    this.createOrder()
+  }
 
+    createOrder(): void {
+      const currentDateTime = new Date();
+      const order: Order = {
+        orderID: this.generateOrderId(),
+        orderStatus : 'Ordered',
+        items: this.cartList,
+        totalAmount: this.calculateTotalAmount(),
+        orderDate: currentDateTime, // You need to add this field to additionalData
+      };
+  
+      // Save the order to the orderList
+      this.orderList.push(order);
+      console.log(this.orderList);
+      
+      localStorage.setItem('orderList', JSON.stringify(this.orderList));
+  
+      // Clear the cart and update localStorage
+      // this.cartList = [];
 
-createOrder(): void {
-  const order = {/* your order data here */};
-  this.OrderHistoryService.createOrder(order)
-    .subscribe(response => {
-      console.log('Order created:', response);
-    }, error => {
-      console.error('Error creating order:', error);
-    });
-}
+      // this.cartService.deleteCartItemByCartId(this.cartList[0].cartId).subscribe((res)=>{
+      //   if(res){
+      //     console.log(res);
+      //     // localStorage.removeItem('cartList');
+      //   }
+      // })
 
-getOrderById(orderId: number): void {
-  this.OrderHistoryService.getOrderById(orderId)
-    .subscribe(response => {
-      console.log('Order details:', response);
-    }, error => {
-      console.error('Error fetching order details:', error);
-    });
-}
+    }
+    calculateTotalAmount(): number {
+      // Logic to calculate total amount from cartList
+      return this.cartList.reduce((total, item) => total + (item.productQuantity * item.productPrice), 0);
+    }
 
-deleteOrderById(orderId: number): void {
-  this.OrderHistoryService.deleteOrderById(orderId)
-    .subscribe(response => {
-      console.log('Order deleted:', response);
-    }, error => {
-      console.error('Error deleting order:', error);
-    });
-}
+  // createOrder(): void {
+  //   const order = {/* your order data here */};
+  //   this.OrderHistoryService.createOrder(order)
+  //     .subscribe(response => {
+  //       console.log('Order created:', response);
+  //     }, error => {
+  //       console.error('Error creating order:', error);
+  //     });
+  // }
 
-getOrderHistoryByCart(cartData: any): void {
-  this.OrderHistoryService.getOrderHistoryByCart(cartData)
-    .subscribe(response => {
-      console.log('Order history:', response);
-    }, error => {
-      console.error('Error fetching order history:', error);
-    });
-}
+  // getOrderById(orderId: number): void {
+  //   this.OrderHistoryService.getOrderById(orderId)
+  //     .subscribe(response => {
+  //       console.log('Order details:', response);
+  //     }, error => {
+  //       console.error('Error fetching order details:', error);
+  //     });
+  // }
+
+  // deleteOrderById(orderId: number): void {
+  //   this.OrderHistoryService.deleteOrderById(orderId)
+  //     .subscribe(response => {
+  //       console.log('Order deleted:', response);
+  //     }, error => {
+  //       console.error('Error deleting order:', error);
+  //     });
+  // }
+
+  // getOrderHistoryByCart(cartData: any): void {
+  //   this.OrderHistoryService.getOrderHistoryByCart(cartData)
+  //     .subscribe(response => {
+  //       console.log('Order history:', response);
+  //     }, error => {
+  //       console.error('Error fetching order history:', error);
+  //     });
+  // }
+
+  generateOrderId(): number {
+    // Logic to generate a unique order ID
+    return Math.floor(Math.random() * 1000);
+  }
   // Set product Id 
   reviewYourOrder(val: any) {
-    console.log(val ,  " val")
+    console.log(val, " val")
     this.productId = val.id;
   }
   onFileSelected(event: any) {
@@ -156,14 +177,13 @@ getOrderHistoryByCart(cartData: any): void {
   }
 
   saveYourReview() {
- 
-    if (this.rating && this.productId && this.fileName && this.writeReview) {
+    if (this.rating && this.fileName && this.writeReview) {
       const demo = {
-        productId: 18,
-        user_name: 'Hello',
+        productId: this.cartList[0].productId,
+        user_name: localStorage.getItem('name'),
         product_review_rating: this.rating.toString(),
         product_review_description: this.writeReview,
-        user_id: 44,
+        user_id: localStorage.getItem('userId'),
         review_id: Math.floor(Math.random() * 500),
       };
         this.reviewService
@@ -172,5 +192,21 @@ getOrderHistoryByCart(cartData: any): void {
             this.AlertService.success('successFully Added');
           });
     }
+    console.log("why not");
+    
+  }
+
+  toggleOrderExpansion(cart: ShoppingCartItem): void {
+    cart.expanded = !cart.expanded;
+    if (cart.expanded) {
+      cart.showReviewForm = false;
+    }
+  }
+  canAddReview(cart:ShoppingCartItem):void{
+    cart.canAddReview = !cart.canAddReview
+  }
+
+  toggleReviewForm(cart: ShoppingCartItem): void {
+    cart.showReviewForm = !cart.showReviewForm;
   }
 }

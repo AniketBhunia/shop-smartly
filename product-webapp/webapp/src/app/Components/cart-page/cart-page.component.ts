@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { ShoppingCartItem } from 'src/app/cartModel';
 declare var Razorpay: any;
+import Swal from 'sweetalert2';
 export class user{
   userName:string = '';
   userEmail:string= '';
@@ -87,12 +88,14 @@ export class CartComponent implements OnInit{
     // window.location.reload()
   }
    payNow() {
+
+    
     const RozarpayOptions = {
       description: 'Shop Smartly',
       currency: 'USD',
       amount: this.amount*100,
       name: 'Shop Smartly',
-      key: 'rzp_test_hSvndswhybubtG',
+      key: 'rzp_test_QKFlV3f8EpzXKc',
       image: '',
       prefill: {
         name: 'Prabhas',
@@ -111,7 +114,7 @@ export class CartComponent implements OnInit{
 
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
-      // this.router.navigate(["/orderhistory"])
+      // this.router.navigate(['/orderhistory']);
     }
 
     const failureCallback = (e: any) => {
@@ -119,6 +122,11 @@ export class CartComponent implements OnInit{
     }
 
     Razorpay.open(RozarpayOptions,successCallback, failureCallback)
+  }
+
+  gotoOrders(){
+    console.log(localStorage.getItem('cartList'));
+    
   }
 }
 

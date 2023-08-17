@@ -157,7 +157,7 @@ export class ShoppingCartService {
   }
 
   deleteCartItemByCartId(cartId:any): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/item/cart/${cartId}`);
+    return this.http.delete(`${this.baseUrl}/cart/item/${cartId}`);
   }
   // After providin the list to order history delete the cart usin this method.
 

@@ -19,8 +19,7 @@ public class Order {
     private String status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime orderDate;
-    private Double totalAmount;
-    private Integer pay;
+    private String pay;
     private Long productId;
     private String productName;
     private String productImage;

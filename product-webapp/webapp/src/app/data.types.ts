@@ -1,3 +1,5 @@
+import { ShoppingCartItem } from "./cartModel";
+
 export interface Product {
     product_id:number;
     product_name:string;
@@ -24,4 +26,12 @@ export interface Review {
     product_review_description : string;
     image:string;
 
+}
+
+export interface Order{
+    orderID?:any,
+    orderStatus?:any,
+    totalAmount ?: any,
+    orderDate?:any,
+    items: ShoppingCartItem[];
 }

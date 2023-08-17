@@ -155,16 +155,20 @@ addToCart() {
         // Product already exists in the cart, increase the quantity
         this.INITIAL_PRODUCT_QUANTITY += 1;
       } else {
+        const userId = localStorage.getItem('userId');
         // Product doesn't exist in the cart, add it
         const newCartItem: ShoppingCartItem = {
           cartId: 21,
-          userId: 12,
+          userId: userId,
           productId: productData[0].product_id,
           productName: productData[0].product_name,
           cartTotalPrice: productData[0].product_discount_price,
           productImage: productData[0].product_image,
           productPrice: productData[0].product_discount_price,
-          productQuantity: this.INITIAL_PRODUCT_QUANTITY, // Use the global initial value
+          productQuantity: this.INITIAL_PRODUCT_QUANTITY,
+          expanded : false,
+          showReviewForm: false,
+          canAddReview: false // Use the global initial value
         };
         cartData.push(newCartItem);
         this.shoppingCartService.addToCart(newCartItem).subscribe((res) => {
@@ -173,15 +177,19 @@ addToCart() {
       }
     } else {
       // Cart is empty, add the product directly
+      const userId = localStorage.getItem('userId');
       const newCartItem: ShoppingCartItem = {
         cartId: 21,
-        userId: 12,
+        userId: userId,
         productId: productData[0].product_id,
         productName: productData[0].product_name,
         cartTotalPrice: productData[0].product_discount_price,
         productImage: productData[0].product_image,
         productPrice: productData[0].product_discount_price,
-        productQuantity: this.INITIAL_PRODUCT_QUANTITY, // Use the global initial value
+        productQuantity: this.INITIAL_PRODUCT_QUANTITY,
+        expanded : false,
+        showReviewForm: false,
+        canAddReview: false // Use the global initial value
       };
       cartData.push(newCartItem);
       this.shoppingCartService.addToCart(newCartItem).subscribe((res) => {

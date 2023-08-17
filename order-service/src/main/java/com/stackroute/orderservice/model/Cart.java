@@ -23,4 +23,8 @@ public class Cart {
     private String productImage;
     private Double productPrice;
     private Integer productQuantity;
+    private Boolean expanded;
+    private Boolean showReviewForm;
+
+    private  Boolean canAddReview;
 }

@@ -42,7 +42,7 @@ public class ReviewController {
 
             // Extract values from the Map
             int review_id=(int) productMap.get("review_id");
-            int user_id = (int) productMap.get("user_id");
+            String user_id = (String) productMap.get("user_id");
             int productId= (int) productMap.get("productId");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");
@@ -93,7 +93,7 @@ public class ReviewController {
             Map<String, Object> productMap = objectMapper.readValue(reviewData, new TypeReference<Map<String, Object>>() {
             });
             int review_id1=(int) productMap.get("review_id");
-            int user_id = (int) productMap.get("user_id");
+            String user_id = (String) productMap.get("user_id");
             int productId=(int) productMap.get("productId");
             LocalDateTime posted_date=(LocalDateTime)productMap.get("posted_date");
             String user_name=(String) productMap.get("user_name");

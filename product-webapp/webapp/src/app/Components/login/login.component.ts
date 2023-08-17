@@ -58,7 +58,6 @@ constructor(private login:LoginService,private route:Router){}
     } else if (role === 'seller') {
       // this.route.navigate(['/seller-dashboard']); // Change the route to your seller dashboard
     }
-
     }
     );
   }

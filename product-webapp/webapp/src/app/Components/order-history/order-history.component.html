@@ -1,69 +1,167 @@
+<!-- <div class="order-history">
+  <header class="page-header">
+    <h1>Order History</h1>
+  </header>
+    <div *ngFor="let order of orderList" class="order-card">
+      <div class="order-summary" (click)="order.expanded = !order.expanded">
+        <div class="order-product">{{ order.productName }}</div>
+        <div class="order-price">{{ order.productPrice | currency : "USD" }}</div>
+        <div class="order-expand-icon" *ngIf="order.expanded ? reviewYourOrder(order) : null">
+          {{ order.expanded ? "-" : "+" }}
+        </div>
+      </div>
+      <div class="order-details" *ngIf="order.expanded">
+        <img [src]="'data:image/jpeg;base64,' + order.productImage" alt="{{ order.productName }} Image" class="product-image" />
+        <div>
+          <h3>Order ID: {{ order.orderID }}</h3>
+        </div>
+
+        <div class="order-quantity">{{ order.productQuantity  }} x</div>
+        <button (click)="onClick()">Add Review</button>
+        <div *ngIf="x">
+          <mat-card>
+            <div class="order-review">
+              <h3>Write a Review</h3>
+              <div class="star-rating">
+                <i *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index" (click)="selectRating(i)"
+                  [class]="i + 1 <= this.rating ? 'fa fa-star' : 'fa fa-star-o'"></i>
+              </div>
+
+              <textarea rows="4" placeholder="Write your review" [(ngModel)]="writeReview"></textarea>
+              <img height="150px" #previewImage />
+            </div>
+            <mat-card-actions><button (click)="onfileChange()" type="select">Upload Image</button>
+
+              <button (click)="saveYourReview()">Submit Review</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div>
+          <div>
+            <input (change)="onFileSelected($event)" accept="image/jpeg, image/png" #fileInput hidden type="file"
+              value="this.fileName" />
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> -->
+<!-- <div class="order-history">
+  <header class="page-header">
+    <h1>Order History</h1>
+  </header>
+  <div *ngFor="let order of orderList">
+  <div *ngFor="let item of order.items" class="order-card">
+    <div class="order-summary" (click)="toggleOrderExpansion(order)">
+      <div class="order-product">{{ item.productName }}</div>
+      <div class="order-price">{{ item.productPrice | currency : 'USD' }}</div>
+      <div class="order-expand-icon">{{ order.expanded ? '-' : '+' }}</div>
+    </div>
+    <div class="order-details" *ngIf="order.expanded">
+      <img [src]="'data:image/jpeg;base64,' + item.productImage" alt="{{ item.productName }} Image" class="product-image" />
+      <h3>Order ID: {{ order.orderID }}</h3>
+      <div class="order-quantity">{{ item.productQuantity }} x</div>
+      <button (click)="toggleReviewForm(order)">Add Review</button>
+      <div *ngIf="order.showReviewForm">
+        <div class="order-review">
+          <h3>Write a Review</h3>
+          <div *ngIf="x">
+            <mat-card>
+              <div class="order-review">
+                <h3>Write a Review</h3>
+                <div class="star-rating">
+                  <i *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index" (click)="selectRating(i)"
+                    [class]="i + 1 <= this.rating ? 'fa fa-star' : 'fa fa-star-o'"></i>
+                </div>
+
+                <textarea rows="4" placeholder="Write your review" [(ngModel)]="writeReview"></textarea>
+                <img height="150px" #previewImage />
+              </div>
+              <mat-card-actions><button (click)="onfileChange()" type="select">Upload Image</button>
+
+                <button (click)="saveYourReview()">Submit Review</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <div>
+            <div>
+              <input (change)="onFileSelected($event)" accept="image/jpeg, image/png" #fileInput hidden type="file"
+                value="this.fileName" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div> -->
+
+<!-- <h2>Order List</h2>
+
+<div *ngFor="let order of orderList" class="order">
+  <h3>Order ID: {{ order.orderID }}</h3>
+  <p>Order Date: {{ order.order_date }}</p>
+  <p>Total Amount: ${{ order.total_amount }}</p>
+  <h4>Items:</h4>
+  <ul>
+    <li>
+      {{ order.productQuantity }} x {{ order.productName }} - ${{ item.price * item.quantity }}
+    </li>
+  </ul>
+</div> -->
+
+
 <div class="order-history">
   <header class="page-header">
     <h1>Order History</h1>
   </header>
   <!-- ... rest of the code ... -->
-  <div *ngFor="let order of orders" class="order-card">
-    <div class="order-summary" (click)="order.expanded = !order.expanded" >
-      <div class="order-product">{{ order.product }}</div>
-      <div class="order-price">{{ order.price | currency : "USD" }}</div>
-      <div
-        class="order-expand-icon"
-        *ngIf = "order.expanded ? reviewYourOrder(order) : null"
-      >
-        {{ order.expanded ? "-" : "+" }}
+  <div *ngFor="let order of orderList">
+    <div *ngFor="let item of order.items" class="order-card">
+      <div class="order-summary" (click)="item.expanded = !item.expanded">
+        <div class="order-product">{{ item.productName }}</div>
+        <div class="order-price">{{ item.productPrice | currency : "USD" }}</div>
+        <div class="order-expand-icon" *ngIf="item.expanded ? reviewYourOrder(order) : null">
+          {{ item.expanded ? "-" : "+" }}
+        </div>
       </div>
-    </div>
-    <div class="order-details" *ngIf="order.expanded">
-      <img
-        [src]="order.image"
-        alt="{{ order.product }} Image"
-        class="product-image"
-      />
-     <div> <h3>Order ID: {{ order.orderId }}</h3></div>
-       
-      <div class="order-quantity">{{ order.quantity }} x</div>
-      <button (click)="onClick()">Add Review</button>
-      <div *ngIf="x">
+      <div class="order-details" *ngIf="item.expanded">
+        <img [src]="'data:image/jpeg;base64,' + item.productImage" alt="{{ item.productName }} Image"
+          class="product-image" />
+        <div>
+          <h3>Order ID: {{ order.orderID }}</h3>
+        </div>
+
+        <div class="order-quantity">{{ item.productQuantity }} x</div>
+        <button (click)="item.canAddReview = !canAddReview">Add Review</button>
         <mat-card>
-        <div class="order-review">
-          <h3>Write a Review</h3>
-          <div class="star-rating">
-            <!-- <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">&#9733;</span> -->
-            <i
-              *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index"
-              (click)="selectRating(i)"
-              [class]="i + 1 <= this.rating ? 'fa fa-star' : 'fa fa-star-o'"
-            ></i>
-          </div>
-  
-          <textarea
-            rows="4"
-            placeholder="Write your review"
-            [(ngModel)]="writeReview"
-          ></textarea>
-          <img height="150px" #previewImage />
+          <div class="order-review">
+            <h3>Write a Review</h3>
+            <div class="star-rating">
+              <!-- <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">&#9733;</span> -->
+              <i *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index" (click)="selectRating(i)"
+                [class]="i + 1 <= this.rating ? 'fa fa-star' : 'fa fa-star-o'"></i>
+            </div>
+
+            <textarea rows="4" placeholder="Write your review" [(ngModel)]="writeReview"></textarea>
+            <img height="150px" #previewImage />
           </div>
           <mat-card-actions><button (click)="onfileChange()" type="select">Upload Image</button>
-           
+
             <button (click)="saveYourReview()">Submit Review</button>
           </mat-card-actions>
         </mat-card>
-        </div>
-        <div>
-          <div>
-            <input
-              (change)="onFileSelected($event)"
-              accept="image/jpeg, image/png"
-              #fileInput
-              hidden
-              type="file"
-              value="this.fileName"
-            />
-           
-          </div>
-        </div>
-        
       </div>
+      <div>
+        <div>
+          <input (change)="onFileSelected($event)" accept="image/jpeg, image/png" #fileInput hidden type="file"
+            value="this.fileName" />
+
+        </div>
+      </div>
+
     </div>
   </div>
+</div>

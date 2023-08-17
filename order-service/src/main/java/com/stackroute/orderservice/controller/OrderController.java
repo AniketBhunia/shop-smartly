@@ -3,12 +3,15 @@ package com.stackroute.orderservice.controller;
 
 import com.stackroute.orderservice.exception.OrderAlreadyExistingException;
 import com.stackroute.orderservice.exception.OrderNotFoundException;
+import com.stackroute.orderservice.model.Cart;
 import com.stackroute.orderservice.model.Order;
 import com.stackroute.orderservice.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -22,9 +25,9 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody Order order) {
+    public ResponseEntity<?> createOrder(@RequestBody List<Cart> cartList) {
         try {
-            return ResponseEntity.ok(orderService.createOrder(order));
+            return ResponseEntity.ok(orderService.createOrder(cartList));
         } catch (OrderAlreadyExistingException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Order already exists");
         }
