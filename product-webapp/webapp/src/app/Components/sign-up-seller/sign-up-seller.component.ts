@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SellerService } from 'src/app/Services/seller.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -12,8 +13,8 @@ import { SellerService } from 'src/app/Services/seller.service';
 export class SignUpSellerComponent {
   singInForm = new FormGroup({
     sellerName:new FormControl('',[Validators.required]),
-    sellerEmail: new FormControl('',[Validators.required]),
-    sellerPassword: new FormControl('',[Validators.required]),
+    sellerEmail: new FormControl('',[Validators.required,Validators.email]),
+    sellerPassword: new FormControl('',[Validators.required,Validators.minLength(8)]),
     sellerGender:new FormControl('',[Validators.required]),
     sellerPhoneNo:new FormControl('',[Validators.required]),
     sellerAge:new FormControl('',[Validators.required]),
@@ -32,19 +33,43 @@ export class SignUpSellerComponent {
     sellerPhoneNo:val.sellerPassword,
     sellerAge:val.sellerAge
     }
-    if(this.singInForm.valid){
-      this.router.navigate(['/login'])
-    }else{
-      // swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Something went wrong!',
-      //   footer: '<a href="">Why do I have this issue?</a>'
-      // })
-    }
+  if(!this.singInForm.valid){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Invalid email or password',
 
-    this.sellerService.userRegister(seller);
-  }
+    })
+   }else{
+    if(seller.sellerEmail==''||seller.sellerAge==''||seller.sellerName==''||seller.sellerPassword==''||seller.sellerPassword==''||seller.sellerPhoneNo==''){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Fill all required field',
+
+      })
+    }else{
+      this.sellerService.userRegister(seller).subscribe(
+        (res)=>{
+          console.log(res);
+          this.router.navigate(['/login'])
+        },
+        (err)=>{
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.message,
+
+          })
+        }
+      );
+    }
+   }
+
+
+}
+
 
   get registerFormControl() {
     return this.singInForm.controls;

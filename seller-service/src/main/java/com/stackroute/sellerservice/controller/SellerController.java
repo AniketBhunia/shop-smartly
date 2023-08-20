@@ -18,12 +18,14 @@ public class SellerController {
     public ResponseEntity<?> doRegister(@RequestBody Seller seller){
 
         Seller u=sellerService.doRegister(seller);
+
         if(u==null){
-            return new ResponseEntity<>("User Already exists", HttpStatus.CONFLICT);
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\": \"Seller Already exists\"}");
 
         }else {
-            return new ResponseEntity<>("user registered", HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED).body("{\"message\": \"Seller registered\"}");
 
         }
+
     }
 }

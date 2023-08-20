@@ -21,14 +21,16 @@ public class UserController {
         @CrossOrigin("http://localhost:4200/")
         public ResponseEntity<?> doRegister(@RequestBody User user){
             User u=userService.doRegister(user);
+
             if(u==null){
-                return new ResponseEntity<>("User Already exists",HttpStatus.CONFLICT);
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\": \"User Already exists\"}");
 
             }else {
-                return new ResponseEntity<>("user registered", HttpStatus.CREATED);
+                return ResponseEntity.status(HttpStatus.CREATED).body("{\"message\": \"User registered\"}");
 
             }
-    }
+
+        }
     @GetMapping("/getAllUsers")
     @CrossOrigin("http://localhost:4200/")
     public ResponseEntity<?> getUser(){

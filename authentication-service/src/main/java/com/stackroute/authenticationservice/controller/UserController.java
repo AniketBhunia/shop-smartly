@@ -37,13 +37,13 @@ public class UserController {
             map.put("name",userObj.getName());
             map.put("email",userObj.getEmail());
             map.put("role", String.valueOf(userObj.getRole()));
-             responseEntity = new ResponseEntity(map, HttpStatus.OK);
+             responseEntity = ResponseEntity.status(HttpStatus.OK).body(map);
         }
         catch(UserNotFound e){
             throw new UserNotFound();
         }
         catch (Exception e){
-            responseEntity = new ResponseEntity("Try after sometime!!!", HttpStatus.INTERNAL_SERVER_ERROR);
+            responseEntity =ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{\"message\": \"Try after sometime!!!\"}");
         }
         return responseEntity;
     }

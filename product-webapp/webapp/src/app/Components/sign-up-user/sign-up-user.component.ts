@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,8 +14,8 @@ export class SignUpUserComponent {
   constructor(private userService:UserService,private router: Router){}
   singInForm = new FormGroup({
     userName:new FormControl('',[Validators.required]),
-    userEmail: new FormControl('',[Validators.required]),
-    userPassword: new FormControl('',[Validators.required]),
+    userEmail: new FormControl('',[Validators.required, Validators.email]),
+    userPassword: new FormControl('',[Validators.required,Validators.minLength(8)]),
     userGender:new FormControl('',[Validators.required]),
     userPhoneNo:new FormControl('',[Validators.required]),
     userAge:new FormControl('',[Validators.required]),
@@ -36,13 +37,44 @@ export class SignUpUserComponent {
       userAge:value.userAge,
       addressList:value.addressList
     }
-    console.log(user1.userGender)
-    this.router.navigate(['/login'])
-    this.userService.userRegister(user1).subscribe(
-      (res)=>{
-        console.log(res);
-      }
-    );
+
+   if(!this.singInForm.valid){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Invalid email or password',
+
+    })
+   }else{
+
+    if(user1.addressList==''||user1.userAge==''||user1.userEmail==''||user1.userName==''||user1.userPassword==''||user1.userPhoneNo==''){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Fill all required field',
+
+      })
+    }else{
+      this.userService.userRegister(user1).subscribe(
+        (res)=>{
+          console.log(res);
+          this.router.navigate(['/login'])
+        },
+        (err)=>{
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.message,
+
+          })
+        }
+      );
+    }
+   }
+
+
+
 
   }
 

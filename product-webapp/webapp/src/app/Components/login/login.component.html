@@ -1,5 +1,5 @@
 <mat-card
-  style="display: flex; flex-direction: row; width: 50%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem; overflow: hidden;margin-bottom: 0;height: 96%;">
+  style="display: flex; flex-direction: row; width: 70%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem; overflow: hidden;margin-bottom: 0;height: 96%;">
 
   <mat-card-content style="overflow: hidden; width: 60%;">
     <img src="../../../assets/login.jpg" width="100%">
@@ -15,7 +15,7 @@
           <mat-form-field style="width: 100%;">
 
             <input id="ename" type="text" style="padding-top: 0.3rem;padding-bottom: 0.3rem;" formControlName="ename"
-              placeholder="User Name*" matInput>
+              placeholder="User Name*" matInput required>
             <span class="text-danger"
               *ngIf="registerFormControl.ename.touched && registerFormControl.ename.errors?.['required']">
               Name is required
@@ -41,11 +41,12 @@
         <p>
           <mat-form-field style="width: 100%;">
             <input id="password" type="password" formControlName="password"
-              style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;" placeholder="Password*" matInput>
+              style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;" placeholder="Password*" matInput required>
             <span class="text-danger"
               *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.['required']">
-              Password is required
+              Password is required(min length 8)
             </span>
+
           </mat-form-field>
         </p>
         <div class="button">
@@ -53,13 +54,15 @@
         </div>
 
 
-        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-          <div style="display: flex; justify-content: baseline;">
+        <div style="display: inline-grid;
+    grid-template-columns: auto auto ;
+ margin-top: 2rem;">
+          <div style=" padding: 10px;">
 
             <a routerLink="/signUpUser">First Time Here?</a>
           </div>
 
-          <div>
+          <div style="padding: 10px;">
             <a routerLink="/signUpSeller">Want To Sell Items Here?</a>
           </div>
 

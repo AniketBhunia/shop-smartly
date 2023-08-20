@@ -23,11 +23,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
-    @NotBlank(message = "Please enter user name")
+    
     private String name;
-    @NotBlank(message = "Please enter user email")
+
     private String email;
-    @NotBlank(message = "Please enter user password")
+
     private String password;
     public enum roles{
         user,
