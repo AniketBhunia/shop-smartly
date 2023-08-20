@@ -7,6 +7,7 @@ import { AlertService } from 'src/app/Services/alert-service';
 import { ReviewService } from 'src/app/Services/review.service';
 import { Order } from 'src/app/data.types';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-history',
@@ -176,24 +177,28 @@ export class OrderHistoryComponent implements OnInit {
     this.rating = i + 1;
   }
 
-  saveYourReview() {
+  saveYourReview(productId: number) {
     if (this.rating && this.fileName && this.writeReview) {
       const demo = {
-        productId: this.cartList[0].productId,
+        productId: productId,
         user_name: localStorage.getItem('name'),
         product_review_rating: this.rating.toString(),
         product_review_description: this.writeReview,
         user_id: localStorage.getItem('userId'),
         review_id: Math.floor(Math.random() * 500),
       };
-        this.reviewService
-          .postReview(JSON.stringify(demo), this.fileName)
-          .subscribe((res) => {
-            this.AlertService.success('successFully Added');
+  
+      this.reviewService
+        .postReview(JSON.stringify(demo), this.fileName)
+        .subscribe((res) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Review Added',
+            text: 'Your review has been successfully added.',
           });
+        });
     }
-    console.log("why not");
-    
+    console.log("Review saved for product with ID: " + productId);
   }
 
   toggleOrderExpansion(cart: ShoppingCartItem): void {

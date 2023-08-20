@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit{
   popularProducts !: Product[] 
   startIndex: number = 0; // Change this to the desired starting index
   endIndex: number = 3;
+  newProducts !: Product [];
   
   constructor(private productService : ProductService,private route:Router){}
   
@@ -21,6 +22,9 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.productService.popularProductsForHome().subscribe((res)=>{
       this.popularProducts = res;
+    })
+    this.productService.getNewArrivals().subscribe((res)=>{
+      this.newProducts = res
     })
   }
   details(id:any){
@@ -38,8 +42,16 @@ export class HomeComponent implements OnInit{
     return this.popularProducts.slice(this.startIndex, this.endIndex + 1);
   }
 
+  get newItemsToShow() :any []{
+    return this.newProducts.slice(this.endIndex);
+  }
+  get newItemsToShow2(): any[] {
+    return this.newProducts.slice(this.startIndex, this.endIndex);
+  }
+
+
   // eslint-disable-next-line @typescript-eslint/ban-types
-  search : String ="";
+  // search : String ="";
   // ngOnInit(): void {
   //   // Add any initialization logic here if needed.
   // }

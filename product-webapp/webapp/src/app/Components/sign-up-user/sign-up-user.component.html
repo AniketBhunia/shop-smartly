@@ -62,121 +62,98 @@
 </div> -->
 
 
-<mat-card style="display: flex; flex-direction: row; width: 70%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem;">
+<mat-card style="display: flex; flex-direction: row; width: 65%; margin: 0 auto; box-shadow: 5px 5px 5px #ccc; max-height: 100vh;">
 
-  <mat-card-content style="width: 130%; margin-top: auto; margin-bottom: auto;">
-    <img src="../../../assets/signUpUser.jpg" style="width: 100%;padding: 0; height: 80%;object-fit: fill;">
+  <mat-card-content style="max-width: 50%; padding: 0;">
+    <img src="../../../assets/signUpUser.jpg" style="width: 100%; height: auto; object-fit: cover;">
   </mat-card-content>
-  <div style="width: 100%; padding: 2rem;">
+
+  <div style="width: 100%; max-width: 50%; padding: 2rem;">
     <mat-card-title>
-      <h1>Become a User</h1>
+      <h1 style="font-size: 1.5rem; margin-bottom: 1rem; text-align:center;">Become a User</h1>
     </mat-card-title>
     <mat-card-content>
       <form [formGroup]="singInForm" (ngSubmit)="onSubmit()" style="width: 100%;">
-        <p>
+
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="userName" type="text"
-              style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem; width: 100%;" formControlName="userName"
-              placeholder="User Name*" matInput>
+            <input id="userName" type="text" style="width: 100%;" formControlName="userName" placeholder="User Name*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.userName.touched && registerFormControl.userName.errors?.['required']">
               User Name is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="first-name" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="userEmail" placeholder="Email*" matInput>
+            <input id="first-name" type="email" style="width: 100%;" formControlName="userEmail" placeholder="Email*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.userEmail.touched && registerFormControl.userEmail.errors?.['required']">
               Email is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="padding" type="password" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="userPassword" placeholder=" Password*" matInput>
+            <input id="padding" type="password" style="width: 100%;" formControlName="userPassword" placeholder="Password*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.userPassword.touched && registerFormControl.userPassword.errors?.['required']">
               Password is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="phoneNo" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="userPhoneNo" placeholder="Phone No*" matInput>
+            <input id="phoneNo" type="text" style="width: 100%;" formControlName="userPhoneNo" placeholder="Phone No*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.userPhoneNo.touched && registerFormControl.userPhoneNo.errors?.['required']">
               Phone No is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="age" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="userAge" placeholder="Age*" matInput>
+            <input id="age" type="text" style="width: 100%;" formControlName="userAge" placeholder="Age*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.userAge.touched && registerFormControl.userAge.errors?.['required']">
               Age is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="address" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="addressList" placeholder="Address List*" matInput>
+            <input id="address" type="text" style="width: 100%;" formControlName="addressList" placeholder="Address List*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.addressList.touched && registerFormControl.addressList.errors?.['required']">
               Address is required
             </span>
           </mat-form-field>
-        </p>
-
-
-        <div
-          style="display: flex;width: 100%;justify-content: space-between;padding-top: 0.3rem;padding-bottom: 0.3rem;">
-          Gender:
-          <div style="display: flex;  align-items: baseline;">
-            <input type="radio" id="male" name="userGender" value="male" formControlName="userGender">
-            <label for="Male">Male</label><br>
-          </div>
-          <div style="display: flex;  align-items: baseline;">
-            <input type="radio" id="female" name="userGender" value="female" formControlName="userGender">
-            <label for="female">Female</label><br>
-          </div>
-
         </div>
 
+        <div style="display: flex; width: 100%; align-items: center; margin-bottom: 1rem;">
+          <div style="flex: 1;">Gender:</div>
+          <div style="display: flex; align-items: center;">
+            <mat-radio-group formControlName="userGender" style="display: flex;">
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>        
 
-        <div class="button">
-          <button type="submit" class="btn1">SignUp</button>
+        <div class="button" style="text-align: center;">
+          <button type="submit" class="btn1" style="background-color: #4682A9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">SignUp</button>
         </div>
-        <br>
-        <a routerLink="/login" class="router-link">What! Come Again... Already have an Account?</a>
 
-        <!--
-              <p *ngIf="error" class="error">
-                {{ error }}
-              </p> -->
-        <!-- <div style="    display: flex;
-        justify-content: space-between;
-        align-items: center;"> -->
-
-
-
-
-
-
+        <div style="text-align: center; margin-top: 2rem;">
+          <a routerLink="/login" class="router-link" style="text-decoration: none; color: #4cc8ff; font-weight: bold;">What! Come Again... Already have an Account?</a>
+        </div>
 
       </form>
-
     </mat-card-content>
-
   </div>
-
-
-
 </mat-card>

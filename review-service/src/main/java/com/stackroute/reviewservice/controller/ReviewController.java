@@ -35,8 +35,8 @@ public class ReviewController {
         this.objectMapper = objectMapper;
     }
     @PostMapping("/add_review")
-    public ResponseEntity<String> saveReview(@RequestParam("productReview") String reviewData,
-                                             @RequestParam("image") MultipartFile reviewImage){
+    public ResponseEntity<?> saveReview(@RequestParam("productReview") String reviewData,
+                                        @RequestParam("image") MultipartFile reviewImage){
         try {
             Map<String, Object> productMap = objectMapper.readValue(reviewData, new TypeReference<Map<String, Object>>() {});
 
@@ -57,16 +57,17 @@ public class ReviewController {
             product_rev.setProduct_review_rating(product_review_rating);
             product_rev.setProduct_review_description(product_review_description);
 
-
-
             byte[] imageBytes = reviewImage.getBytes();
-            reviewService.saveReview(product_rev,imageBytes);
-            return ResponseEntity.ok("Review saved successfully.");
+            reviewService.saveReview(product_rev, imageBytes);
+
+            // Return a success message
+            return ResponseEntity.ok("{\"message\": \"Review saved successfully\"}");
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error saving review: " + e.getMessage());
         }
     }
+
     @GetMapping("/all_reviews")
     public ResponseEntity<List<Review>> getAllReviews(@PageableDefault(size = 10) Pageable pageable) {
         try {

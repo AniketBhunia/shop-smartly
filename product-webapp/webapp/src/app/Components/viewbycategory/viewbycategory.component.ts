@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/Services/login.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/data.types';
 
@@ -9,10 +10,18 @@ import { Product } from 'src/app/data.types';
   styleUrls: ['./viewbycategory.component.css']
 })
 export class ViewbycategoryComponent implements OnInit{
-  constructor(private productService:ProductService,private activateRoute: ActivatedRoute){}
+  constructor(private productService:ProductService,private activateRoute: ActivatedRoute,private login: LoginService){
+    const authToken = localStorage.getItem('token');
+    if (authToken) {
+      this.isLoggedIn = true; // Set to true if the token is present
+    } else {
+      this.isLoggedIn = false; // Set to false if the token is not present
+    }
+  }
   similarProducts !: Product[];
   categoryValue : any
   wishList : Product[] = []
+  isLoggedIn = false;
 
   ngOnInit(): void {
     this.categoryValue = this.activateRoute.snapshot.paramMap.get('category')

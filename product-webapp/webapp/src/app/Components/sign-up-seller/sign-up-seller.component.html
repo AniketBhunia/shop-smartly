@@ -1,167 +1,88 @@
-<!-- <div style="display: flex;">
+<mat-card style="display: flex; flex-direction: row; width: 65%; margin: 0 auto; box-shadow: 5px 5px 5px #ccc; max-height: 100vh; overflow-y: auto;">
 
-
-
-  <div style="width: 100vw; height: 100vh; ">
-
-    <div style=" position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);">
-      <form [formGroup]="singInForm" style="width: 150%;" (ngSubmit)="onSubmit()">
-        <div style="padding-bottom: 1rem; font-size: xx-large;font-weight: bold;">Sign Up Seller</div>
-        <div style="padding-bottom:1rem ;">
-          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-            formControlName="sellerName" placeholder="Seller Name">
-        </div>
-        <div style="padding-bottom:1rem ;">
-          <input id="first-name" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-            formControlName="sellerEmail" placeholder="Email">
-        </div>
-        <div style="padding-bottom:1rem ;">
-          <input id="first-name" type="password" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-            formControlName="sellerPassword" placeholder="Password">
-        </div>
-        <div
-          style="display: flex;width: 70%;justify-content: space-between;padding-top: 0.3rem;padding-bottom: 0.3rem;">
-          Gender:
-          <div style="display: flex;  align-items: baseline;">
-            <input type="radio" id="male" name="sellerGender" value="male" formControlName="sellerGender">
-            <label for="">Male</label><br>
-          </div>
-          <div style="display: flex;  align-items: baseline;">
-            <input type="radio" id="female" name="sellerGender" value="female" formControlName="sellerGender">
-            <label for="female">Female</label><br>
-          </div>
-
-        </div>
-        <div style="padding-bottom:1rem ;">
-          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-            formControlName="sellerPhoneNo" placeholder="Phone No">
-        </div>
-        <div style="padding-bottom:1rem ;">
-          <input id="first-name" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-            formControlName="sellerAge" placeholder="Age">
-        </div>
-        <div></div>
-        <button style="padding-left: 6%;
-        border-radius: 999px;
-        padding-right: 6%;
-        padding-top: 2%;
-        padding-bottom: 2%; background-color: white;border-color: #4cc8ff;">Sign Up</button>
-      </form>
-
-
-    </div>
-  </div>
-  <img src="../../../assets/Shop_Smartly_Logo_Symbol_2400x1800-removebg-preview.png"
-    style="width: 20%; height: 20%;margin-top: auto;">
-</div> -->
-
-
-
-
-<!-- <div style="display: flex;padding-top: 3%;"> -->
-<!--  -->
-
-<mat-card style="display: flex; flex-direction: row; width: 70%;  box-shadow: 5px 5px 5px #ccc;margin-bottom: 3rem;">
-
-  <mat-card-content style="width: 130%; margin-top: auto; margin-bottom: auto;">
-    <img src="../../../assets/sellerSignUp.jpg" style="width: 100%;padding: 0; height: 100%;object-fit: fill;">
+  <!-- Image Section -->
+  <mat-card-content style="width: 50%; padding: 0;">
+    <img src="../../../assets/sellerSignUp.jpg" style="width: 100%; height: 100%; object-fit: cover;">
   </mat-card-content>
-  <div style="width: 100%; padding: 2rem;">
-    <mat-card-title>
-      <h1>Become a Seller</h1>
 
+  <!-- Form Section -->
+  <div style="width: 50%; padding: 2rem; height: 100%;">
+
+    <mat-card-title>
+      <h1 style="font-size: 1.5rem; margin-bottom: 1rem; text-align:center">Become a Seller</h1>
     </mat-card-title>
     <mat-card-content>
-      <form [formGroup]="singInForm" (ngSubmit)="onSubmit()" style="width: 100%;">
-        <p>
+      <form [formGroup]="singInForm" (ngSubmit)="onSubmit()" style="width: 100%; height: 100%;">
+
+        <!-- Input Fields -->
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="userName" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerName" placeholder="Seller Name*" matInput>
+            <input id="userName" type="text" style="width: 100%;" formControlName="sellerName" placeholder="Seller Name*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerName.touched && registerFormControl.sellerName.errors?.['required']">
               Seller Name is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="email" type="email" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerEmail" placeholder="Email*" matInput>
+            <input id="email" type="email" style="width: 100%;" formControlName="sellerEmail" placeholder="Email*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerEmail.touched && registerFormControl.sellerEmail.errors?.['required']">
               Email is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="password" type="password" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerPassword" placeholder="Password*" matInput>
+            <input id="password" type="password" style="width: 100%;" formControlName="sellerPassword" placeholder="Password*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerPassword.touched && registerFormControl.sellerPassword.errors?.['required']">
               Password is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="phoneNo" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerPhoneNo" placeholder="Phone No*" matInput>
+            <input id="phoneNo" type="text" style="width: 100%;" formControlName="sellerPhoneNo" placeholder="Phone No*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerPhoneNo.touched && registerFormControl.sellerPhoneNo.errors?.['required']">
               Phone no is required
             </span>
           </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div style="margin-bottom: 1rem;">
           <mat-form-field style="width: 100%;">
-            <input id="age" type="text" style="width: 100%;padding-top: 0.3rem;padding-bottom: 0.3rem;"
-              formControlName="sellerAge" placeholder="Age*" matInput>
+            <input id="age" type="text" style="width: 100%;" formControlName="sellerAge" placeholder="Age*" matInput>
             <span class="text-danger"
               *ngIf="registerFormControl.sellerAge.touched && registerFormControl.sellerAge.errors?.['required']">
               Age is required
             </span>
           </mat-form-field>
-        </p>
+        </div>
 
-
-        <div
-          style="display: flex;width: 100%;justify-content: space-between;padding-top: 0.3rem;padding-bottom: 0.3rem;">
+        <!-- Gender Selection -->
+        <div style="display: flex; width: 100%; justify-content: space-between; margin-bottom: 1rem;">
           Gender:
-          <div style="display: flex;  align-items: baseline;">
-            <input type="radio" id="male" name="sellerGender" value="male" formControlName="sellerGender">
-            <label for="Male">Male</label><br>
+          <div style="display: flex; align-items: center;">
+            <mat-radio-group formControlName="sellerGender">
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+            </mat-radio-group>
           </div>
-          <div style="display: flex;  align-items: baseline;">
-            <input type="radio" id="female" name="sellerGender" value="female" formControlName="sellerGender">
-            <label for="female">Female</label><br>
-          </div>
-
         </div>
 
-
-        <div class="button">
-          <button type="submit" class="btn1">SignUp</button>
+        <!-- Sign Up Button -->
+        <div class="button" style="text-align: center;">
+          <button type="submit" class="btn1" style="background-color: #4682A9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Sign Up</button>
         </div>
-        <br>
-        <a routerLink="/login" class="router-link">We Never Forget Our Sellers :)</a>
-        <!--
-              <p *ngIf="error" class="error">
-                {{ error }}
-              </p> -->
-        <!-- <div style="    display: flex;
-        justify-content: space-between;
-        align-items: center;"> -->
+
+        <!-- Link to Login Page -->
+        <div style="text-align: center; margin-top: 1rem;">
+          <a routerLink="/login" class="router-link" style="text-decoration: none; color: #4cc8ff; font-weight: bold;">Already have an account? Login here</a>
+        </div>
 
       </form>
-
     </mat-card-content>
-
   </div>
-
-
-
 </mat-card>

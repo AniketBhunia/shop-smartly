@@ -33,6 +33,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AlertService } from './Services/alert-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { WishlistComponent } from './Components/wishlist/wishlist.component';
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule
   ],
   providers: [AlertService],
   bootstrap: [AppComponent]

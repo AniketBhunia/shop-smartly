@@ -31,6 +31,8 @@ public class Product {
     //    @Autowired
     private int seller_id;
 
+    private String product_age;
+
 }
 
 

@@ -99,7 +99,7 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor="let item of itemsToShow1; let i = index">
+            <div class="product-card" *ngFor="let item of newItemsToShow; let i = index">
               <a (click)="details(item.product_id)" style="cursor: pointer;">
                 <div class="product-image">
                   <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
@@ -117,7 +117,7 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor="let item of itemsToShow; let i = index">
+            <div class="product-card" *ngFor="let item of newItemsToShow2; let i = index">
               <a (click)="details(item.product_id)" style="cursor: pointer;">
                 <div class="product-image">
                   <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
@@ -153,7 +153,21 @@
         <img #brandImage2 src="../../assets/Samsung-logo.jpeg" alt="Samsung" style="border-radius: 50%;" height="150px" width="150px">
       </a>
       </div>
-      
+      <div class="brand" style="padding-right: 0;">
+        <a (click)="getDetailsByBrand(brandImage3.alt)">
+        <img #brandImage3 src="../../assets/Oneplus.jpg" alt="Oneplus" style="border-radius: 50%;" height="130px" width="130px">
+      </a>
+      </div>
+      <div class="brand" style="padding-right: 0;">
+        <a (click)="getDetailsByBrand(brandImage4.alt)">
+        <img #brandImage4 src="../../assets/acer.jpg" alt="Acer" style="border-radius: 50%;" height="130px" width="130px">
+      </a>
+      </div>
+      <div class="brand" style="padding-right: 0;">
+        <a (click)="getDetailsByBrand(brandImage5.alt)">
+        <img #brandImage5 src="../../assets/HP Logo.jpg" alt="Hewlett" style="border-radius: 50%;" height="130px" width="130px">
+      </a>
+      </div>
     </div>
   </div>  
 </div>

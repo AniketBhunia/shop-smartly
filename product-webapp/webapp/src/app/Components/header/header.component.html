@@ -5,7 +5,7 @@
     </a>
   </div>
 
-  <div class="search-box">
+  <div class="search-box" *ngIf="isLoggedIn">
     <mat-form-field appearance="fill">
       <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
       <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()"

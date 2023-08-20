@@ -37,4 +37,12 @@ public class ElasticSearchService {
 //        System.out.println("elasticsearch supplier fuzzy query " + supplier.get().toString());
         return response;
     }
+
+    public SearchResponse<Product> fuzzySearch3(String product_age) throws IOException {
+        Supplier<Query> supplier = ElasticSearch.createSupplierQuery3(product_age);
+        SearchResponse<Product> response = elasticsearchClient
+                .search(s -> s.index("products").query(supplier.get()), Product.class);
+//        System.out.println("elasticsearch supplier fuzzy query " + supplier.get().toString());
+        return response;
+    }
 }

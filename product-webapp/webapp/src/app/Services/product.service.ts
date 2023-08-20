@@ -60,6 +60,9 @@ export class ProductService {
   searchByBrand(productBrand:any){
     return this.http.get<any>(`http://localhost:8081/api/v1/product/byBrand/${productBrand}`)
   }
+  getNewArrivals(){
+    return this.http.get<any>("http://localhost:8081/api/v1/product/byArrivalDate/New")
+  }
   
   // addToWishlist(product: Product) {
   //   const storedWishlist = localStorage.getItem('wishList');

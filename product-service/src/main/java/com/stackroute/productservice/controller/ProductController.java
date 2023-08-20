@@ -57,6 +57,7 @@ public class ProductController {
             double product_current_price = (double) productMap.get("product_current_price");
             double product_discount_price = (double) productMap.get("product_discount_price");
             int seller_id = (int) productMap.get("seller_id");
+            String product_age =(String) productMap.get("product_age");
 
 
             Product product = new Product();
@@ -70,19 +71,20 @@ public class ProductController {
             product.setProduct_current_price(product_current_price);
             product.setProduct_discount_price(product_discount_price);
             product.setSeller_id(seller_id);
+            product.setProduct_age(product_age);
 
             byte[] imageBytes = productImage.getBytes();
 
             productService.saveProduct(product, imageBytes);
             return ResponseEntity.ok().body(product);
-        } catch (IOException | ProductAlreadyExistException e) {
+        } catch (ProductAlreadyExistException | IOException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Product with specified id is already Exist");
         }
     }
 
     @GetMapping("/all_products")
-    public ResponseEntity<List<Product>> getAllProducts(@PageableDefault(size = 12) Pageable pageable) {
+    public ResponseEntity<List<Product>> getAllProducts(@PageableDefault(size = 20) Pageable pageable) {
         try {
             responseEntity = new ResponseEntity(productService.getAll(pageable), HttpStatus.OK);
         } catch (Exception exception) {
@@ -146,7 +148,7 @@ public class ProductController {
             double product_current_price = (double) productMap.get("product_current_price");
             double product_discount_price = (double) productMap.get("product_discount_price");
             int seller_id = (int) productMap.get("seller_id");
-
+            String product_age =(String) productMap.get("product_age");
 
             Product product = new Product();
             product.setProduct_id(product_id1);
@@ -159,7 +161,7 @@ public class ProductController {
             product.setProduct_current_price(product_current_price);
             product.setProduct_discount_price(product_discount_price);
             product.setSeller_id(seller_id);
-
+            product.setProduct_age(product_age);
             byte[] imageBytes = productImage.getBytes();
 
             productService.updateProduct(product, product_id, imageBytes);
@@ -197,6 +199,18 @@ public class ProductController {
     @GetMapping("/byBrand/{brand}")
     List<Product> fuzzySearch2( @PathVariable String brand ) throws IOException {
         SearchResponse<Product> searchResponse = elasticSearchService.fuzzySearch2(brand);
+        List<Hit<Product>> hitList = searchResponse.hits().hits();
+//        System.out.println(hitList);
+        List<Product> productList = new ArrayList<>();
+        for(Hit<Product> hit :hitList){
+            productList.add(hit.source());
+        }
+        return productList;
+    }
+
+    @GetMapping("/byArrivalDate/{product_age}")
+    List<Product> fuzzySearch3( @PathVariable String product_age ) throws IOException {
+        SearchResponse<Product> searchResponse = elasticSearchService.fuzzySearch3(product_age);
         List<Hit<Product>> hitList = searchResponse.hits().hits();
 //        System.out.println(hitList);
         List<Product> productList = new ArrayList<>();

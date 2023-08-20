@@ -34,4 +34,13 @@ public class ElasticSearch {
         val fuzzyQuery  = new FuzzyQuery.Builder();
         return  fuzzyQuery.field("productBrand").value(brand).build();
     }
+
+    public static Supplier<Query> createSupplierQuery3(String product_age){
+        Supplier<Query> supplier = ()->Query.of(q->q.fuzzy(createFuzzyQuery3(product_age)));
+        return  supplier;
+    }
+    public static FuzzyQuery createFuzzyQuery3(String product_age){
+        val fuzzyQuery  = new FuzzyQuery.Builder();
+        return  fuzzyQuery.field("product_age").value(product_age).build();
+    }
 }

@@ -30,6 +30,7 @@ public class ProductServiceImpl implements ProductService {
     public Product saveProduct(Product product, byte[] imageBytes) throws ProductAlreadyExistException {
         int already_exist_id = product.getProduct_id();
         Optional<Product> product1 = productRepository.findById(already_exist_id);
+        System.out.println(product1);
         if(product1.isEmpty()){
             product.setProduct_image(imageBytes);
             return productRepository.save(product);

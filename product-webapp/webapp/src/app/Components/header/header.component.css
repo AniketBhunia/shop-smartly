@@ -1,7 +1,7 @@
 /* Base styles */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #020325;
   color: white;
   padding: 0.1rem;
@@ -108,7 +108,9 @@
   background-color: #4682A9;
   color: azure !important;
   margin-bottom: .1rem;
-  margin-right: .1rem;
+  /* margin-right: .5rem; */
+  /* padding-left: 1rem; */
+  margin-right: 1rem;
 }
 
 .right-section {
