@@ -34,6 +34,7 @@ import { AlertService } from './Services/alert-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import {MatRadioModule} from '@angular/material/radio';
     ReactiveFormsModule,
     MatTooltipModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    BackButtonDisableModule.forRoot()
   ],
   providers: [AlertService],
   bootstrap: [AppComponent]
