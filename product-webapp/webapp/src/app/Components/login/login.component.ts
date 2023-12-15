@@ -64,7 +64,11 @@ constructor(private login:LoginService,private route:Router){}
             window.location.reload();
           }, 100); // You can adjust the delay as needed
         } else if (role === 'seller') {
-          // this.route.navigate(['/seller-dashboard']); // Change the route to your seller dashboard
+          this.route.navigate(['/products']);
+           // Change the route to your seller dashboard
+           setTimeout(() => {
+            window.location.reload();
+          }, 100);
         }
         },
         (err)=>{

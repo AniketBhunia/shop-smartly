@@ -35,6 +35,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+// import { SellerDashboardComponent } from './Components/seller-dashboard/seller-dashboard.component';
+import { SellerProfileComponent } from './Components/seller-profile/seller-profile.component';
+import { SellerProductsComponent } from './Components/seller-products/seller-products.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SellerDashboardComponent } from './Components/seller-dashboard/seller-dashboard.component';
+import { AddProductComponent } from './Components/add-product/add-product.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -53,6 +60,11 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
     OrderHistoryComponent,
     ViewbybrandComponent,
     WishlistComponent,
+    SellerProfileComponent,
+    SellerProductsComponent,
+    SellerDashboardComponent,
+    AddProductComponent
+    // SellerDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,9 +86,11 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
     MatTooltipModule,
     MatSnackBarModule,
     MatRadioModule,
-    BackButtonDisableModule.forRoot()
+    BackButtonDisableModule.forRoot(),
+    MatSidenavModule,
+      
   ],
-  providers: [AlertService],
+  providers: [AlertService,MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

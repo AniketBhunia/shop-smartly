@@ -75,21 +75,23 @@ export class OrderHistoryComponent implements OnInit {
     this.createOrder()
   }
 
-    createOrder(): void {
-      const currentDateTime = new Date();
-      const order: Order = {
-        orderID: this.generateOrderId(),
-        orderStatus : 'Ordered',
-        items: this.cartList,
-        totalAmount: this.calculateTotalAmount(),
-        orderDate: currentDateTime, // You need to add this field to additionalData
-      };
+  createOrder(): void {
+    const currentDateTime = new Date();
+    const order: Order = {
+      orderID: this.generateOrderId(),
+      orderStatus : 'Ordered',
+      items: [...this.cartList], // Create a copy of cartList
+      totalAmount: this.calculateTotalAmount(),
+      orderDate: currentDateTime,
+    };
   
-      // Save the order to the orderList
-      this.orderList.push(order);
-      console.log(this.orderList);
-      
-      localStorage.setItem('orderList', JSON.stringify(this.orderList));
+    // Save the order to the orderList
+    this.orderList.push(order);
+    console.log(this.orderList);
+  
+    localStorage.setItem('orderList', JSON.stringify(this.orderList));
+  }
+  
   
       // Clear the cart and update localStorage
       // this.cartList = [];
@@ -101,7 +103,6 @@ export class OrderHistoryComponent implements OnInit {
       //   }
       // })
 
-    }
     calculateTotalAmount(): number {
       // Logic to calculate total amount from cartList
       return this.cartList.reduce((total, item) => total + (item.productQuantity * item.productPrice), 0);

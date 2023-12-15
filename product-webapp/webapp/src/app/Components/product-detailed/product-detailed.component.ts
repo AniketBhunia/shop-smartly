@@ -87,8 +87,13 @@ export class ProductDetailedComponent implements OnInit {
 
   // Calculate the total number of pages
   get totalPages(): number {
-    return Math.ceil(this.reviewData.length / this.reviewsPerPage);
+    if (this.reviewData && this.reviewsPerPage > 0) {
+      return Math.ceil(this.reviewData.length / this.reviewsPerPage);
+    } else {
+      return 0; // Or any other appropriate default value
+    }
   }
+  
 
   // Get the array of reviews for the current page
   get pagedReviews(): any[] {

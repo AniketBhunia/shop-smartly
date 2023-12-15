@@ -122,7 +122,7 @@
     <div *ngFor="let item of order.items" class="order-card">
       <div class="order-summary" (click)="item.expanded = !item.expanded">
         <div class="order-product">{{ item.productName }}</div>
-        <div class="order-price">{{ item.productPrice | currency : "USD" }}</div>
+        <div class="order-price">{{ item.productPrice * item.productQuantity | currency : "USD" }}</div>
         <div class="order-expand-icon" *ngIf="item.expanded ? reviewYourOrder(order) : null">
           {{ item.expanded ? "-" : "+" }}
         </div>
@@ -135,7 +135,7 @@
         </div>
 
         <div class="order-quantity">{{ item.productQuantity }} x</div>
-        <button (click)="item.canAddReview = !canAddReview">Add Review</button>
+        <button (click)="item.canAddReview = !canAddReview" class="custom-button">Add Review</button>
         <mat-card>
           <div class="order-review">
             <h3>Write a Review</h3>
@@ -148,9 +148,11 @@
             <textarea rows="4" placeholder="Write your review" [(ngModel)]="writeReview"></textarea>
             <img height="150px" #previewImage />
           </div>
-          <mat-card-actions><button (click)="onfileChange()" type="select">Upload Image</button>
+          <mat-card-actions>
+            <button (click)="onfileChange()" class="custom-upload-button">Upload Image</button>
 
-            <button (click)="saveYourReview(item.productId)">Submit Review</button>
+            <button (click)="saveYourReview(item.productId)" class="custom-submit-button">Submit Review</button>
+
           </mat-card-actions>
         </mat-card>
       </div>

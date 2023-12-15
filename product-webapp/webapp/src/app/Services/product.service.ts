@@ -37,11 +37,11 @@ export class ProductService {
   }
 
   deleteProduct(product_id:number){
-    return this.http.delete<any>(`http://localhost:8081/api/v1/delete_product/${product_id}`)
+    return this.http.delete<any>(`http://localhost:8081/api/v1/product/delete_product/${product_id}`)
   }
 
   getProductBySellerId(seller_id:number){
-    return this.http.get<any>(`http://localhost:8081/api/v1/product/${seller_id}`)
+    return this.http.get<any>(`http://localhost:8081/api/v1/product/seller/${seller_id}`)
   }
 
   popularProducts() {

@@ -14,6 +14,7 @@ export interface Product {
     // imageUrl:string;
     image:string;
     productBrand:string;
+    product_age:string
 }
 export interface Review {
     review_id : number;

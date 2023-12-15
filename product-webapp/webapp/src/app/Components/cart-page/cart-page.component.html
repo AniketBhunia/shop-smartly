@@ -78,10 +78,10 @@
           <span>Sub Total</span>
           <span>{{ '$' + calculateGrandTotal() }}</span>
         </div>
-        <div class="detail d-flex justify-content-between">
+        <!-- <div class="detail d-flex justify-content-between">
           <span>Tax</span>
           <span>$2</span>
-        </div>
+        </div> -->
         <div class="detail d-flex justify-content-between">
           <span>Shipping Cost</span>
           <span>Free</span>
@@ -89,20 +89,17 @@
         <hr />
         <div class="detail d-flex justify-content-between total">
           <span>Grand Total</span>
-          <span>{{ '$' + (calculateGrandTotal() + 2) }}</span>
+          <span>{{ '$' + (calculateGrandTotal()) }}</span>
         </div>
       </div>
-      <div class="d-flex justify-content-center mt-3">
+      <div class="d-flex flex-column align-items-center mt-3">
         <!-- Proceed to Checkout button -->
-          <a (click)="payNow()" mat-button class="custom-button">
+        <a (click)="payNow()" mat-button class="custom-button">
             <!-- <i class="bi bi-cart-fill me-1"></i> -->
             Proceed to Checkout
-          </a>
-          <a (click)="gotoOrders()" mat-button class="custom-button" routerLink="/orderhistory">
-            <!-- <i class="bi bi-cart-fill me-1"></i> -->
-            Go To
-          </a>
-      </div>
+        </a>
+    </div>
+    
     </div>
   </div>
 </div>

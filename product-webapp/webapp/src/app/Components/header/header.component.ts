@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/Services/login.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/data.types';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,12 +15,15 @@ export class HeaderComponent implements OnInit {
   searchSuggestion: undefined | Product[]
   // isSellerLoggedIn !: boolean
   isLoggedIn = false;
+  isSellerLoggedIn = false;
   constructor(private productService: ProductService, private route: Router, private login: LoginService) { const authToken = localStorage.getItem('token');
-  if (authToken) {
+  if (localStorage.getItem('role') === 'user') {
     this.isLoggedIn = true; // Set to true if the token is present
-  } else {
-    this.isLoggedIn = false; // Set to false if the token is not present
-  }}
+  } else if(localStorage.getItem('role') === 'seller'){
+    // this.isLoggedIn = false; // Set to false if the token is not present
+    this.isSellerLoggedIn = true
+  }
+}
 
   ngOnInit(): void {
     this.productService.productList().subscribe((res) => {
@@ -42,6 +44,17 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('name');
     localStorage.removeItem('sellerId');
     this.isLoggedIn = false;
+    this.route.navigate(['/'])
+  }
+  logoutForSeller() {
+    // Remove the token from localStorage upon logout
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('name');
+    // localStorage.removeItem('sellerId');
+    this.isSellerLoggedIn = false;
+    this.route.navigate(['/'])
   }
 
   searchProduct(name: any) {

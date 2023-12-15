@@ -99,7 +99,7 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor="let item of newItemsToShow; let i = index">
+            <div class="product-card" *ngFor="let item of newItemsToShow2; let i = index">
               <a (click)="details(item.product_id)" style="cursor: pointer;">
                 <div class="product-image">
                   <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
@@ -117,7 +117,7 @@
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <div class="product-list">
-            <div class="product-card" *ngFor="let item of newItemsToShow2; let i = index">
+            <div class="product-card" *ngFor="let item of newItemsToShow; let i = index">
               <a (click)="details(item.product_id)" style="cursor: pointer;">
                 <div class="product-image">
                   <img [src]="'data:image/jpeg;base64,' + item.product_image" alt="{{ item.product_name }}">
@@ -143,11 +143,11 @@
         <img #brandImage src="../../assets/Apple-logo.jpg" alt="Apple" style="border-radius: 50%;" height="120px" width="120px">
         </a>
       </div>
-      <div class="brand">
+      <!-- <div class="brand">
         <a (click)="getDetailsByBrand(brandImage1.alt)">
         <img #brandImage1 src="../../assets/LG-logo.png" alt="LG" style="border-radius: 50%;" height="100px" width="100px">
         </a>
-      </div>
+      </div> -->
       <div class="brand" style="padding-right: 0;">
         <a (click)="getDetailsByBrand(brandImage2.alt)">
         <img #brandImage2 src="../../assets/Samsung-logo.jpeg" alt="Samsung" style="border-radius: 50%;" height="150px" width="150px">

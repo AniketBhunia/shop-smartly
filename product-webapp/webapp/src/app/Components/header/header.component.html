@@ -5,7 +5,7 @@
     </a>
   </div>
 
-  <div class="search-box" *ngIf="isLoggedIn">
+  <div class="search-box" *ngIf="isLoggedIn && !isSellerLoggedIn">
     <mat-form-field appearance="fill">
       <!--  <input matInput placeholder="Search" name="search" [(ngModel)]="search"> -->
       <input matInput #searchInput (keyup)="searchProduct($event)" name="search" (blur)="hideSearch()"
@@ -21,7 +21,7 @@
     </ul>
   </div>
 
-  <div class="nav">
+  <div class="nav" *ngIf="!isSellerLoggedIn">
     <a *ngFor="let item of allCategories" (click)="redirectoCateories(item)">{{item}}</a>
   </div>
 
@@ -31,18 +31,21 @@
     <span class="wish-icon" *ngIf="isLoggedIn"><i class='fa fa-heart' matTooltip="Wishlist" style='color: red; font-size: 24px;'
         routerLink="/mywishlist"></i></span>
     <div class="spacer"></div> <!-- Add a spacer for gap -->
-    <div class="header-icon" *ngIf="!isLoggedIn">
+    <div class="header-icon" *ngIf="!isLoggedIn && !isSellerLoggedIn">
       <button routerLink="/login" mat-stroked-button class="login-button">Log In</button>
     </div>
-    <div class="header-icon" *ngIf="isLoggedIn">
+    <div class="header-icon" *ngIf="isLoggedIn || isSellerLoggedIn">
       <button mat-icon-button [matMenuTriggerFor]="userMenu" matTooltip="User Profile">
         <mat-icon>account_circle</mat-icon> <!-- Add the user profile icon -->
       </button>
       <mat-menu #userMenu="matMenu">
         <!-- Add menu items like "Profile", "Settings", etc. -->
-        <button mat-menu-item routerLink="/mycart">My Cart</button>
-        <button mat-menu-item routerLink="/orderhistory">My Orders</button>
-        <button mat-menu-item (click)="logout()">Logout</button>
+        <button *ngIf="isLoggedIn" mat-menu-item routerLink="/mycart">My Cart</button>
+        <button *ngIf="isLoggedIn" mat-menu-item routerLink="/orderhistory">My Orders</button>
+        <button  *ngIf="isLoggedIn" mat-menu-item (click)="logout()">Logout</button>
+        <button *ngIf="isSellerLoggedIn" mat-menu-item routerLink="/products">All Products</button>
+        <button *ngIf="isSellerLoggedIn" mat-menu-item routerLink="/add_products">Add Products</button>
+        <button  *ngIf="isSellerLoggedIn" mat-menu-item (click)="logoutForSeller()">Logout</button>
       </mat-menu>
     </div>
   </div>

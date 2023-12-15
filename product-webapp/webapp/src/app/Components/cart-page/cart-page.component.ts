@@ -1,6 +1,7 @@
 // cart.component.ts
 
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
 import { ShoppingCartItem } from 'src/app/cartModel';
@@ -33,7 +34,7 @@ export class CartComponent implements OnInit{
   // console.log(this.amount);
   return this.amount
 }
-  constructor(private cartService: ShoppingCartService,private router:Router) {
+  constructor(private cartService: ShoppingCartService,private router:Router, private _snackBar: MatSnackBar) {
     this.shoppingCart = cartService;
    
   }
@@ -88,8 +89,6 @@ export class CartComponent implements OnInit{
     // window.location.reload()
   }
    payNow() {
-
-    
     const RozarpayOptions = {
       description: 'Shop Smartly',
       currency: 'USD',
@@ -98,7 +97,7 @@ export class CartComponent implements OnInit{
       key: 'rzp_test_QKFlV3f8EpzXKc',
       image: '',
       prefill: {
-        name: 'Prabhas',
+        name: localStorage.getItem('name'),
         email: 'prabhaschandra11@gmail.com',
         phone: '7633915263'
       },
@@ -115,13 +114,36 @@ export class CartComponent implements OnInit{
     const successCallback = (paymentid: any) => {
       console.log(paymentid);
       // this.router.navigate(['/orderhistory']);
-    }
+      this._snackBar.open(`Payment successful! Payment ID: ${paymentid}`, 'Close', {
+        duration: 5000, // Duration in milliseconds
+        panelClass: ['success-snackbar'], // Add custom CSS class for styling
+      });
+  
+      // Redirect to the order history page after a timeout (e.g., 5 seconds)
+      setTimeout(() => {
+        this.router.navigate(['/orderhistory']);
+      }, 5000); // 5000 milliseconds = 5 seconds
+    };
 
     const failureCallback = (e: any) => {
       console.log(e);
     }
 
     Razorpay.open(RozarpayOptions,successCallback, failureCallback)
+    // localStorage.setItem('orderList', JSON.stringify(this.cartList));
+    setTimeout(() => {
+      Swal.fire({
+        title: 'Payment Successful',
+        text: 'Thank you for your payment!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Navigate to the order history page when "OK" is clicked
+          this.router.navigate(['/orderhistory']); // Replace '/order-history' with your actual route
+        }
+      });
+    }, 15000); // 15000 milliseconds = 15 seconds // 3000 milliseconds = 3 seconds
   }
 
   gotoOrders(){

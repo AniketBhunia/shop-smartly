@@ -11,7 +11,12 @@ import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycateg
 import { ViewbybrandComponent } from './Components/viewbybrand/viewbybrand.component';
 import { OrderHistoryComponent } from './Components/order-history/order-history.component';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
+import { SellerProfileComponent } from './Components/seller-profile/seller-profile.component';
+import { SellerProductsComponent } from './Components/seller-products/seller-products.component';
+import { SellerDashboardComponent } from './Components/seller-dashboard/seller-dashboard.component';
+import { AddProductComponent } from './Components/add-product/add-product.component';
 // import { ViewbycategoryComponent } from './Components/viewbycategory/viewbycategory.component';
+
 
 const routes: Routes = [
   {
@@ -53,7 +58,10 @@ const routes: Routes = [
   }, {
     component: WishlistComponent,
     path: "mywishlist"
-  }
+  },
+  { path: 'add_products', component: AddProductComponent },
+  { path: 'products', component: SellerProductsComponent },
+  { path: 'seller_dashboard', component:SellerDashboardComponent },
 ];
 
 @NgModule({

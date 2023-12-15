@@ -36,18 +36,38 @@ export class HomeComponent implements OnInit{
   }
 
   get itemsToShow(): any[] {
-    return this.popularProducts.slice(this.endIndex);
+    if (this.popularProducts?.length && this.endIndex < this.popularProducts.length) {
+      return this.popularProducts.slice(this.endIndex);
+    } else {
+      return [];
+    }
   }
+  
   get itemsToShow1(): any[] {
-    return this.popularProducts.slice(this.startIndex, this.endIndex + 1);
+    if (this.popularProducts?.length && this.startIndex >= 0 && this.endIndex < this.popularProducts.length) {
+      return this.popularProducts.slice(this.startIndex, this.endIndex + 1);
+    } else {
+      return [];
+    }
   }
+  
 
-  get newItemsToShow() :any []{
-    return this.newProducts.slice(this.endIndex);
+  get newItemsToShow(): any[] {
+    if (this.newProducts?.length && this.endIndex < this.newProducts.length) {
+      return this.newProducts.slice(this.endIndex);
+    } else {
+      return [];
+    }
   }
+  
   get newItemsToShow2(): any[] {
-    return this.newProducts.slice(this.startIndex, this.endIndex);
+    if (this.newProducts?.length && this.startIndex >= 0 && this.endIndex < this.newProducts.length) {
+      return this.newProducts.slice(this.startIndex, this.endIndex+1);
+    } else {
+      return [];
+    }
   }
+  
 
 
   // eslint-disable-next-line @typescript-eslint/ban-types

@@ -85,3 +85,40 @@ mat-card{
 h3{
   text-align: center;
 }
+.custom-button {
+  background-color: #4682A9; /* Change this to your desired background color */
+  color: #fff; /* Change this to your desired text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  /* Add any other styles you want for the button */
+}
+/* Styles for the Upload Image button */
+.custom-upload-button {
+  background-color: #66adf8; /* Change this to your desired background color */
+  color: #fff; /* Change this to your desired text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-right: 1rem;
+  /* Add any other styles you want for the button */
+}
+
+/* Styles for the Submit Review button */
+.custom-submit-button {
+  background-color: #e7efe9; /* Change this to your desired background color */
+  color: #fff; /* Change this to your desired text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  color: black;
+  /* Add any other styles you want for the button */
+}
+
+/* Add any additional button styles as needed */

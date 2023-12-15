@@ -25,7 +25,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/product")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class ProductController {
     private final ProductService productService;
     private final ObjectMapper objectMapper;

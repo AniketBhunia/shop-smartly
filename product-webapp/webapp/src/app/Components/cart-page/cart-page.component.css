@@ -76,6 +76,12 @@
 .total-pr {
   width: 15%;
 }
+/* Add custom styles to center-align and separate the buttons vertically */
+.d-flex.flex-column.align-items-center {
+  text-align: center; /* Center-align the buttons horizontally */
+  gap: 10px; /* Adjust the vertical spacing between buttons */
+}
+
 
 /* Media query for screens smaller than 576px (extra small screens) */
 @media (max-width: 575.98px) {

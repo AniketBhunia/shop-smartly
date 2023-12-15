@@ -1,0 +1,51 @@
+<div class="add-product-container">
+    <h1 class="form-title">Add New Product</h1>
+    <form #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)" class="product-form">
+        <div class="form-group">
+            <label for="product_name">Product Name</label>
+            <input class="field-style" type="text" ngModel name="product_name" id="product_name" required />
+        </div>
+        <div class="form-group">
+            <label for="product_quantity">Product Quantity</label>
+            <input class="field-style" type="number" ngModel name="product_quantity" id="product_quantity" required />
+        </div>
+        <div class="form-group">
+            <label for="product_status">Product Status</label>
+            <input class="field-style" type="text" ngModel name="product_status" id="product_status" required />
+        </div>
+        <div class="form-group">
+            <label for="product_description">Product Description</label>
+            <textarea class="field-style" ngModel name="product_description" id="product_description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="productBrand">Product Brand</label>
+            <input class="field-style" type="text" ngModel name="productBrand" id="productBrand" required />
+        </div>
+        <div class="form-group">
+            <label for="product_category">Product Category</label>
+            <input class="field-style" type="text" ngModel name="product_category" id="product_category" required />
+        </div>
+        <div class="form-group">
+            <label for="product_current_price">Product Current Price</label>
+            <input class="field-style" type="number" ngModel name="product_current_price" id="product_current_price" required />
+        </div>
+        <div class="form-group">
+            <label for="product_discount_price">Product Discount Price</label>
+            <input class="field-style" type="number" ngModel name="product_discount_price" id="product_discount_price" required />
+        </div>
+        <div class="form-group">
+            <label for="product_age">Product Age</label>
+            <input class="field-style" type="text" ngModel name="product_age" id="product_age" required />
+        </div>
+        <div class="form-group">
+            <label for="product_image">Upload Product Image:</label>
+            <input class="field-style" type="file" accept="image/*" id="product_image"
+                name="product_image" (change)="handleImageUpload($event)" required />
+        </div>
+        <div class="form-group">
+            <!-- You can use JavaScript to display the uploaded image preview here -->
+            <!-- <img [src]="uploadedImageFile" *ngIf="uploadedImageFile" alt="Uploaded Image" /> -->
+        </div>
+        <button class="form-button" type="submit">Add Product</button>
+    </form>
+</div>

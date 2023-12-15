@@ -13,8 +13,13 @@ import java.util.function.Supplier;
 
 @Service
 public class ElasticSearchService {
+
+    private final ElasticsearchClient elasticsearchClient;
     @Autowired
-    private ElasticsearchClient elasticsearchClient;
+    public ElasticSearchService(ElasticsearchClient elasticsearchClient) {
+        this.elasticsearchClient = elasticsearchClient;
+    }
+
 
     public SearchResponse<Product> fuzzySearch(String approximateProductName) throws IOException {
         Supplier<Query> supplier = ElasticSearch.createSupplierQuery(approximateProductName);
